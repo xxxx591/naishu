@@ -1,0 +1,20 @@
+<view wx:if="{{accShow}}">
+  <!--pages/init/init.wxml-->
+  <view>
+    <view class="userinfo">
+      <view class="userinfo-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </view>
+    <!-- <button open-type="getUserInfo">微信登陆</button> -->
+    <button open-type="getUserInfo" bindgetuserinfo='bindGetUserInfo' wx:if="{{!showFlag}}">微信登陆</button>
+  </view>
+<view class="showFlag" wx:if="{{showFlag}}" >
+	  <view class="showFg">
+	    <view class="showg">您拒绝了地理位置授权</view>
+	      <view class="showg">需要重新设置</view>
+	      <button class="showF" open-type="openSetting" bindopensetting="handler">去设置</button>
+	    </view>
+	</view> 
+</view>
