@@ -1,0 +1,33 @@
+/* components/navbar/header.wxss */
+
+.nav-wrap {
+  /* position: fixed; */
+  width: 100%;
+  top: 0;
+  background: #fff;
+  color: #fff;
+  z-index: 9999999;
+  overflow: hidden;
+}
+/* 标题要居中 */
+.nav-title {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* bottom: 0; */
+  margin: auto;
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: 500;
+  z-index:9;
+
+}
+.img{
+  width: 100%;
+}

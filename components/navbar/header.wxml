@@ -1,0 +1,5 @@
+<view class='nav-wrap' style='height: {{height*2 + 20}}px;'>
+     
+  <view class='nav-title' style='line-height: {{height*2 + 44}}px;'>{{title}}</view>
+  <image src='/assets/image/banner.png' class='img'></image>
+</view>
