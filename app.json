@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/merber/merber",
     "pages/init/init",
     "pages/index/index",
     "pages/logs/logs"

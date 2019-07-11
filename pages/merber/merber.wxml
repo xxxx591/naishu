@@ -1,0 +1,29 @@
+<view class='wrapper'>
+  <!-- 顶部 -->
+  <view class='wrapper-top'>
+    <text class='desc-txt'>剩余积分</text>
+    <view class='desc-center'>
+      <text class='desc-num'>3084</text>
+      <text class='desc-pay'>消费明细></text>
+      <view class='merber'>会员权益</view>
+    </view>
+    <view class='wrapper-bottom'>
+      <view class='item-bottom'>排行榜</view>
+      <view class='item-bottom second'>邀请好友</view>
+      <view class='item-bottom'>我的粉丝（22）</view>
+      <view class='item-line1 line'></view>
+      <view class='item-line2 line'></view>
+    </view>
+  </view>
+  <!-- list列表 -->
+  <view class='wrapper-list'>
+    <text class='integral'>积分兑换</text>
+    <view class='list-container'>
+      <view class='list' wx:for="{{9}}">
+        <image src='../asset/img/rongyu.png' class='list-pic'></image>
+        <text class='desc-name'>真的爱你</text>
+        <text class='desc-integral'>160积分</text>
+      </view>
+    </view>
+  </view>
+</view>
