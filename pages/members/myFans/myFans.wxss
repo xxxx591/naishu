@@ -37,6 +37,6 @@
   font-family:PingFangSC-Medium;
   font-weight:500;
   color:rgba(51,51,51,1);
-  position: absolute;top: 80rpx;left: 140rpx;
+  position: absolute;top: 80rpx;left: 110rpx;
   z-index: 99;
 }
