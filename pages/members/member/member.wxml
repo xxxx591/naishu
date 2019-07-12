@@ -20,7 +20,7 @@
     <text class='integral'>积分兑换</text>
     <view class='list-container'>
       <view class='list' wx:for="{{12}}">
-        <image src='../asset/img/rongyu.png' class='list-pic'></image>
+        <image src='../../asset/img/rongyu.png' class='list-pic'></image>
         <text class='desc-name'>真的爱你</text>
         <text class='desc-integral'>160积分</text>
       </view>

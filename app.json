@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/merber/merber",
+    "pages/members/orderDetails/orderDetails",
+    "pages/members/consumptionHistory/consumptionHistory",
+    "pages/members/member/member",
     "pages/init/init",
     "pages/index/index",
     "pages/logs/logs"

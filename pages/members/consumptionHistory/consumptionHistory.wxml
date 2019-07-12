@@ -1,0 +1,7 @@
+<view class='wrapper'>
+  <view class='item-container' wx:for="{{8}}">
+    <text class='first-text'>-160积分</text>
+    <text class='second-text'>订单编号：12345632136796777132</text>
+    <text class='third-text'>下单时间：2018-06-04 10:20</text>
+  </view>
+</view>
