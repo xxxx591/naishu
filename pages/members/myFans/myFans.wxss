@@ -1,0 +1,42 @@
+/* pages/members/myFans/myFans.wxss */
+.wrap{
+  width: 100%;
+}
+.top-container{
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #F7F8FA;
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  padding-left: 30rpx;
+}
+.item-container{
+  width: 690rpx;
+  height: 200rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E5E5E5;
+  position: relative;left: 30rpx;
+}
+.avater-container{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid black;
+}
+.avater{
+  width: 80rpx;
+  height: 80rpx;
+}
+.avater-name{
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  position: absolute;top: 80rpx;left: 140rpx;
+  z-index: 99;
+}

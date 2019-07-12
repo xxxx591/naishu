@@ -1,0 +1,11 @@
+<view class="wrap">
+  <view class='top-container'>
+    我的粉丝（22）
+  </view>
+  <view class='item-container' wx:for="{{5}}" >
+    <view class='avater-container'>
+      <image class='avater' src='../../asset/img/rongyu.png'></image>
+      <text class='avater-name'>谢远航</text>
+    </view>
+  </view>
+</view>
