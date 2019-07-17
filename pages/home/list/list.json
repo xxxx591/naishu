@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-tree-select": "/components/dist/tree-select/index"
+  },
+  "navigationBarBackgroundColor": "#1E6031",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "鲜花"
+}

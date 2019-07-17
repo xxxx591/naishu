@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view wx:if="{{accShow}}">
+  <view class="container">
+
+    <view class='img-box'>
+      <image src='/assets/image/banner.png' class='img'></image>
+
+    </view>
+
+    <view class='tab-box' style=''>
+      <image src='/assets/image/tag.png' class='tag-img'></image>
+      <text bindtap='goShopList'>奶叔工坊嘉铭桐城店</text>
+      <image src='/assets/image/white-right.png' class='tag-img1'></image>
+    </view>
+
+    <swiper class='swiper' indicator-dots circular autoplay indicator-color="rgba(30, 96, 49, .3)" indicator-active-color="green">
+      <block>
+        <swiper-item class='swiper-item'>
+          <view style="background-image: url(/assets/image/test.png)" class="slide-image slide-image1" mode="aspectFit"></view>
+        </swiper-item>
+        <swiper-item class='swiper-item'>
+          <view style="background-image: url(/assets/image/test.png)" class="slide-image slide-image1" mode="aspectFit"></view>
+        </swiper-item>
+        <swiper-item class='swiper-item'>
+          <view style="background-image: url(/assets/image/test.png)" class="slide-image slide-image1" mode="aspectFit"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='naishu-box'>
+      <view class='enter-img-box'>
+        <view class='imagesss' style="background-image: url(/assets/image/hua.png)">进入</view>
+        <view>
+          <view>
+            昆明基地鲜花
+          </view>
+          <view>
+            奶叔送到家
+          </view>
+        </view>
+      </view>
+      <view class='enter-img-box'>
+        <view class='imagesss' style="background-image: url(/assets/image/milk.png)">进入</view>
+        <view>鲜奶主题美食</view>
+      </view>
+    </view>
+  </view>
+</view>

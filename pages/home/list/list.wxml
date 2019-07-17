@@ -1,0 +1,34 @@
+<view class='content-box'>
+  <scroll-view scroll-y class='left-box'> 
+      <view class='left-box-title {{index==leftIndex?"active":""}}' wx:for="{{leftList}}" wx:key="index" bindtap="changeIndex">{{item.name}}</view>
+  </scroll-view> 
+  <view class='right-box'>
+    <view class='bidu-box'>
+      <view class='bidu-boxx1' style="background-image: url(/assets/image/huabeijing.png)">
+        <image class='bidu-img-1' src='/assets/image/bidu.png'></image>
+        <text>订花必读</text>
+        <image class='bidu-img-2' src='/assets/image/biduright.png'></image>
+      </view>
+
+    </view>
+    <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+      <image src='{{item.imgUrl}}'></image>
+      <view class='shop-box'>
+        <view class='shop-title'>
+          <text>{{item.title}}</text>
+        </view>
+        <view class='price-ou-box'>
+          <view class='price'>
+            <text class='price-1'>￥</text>
+            <text class='price-2'>{{item.price}}</text>
+          </view>
+          <view class='num-box'>
+            <view class='num-box1' bindtap='subtracttap' data-count="{{item.count}}" id="{{index}}">-</view>
+            <view class='num-box2'>{{item.count}}</view>
+            <view class='num-box3' bindtap='addtap' data-count="{{item.count}}" id="{{index}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
