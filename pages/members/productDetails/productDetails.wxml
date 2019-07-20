@@ -1,0 +1,37 @@
+<view class="wrapper">
+  <!-- 顶部图片 -->
+  <view class='top-container'>
+    <image class='top-pic'></image>
+  </view>
+
+  <view class='title-contaier'>
+    <text class='title-desc'>送长辈真的爱你</text>
+    <text class='title-core'>166积分</text>
+    <view class='operat-container'>
+      <view class='title-minus' bindtap="handleClickMinus">-</view>
+      <text class='title-number'>{{number}}</text>
+      <view class='title-add' bindtap="handleClickAdd">+</view>
+    </view>
+  </view>
+  
+  <!-- 联系电话，商家地址 -->
+  <view class='user-info-container'>
+    <text class='phone-number'>联系电话：15810473391</text>
+    <view class='address'>
+      <text>商家地址：</text>
+      <view class='address-desc'>
+        <text>北京市丰台区宋家庄苇子坑149号庄子工厂店北楼</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 图文详情 -->
+  <view class='pic-container'>
+    <view class='item-pic'>
+      <image class='pic'></image>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class='submitBtn'>立即兑换</view>
+</view>

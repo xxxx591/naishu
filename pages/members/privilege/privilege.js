@@ -1,4 +1,4 @@
-// pages/merber/merber.js
+// pages/members/privilege/privilege.js
 Page({
 
   /**
@@ -7,36 +7,7 @@ Page({
   data: {
 
   },
-  handleGoPay(){
-    wx.navigateTo({
-      url: '../consumptionHistory/consumptionHistory'
-    })
-  },
-  handleGoPrivilege(){
-    wx.navigateTo({
-      url: '../privilege/privilege'
-    })
-  },
-  handleGoLeaderBoard(){
-    wx.navigateTo({
-      url: '../leaderBoard/leaderBoard'
-    })
-  },
-  handleGoInvite(){
-    wx.navigateTo({
-      url: '../invite/invite'
-    })
-  },
-  handleGoFans(){
-    wx.navigateTo({
-      url: '../myFans/myFans'
-    })
-  },
-  handleGoProductDetails(){
-    wx.navigateTo({
-      url: '../productDetails/productDetails'
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

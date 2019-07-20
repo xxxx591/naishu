@@ -1,40 +1,26 @@
-// pages/merber/merber.js
+// pages/members/productDetails/productDetails.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    number:1
   },
-  handleGoPay(){
-    wx.navigateTo({
-      url: '../consumptionHistory/consumptionHistory'
-    })
+  handleClickMinus(){
+    if(this.data.number <= 0){
+      this.setData({
+        number:0
+      })
+    }else{
+      this.setData({
+        number: this.data.number - 1
+      })
+    }
   },
-  handleGoPrivilege(){
-    wx.navigateTo({
-      url: '../privilege/privilege'
-    })
-  },
-  handleGoLeaderBoard(){
-    wx.navigateTo({
-      url: '../leaderBoard/leaderBoard'
-    })
-  },
-  handleGoInvite(){
-    wx.navigateTo({
-      url: '../invite/invite'
-    })
-  },
-  handleGoFans(){
-    wx.navigateTo({
-      url: '../myFans/myFans'
-    })
-  },
-  handleGoProductDetails(){
-    wx.navigateTo({
-      url: '../productDetails/productDetails'
+  handleClickAdd(){
+    this.setData({
+      number: this.data.number + 1
     })
   },
   /**
