@@ -5,7 +5,6 @@
     "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",
     "pages/home/list/list",
-    "pages/home/details/details",
     "pages/home/index/index",
     "pages/index/index",
     "pages/members/invite/invite",
