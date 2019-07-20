@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/members/invite/invite",
     "pages/members/myFans/myFans",
     "pages/members/orderDetails/orderDetails",
     "pages/members/consumptionHistory/consumptionHistory",
