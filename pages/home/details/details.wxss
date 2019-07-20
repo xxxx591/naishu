@@ -1,5 +1,53 @@
 /* pages/home/list/list.wxss */
 
+/* 商品详情 */
+
+.banner-box {
+  width: 750rpx;
+  height: 750rpx;
+}
+
+.details-box {
+  padding: 30rpx;
+}
+
+.details-box .num-box2 {
+  width: 200rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  color: #fff;
+  background: #1e6031;
+  border-radius: 32rpx;
+  font-size: 28rpx;
+}
+
+.suggest {
+  padding: 20rpx 0rpx;
+  background: #efefef;
+  
+}
+
+.suggest-title {
+  background: #fff;
+  padding:  30rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 44rpx;
+}
+.suggest-content{
+  background: #fff;
+  padding: 0 30rpx 30rpx;
+  font-size:28rpx;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(102,102,102,1);
+line-height:44rpx;
+}
+/* 底部结算 */
+
 .content-box {
   display: flex;
   position: relative;
@@ -73,16 +121,14 @@
   height: 160rpx;
   border-radius: 20rpx;
   margin-right: 26rpx;
-  flex:1;
-
+  flex: 1;
 }
 
 .shop-box {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  flex:2.0;
-
+  flex: 2.0;
 }
 
 .shop-title {
@@ -183,28 +229,30 @@
   width: 200rpx;
   text-align: center;
 }
-.shop-box-list-01{
+
+.shop-box-list-01 {
   display: flex;
   height: 80rpx;
   line-height: 80rpx;
-  padding:0 30rpx;
+  padding: 0 30rpx;
   box-sizing: border-box;
   justify-content: space-between;
 }
-.list-box-title-01{
+
+.list-box-title-01 {
   flex: 1;
 }
-.list-box-title-02{
+
+.list-box-title-02 {
   flex: 1;
   color: #888;
-  text-align:right;
+  text-align: right;
 }
-.shop-box-list .shpo-details{
+
+.shop-box-list .shpo-details {
   padding-bottom: 0;
 }
-.shop-box-list .shop-box{
-  padding:30rpx;
 
+.shop-box-list .shop-box {
+  padding: 30rpx;
 }
-
-/* 商品详情 */
