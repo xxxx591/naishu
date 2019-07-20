@@ -1,0 +1,49 @@
+<view class='content-box'>
+<!-- 详情部分 -->
+
+
+  <!-- 底部结算框框 -->
+  <view class='shop-car'>
+    <van-icon name="shopping-cart-o" info="{{shopcountIndex}}" size="48rpx" color="#1E6031" custom-style="margin:50rpx 40rpx;" bindtap='showBox' />
+    <view class='price'>
+      <text class='price-1'>￥</text>
+      <text class='price-2'>{{shopcountPrice}}</text>
+    </view>
+    <view class='shop-right'>
+      去结算
+    </view>
+  </view>
+  <!-- 弹出层 -->
+  <van-popup show="{{ showShopBox }}" bind:close="onClose" position="bottom">
+    <view class='shop-box-list'>
+      <!-- 第一部分 -->
+      <view class='shop-box-list-01'>
+        <view class='list-box-title-01'>
+          购物车
+        </view>
+        <view class='list-box-title-02' bindtap='clearShopList'>
+          清空购物车
+        </view>
+      </view>
+      <!-- 第二部分 -->
+      <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+        <view class='shop-box' wx:if="{{item.count>0}}">
+          <view class='shop-title'>
+            <text>{{item.title}}</text>
+          </view>
+          <view class='price-ou-box'>
+            <view class='price'>
+              <text class='price-1'>￥</text>
+              <text class='price-2'>{{item.price}}</text>
+            </view>
+            <view class='num-box'>
+              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+              <view class='num-box2'>{{item.count}}</view>
+              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>

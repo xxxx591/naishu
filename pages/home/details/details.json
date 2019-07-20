@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tree-select": "/components/dist/tree-select/index",
+    "van-icon": "/components/dist/icon/index",
+    "van-popup": "/components/dist/popup/index"
+  },
+  "navigationBarBackgroundColor": "#1E6031",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "商品详情"
+}

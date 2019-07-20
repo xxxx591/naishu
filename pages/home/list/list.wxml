@@ -1,0 +1,79 @@
+<view class='content-box'>
+  <scroll-view scroll-y class='left-box'>
+    <view class='left-box-title {{index==leftIndex?"active":""}}' wx:for="{{leftList}}" wx:key="index" id="{{index}}" bindtap="changeIndex">{{item.name}}</view>
+  </scroll-view>
+  <!-- right -->
+  <view class='right-box'>
+    <view class='bidu-box'>
+      <view class='bidu-boxx1' style="background-image: url(/assets/image/huabeijing.png)">
+        <image class='bidu-img-1' src='/assets/image/bidu.png'></image>
+        <text>订花必读</text>
+        <image class='bidu-img-2' src='/assets/image/biduright.png'></image>
+      </view>
+
+    </view>
+    <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+      <image src='{{item.imgUrl}}' data-objs="{{item}}" bindtap='goDetails'></image>
+      <view class='shop-box' data-objs="{{item}}" bindtap='goDetails'>
+        <view class='shop-title'>
+          <text>{{item.title}}</text>
+        </view>
+        <view class='price-ou-box'>
+          <view class='price'>
+            <text class='price-1'>￥</text>
+            <text class='price-2'>{{item.price}}</text>
+          </view>
+          <view class='num-box'>
+            <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+            <view class='num-box2'>{{item.count}}</view>
+            <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部结算框框 -->
+  <view class='shop-car'>
+    <van-icon name="shopping-cart-o" info="{{shopcountIndex}}" size="48rpx" color="#1E6031" custom-style="margin:50rpx 40rpx;" bindtap='showBox' />
+    <view class='price'>
+      <text class='price-1'>￥</text>
+      <text class='price-2'>{{shopcountPrice}}</text>
+    </view>
+    <view class='shop-right'>
+      去结算
+    </view>
+  </view>
+  <!-- 弹出层 -->
+  <van-popup show="{{ showShopBox }}" bind:close="onClose" position="bottom">
+    <view class='shop-box-list'>
+      <!-- 第一部分 -->
+      <view class='shop-box-list-01'>
+        <view class='list-box-title-01'>
+          购物车
+        </view>
+        <view class='list-box-title-02' bindtap='clearShopList'>
+          清空购物车
+        </view>
+      </view>
+      <!-- 第二部分 -->
+      <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+        <view class='shop-box' wx:if="{{item.count>0}}">
+          <view class='shop-title'>
+            <text>{{item.title}}</text>
+          </view>
+          <view class='price-ou-box'>
+            <view class='price'>
+              <text class='price-1'>￥</text>
+              <text class='price-2'>{{item.price}}</text>
+            </view>
+            <view class='num-box'>
+              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+              <view class='num-box2'>{{item.count}}</view>
+              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>

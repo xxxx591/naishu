@@ -1,19 +1,22 @@
 {
   "pages": [
     "pages/members/invite/invite",
+    "pages/home/details/details",
+    "pages/home/list/list",
+    "pages/home/index/index",
+    "pages/index/index",
     "pages/members/myFans/myFans",
     "pages/members/orderDetails/orderDetails",
     "pages/members/consumptionHistory/consumptionHistory",
     "pages/members/member/member",
     "pages/init/init",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#1E6031",
+    "navigationBarTitleText": "奶叔工坊",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }
