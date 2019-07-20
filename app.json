@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/members/invite/invite",
+    "pages/members/leaderBoard/leaderBoard",
     "pages/home/details/details",
     "pages/home/list/list",
     "pages/home/index/index",
     "pages/index/index",
+    "pages/members/invite/invite",
     "pages/members/myFans/myFans",
     "pages/members/orderDetails/orderDetails",
     "pages/members/consumptionHistory/consumptionHistory",
