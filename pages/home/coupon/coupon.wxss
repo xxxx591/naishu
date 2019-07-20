@@ -1,0 +1,26 @@
+/* pages/home/coupon/coupon.wxss */
+
+.coupon-list {
+  padding: 40rpx;
+}
+
+.coupon-item {
+  margin-bottom: 40rpx;
+  padding: 30rpx;
+  border: 1px solid rgba(65, 155, 91, 1);
+  background: #fbfffc;
+}
+.text-1{
+  font-size:32rpx;
+font-family:PingFangSC-Medium;
+font-weight:500;
+color:rgba(200,160,21,1);
+line-height:77rpx;
+}
+.text-2{
+  font-size:28rpx;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(153,153,153,1);
+line-height:44rpx;
+}

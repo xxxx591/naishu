@@ -20,25 +20,29 @@ Page({
         imgUrl:'/assets/image/test02.png',
         title:'送长辈·真的爱你',
         price:'234',
-        count:0
+        count:0,
+        id:0
       },
       {
         imgUrl:'/assets/image/test02.png',
         title:'送长辈·真的爱你233',
         price:'123',
-        count:0
+        count:0,
+        id: 1
       },
       {
         imgUrl:'/assets/image/test02.png',
         title:'送长辈·真的爱你2123',
         price:'112',
-        count:0
+        count: 0,
+        id: 2
       },
       {
         imgUrl:'/assets/image/test02.png',
         title:'送长辈·真的爱你112',
         price:'332',
-        count:0
+        count: 0,
+        id: 3
       },
     ],
     showShopBox:false,
@@ -74,7 +78,7 @@ Page({
       shopcountIndex: allCount,
       shopcountPrice: allPrice
     })
-    wx.setStorageSync('shopDetails', this.data.shopList)
+    wx.setStorageSync('shopList', this.data.shopList)
   },
   // 物品增加
   addtap(item){
@@ -95,7 +99,7 @@ Page({
       shopcountIndex: allCount,
       shopcountPrice: allPrice
     })
-    wx.setStorageSync('shopDetails', this.data.shopList)
+    wx.setStorageSync('shopList', this.data.shopList)
   },
   // 清空购物车
   clearShopList(){
@@ -105,8 +109,11 @@ Page({
     })
     this.setData({
       shopList:arr,
-      showShopBox: false
+      showShopBox: false,
+      shopcountIndex: 0,
+      shopcountPrice: 0
     })
+    wx.setStorageSync('shopList', this.data.shopList)
   },
   changeIndex(e){
     // console.log(e.currentTarget.id)

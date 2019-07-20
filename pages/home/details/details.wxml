@@ -1,49 +1,84 @@
-<view class='content-box'>
-<!-- 详情部分 -->
+<movable-area class='boxxxxx'>
+  <view class='content-box'>
+    <!-- 详情部分 -->
+    <view>
+      <view class='banner-box' style="background-image: url(/assets/image/test.png)">
+      </view>
+      <view class='shop-box  details-box'>
+        <view class='shop-title'>
+          <text>送给爱长辈的你</text>
+        </view>
+        <view class='price-ou-box'>
+          <view class='price'>
+            <text class='price-1'>￥</text>
+            <text class='price-2' style='line-height:64rpx;'>123</text>
+          </view>
+          <view class='num-box'>
+            <view class='num-box2' bindtap='addDetails'>加入购物车</view>
+          </view>
+        </view>
+      </view>
+      <!-- 提示 -->
+      <view class='suggest'>
+        <view class='suggest-title'>温馨提示</view>
+        <view class='suggest-content'>请您注意我们的鲜花订购安排，每周一、周二、周三、周四订购的鲜花我们会在周六和周日安排配送，每周五、周六、周日订购的鲜花我们会在周二和周三安排配送，我们的配送范围仅限于北京市市区范围内，如超出范围请您咨询客服后再下单！</view>
+      </view>
+      <!-- 图文详情 -->
+      <view class='suggest'>
+        <view class='suggest-title'>图文详情</view>
 
+      </view>
+    </view>
+    <!-- 温馨提示 -->
 
-  <!-- 底部结算框框 -->
-  <view class='shop-car'>
-    <van-icon name="shopping-cart-o" info="{{shopcountIndex}}" size="48rpx" color="#1E6031" custom-style="margin:50rpx 40rpx;" bindtap='showBox' />
-    <view class='price'>
-      <text class='price-1'>￥</text>
-      <text class='price-2'>{{shopcountPrice}}</text>
+    <!-- 底部结算框框 -->
+    <view class='shop-car'>
+      <van-icon name="shopping-cart-o" info="{{shopcountIndex}}" size="48rpx" color="#1E6031" custom-style="margin:50rpx 40rpx;" bindtap='showBox' />
+      <view class='price'>
+        <text class='price-1'>￥</text>
+        <text class='price-2'>{{shopcountPrice}}</text>
+      </view>
+      <view class='shop-right'>
+        去结算
+      </view>
     </view>
-    <view class='shop-right'>
-      去结算
-    </view>
+    <!-- 弹出层 -->
+    <van-popup show="{{ showShopBox }}" bind:close="onClose" position="bottom">
+      <view class='shop-box-list'>
+        <!-- 第一部分 -->
+        <view class='shop-box-list-01'>
+          <view class='list-box-title-01'>
+            购物车
+          </view>
+          <view class='list-box-title-02' bindtap='clearShopList'>
+            清空购物车
+          </view>
+        </view>
+        <!-- 第二部分 -->
+        <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+          <view class='shop-box' wx:if="{{item.count>0}}">
+            <view class='shop-title'>
+              <text>{{item.title}}</text>
+            </view>
+            <view class='price-ou-box'>
+              <view class='price'>
+                <text class='price-1'>￥</text>
+                <text class='price-2'>{{item.price}}</text>
+              </view>
+              <view class='num-box'>
+                <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+                <view class='num-box2'>{{item.count}}</view>
+                <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-popup>
   </view>
-  <!-- 弹出层 -->
-  <van-popup show="{{ showShopBox }}" bind:close="onClose" position="bottom">
-    <view class='shop-box-list'>
-      <!-- 第一部分 -->
-      <view class='shop-box-list-01'>
-        <view class='list-box-title-01'>
-          购物车
-        </view>
-        <view class='list-box-title-02' bindtap='clearShopList'>
-          清空购物车
-        </view>
-      </view>
-      <!-- 第二部分 -->
-      <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
-        <view class='shop-box' wx:if="{{item.count>0}}">
-          <view class='shop-title'>
-            <text>{{item.title}}</text>
-          </view>
-          <view class='price-ou-box'>
-            <view class='price'>
-              <text class='price-1'>￥</text>
-              <text class='price-2'>{{item.price}}</text>
-            </view>
-            <view class='num-box'>
-              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
-              <view class='num-box2'>{{item.count}}</view>
-              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </van-popup>
-</view>
+  <movable-view direction="all" inertia="true">
+    <button open-type='contact' class='kefu-log'>
+      <image src='/assets/image/kefu.png'></image>
+    </button>
+  </movable-view>
+</movable-area>

@@ -96,6 +96,6 @@ App({
     },
     config: config,
     token: '',
-    serveUrl: "http://192.168.0.102:8099",
+    serveUrl: "http://nsgf.yanyongwang.cn",
   }
 })

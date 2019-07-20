@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shopList:[],
+    shopList: [],
     showShopBox: false,
     shopcountIndex: 0,
     shopcountPrice: 0
@@ -14,18 +14,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let arr = wx.getStorageSync('shopList')
     let obj = wx.getStorageSync('shopDetails')
     let shopcountIndex = 0;
     let shopcountPrice = 0;
-    arr.map(item=>{
-      shopcountIndex+=parseInt(item.count);
+    arr.map(item => {
+      shopcountIndex += parseInt(item.count);
       shopcountPrice += parseInt(item.count * item.price)
     })
-    
+
     this.setData({
-      shopList:arr,
+      shopList: arr,
       shopcountIndex: shopcountIndex,
       shopcountPrice: shopcountPrice
     })
@@ -59,7 +59,7 @@ Page({
       shopcountIndex: allCount,
       shopcountPrice: allPrice
     })
-    wx.setStorageSync('shopDetails', this.data.shopList)
+    wx.setStorageSync('shopList', this.data.shopList)
   },
   // 物品增加
   addtap(item) {
@@ -80,7 +80,27 @@ Page({
       shopcountIndex: allCount,
       shopcountPrice: allPrice
     })
-    wx.setStorageSync('shopDetails', this.data.shopList)
+    wx.setStorageSync('shopList', this.data.shopList)
+  },
+  addDetails() {
+    let arr = wx.getStorageSync('shopList')
+    let obj = wx.getStorageSync('shopDetails')
+    let allCount = this.data.shopcountIndex;
+    let allPrice = this.data.shopcountPrice;
+    arr.map(item => {
+      if (item.id == obj.id) {
+        allCount++;
+        allPrice += parseInt(item.price);
+        item.count++;
+      }
+    })
+    wx.setStorageSync('shopList', arr)
+    this.setData({
+      shopList: arr,
+      shopcountIndex: allCount,
+      shopcountPrice: allPrice
+    })
+
   },
   // 清空购物车
   clearShopList() {
@@ -96,49 +116,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
