@@ -1,0 +1,64 @@
+.wrapper{
+  width: 750rpx;
+}
+.ipt-container{
+  width: 690rpx;
+  height: 538rpx;
+  margin: 0 auto;
+}
+.item{
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E6E6E6;
+}
+.item-name > input{
+  padding-left: 40rpx;
+}
+.item-title{
+  font-size:32rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.item-contact{
+  font-size:32rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+}
+.ipt{
+  padding-left: 10rpx;
+}
+.right-icon{
+  width: 14rpx;
+  height: 25rpx;
+}
+.right-icon{
+  margin-left: 148rpx;
+}
+.btn-container{
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;bottom: 0;
+}
+.btn-delete{
+  width: 375rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #1E6031;
+  font-size: 36rpx;
+}
+.btn-save{
+  width: 375rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  background: #1E6031;
+}

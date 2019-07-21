@@ -1,11 +1,16 @@
 // pages/merber/merber.js
+const app = getApp();
+const api = app.globalData.config.memberIndex;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    queryData:{
+      uid:'',
+      store_id:''
+    }
   },
   handleGoPay(){
     wx.navigateTo({
@@ -41,7 +46,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 获取list列表数据
+    // app.ajax(api,{},'POST','数据加载中...')
+    // .then((res)=>{
+    //   console.log(res)
+    // })
   },
 
   /**
