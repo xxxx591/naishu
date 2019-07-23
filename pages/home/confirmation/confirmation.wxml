@@ -1,14 +1,15 @@
 <!--pages/home/confirmation/confirmation.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
 <!-- 第一部分 -->
 <view class='peisong'>
 
   <view class='top-button'>
-    <button class='white'>外卖配送</button>
-    <button class='green'>到店自取</button>
+    <button class='white {{leftIndex==1?"green":""}}' bindtap='checkPayType'>外卖配送</button>
+    <button class='white {{leftIndex==2?"green":""}}' bindtap='checkPayType'>到店自取</button>
   </view>
-  <view class='tips'>注：当前配送地址超出本店配送范围，请到店自取</view>
+  <view class='tips' wx:if="{{tipFlag}}">注：当前配送地址超出本店配送范围，请到店自取</view>
   <!-- 地址，有两种情况 -->
-  <view class='address-box'>
+  <view class='address-box' wx:if="{{leftIndex==2}}">
     <view class='address-box1'>
       <view class='address-box2-title1'>联系电话：</view>
       <view class='address-box2-title2'>15578978978</view>
@@ -19,7 +20,7 @@
     </view>
   </view>
   <!-- 地址的第二种情况 -->
-  <view class='address-box'>
+  <view class='address-box' wx:if="{{leftIndex==1}}">
     <view class='address-box1'>
       <view class='address-box2-title1'>收货信息：</view>
       <view class='address-box2-title2'>谢沅航 15578978978</view>
@@ -32,7 +33,7 @@
   </view>
   <!-- 富文本渲染 -->
   <view class='fuwenben'>
-
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>
 </view>
 
@@ -41,7 +42,7 @@
 <view class='shop-list'>
   <view class="list-title">
     <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
-    <view>这是一个奶茶店</view>
+    <view>{{storeName}}</view>
   </view>
   <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
     <view class='shop-box' wx:if="{{item.count>0}}">

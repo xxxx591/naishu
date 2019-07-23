@@ -26,6 +26,7 @@ Page({
       console.log(res)
       let data = res.Data;
       wx.setStorageSync('storeId', data.store_id)
+      wx.setStorageSync('storeName', data.store_name)
       this.setData({
         photoList: data.banner,
         isXianhua: data.in_xianhua == 1 ? true : false,

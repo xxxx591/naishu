@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/index/index",
     "pages/init/init",
     "pages/login/login",
     "pages/home/receiptAddress/receiptAddress",
@@ -7,7 +8,6 @@
     "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",
     "pages/home/list/list",
-    "pages/home/index/index",
     "pages/members/member/member",
     "pages/members/privilege/privilege",
     "pages/members/productDetails/productDetails",

@@ -1,4 +1,6 @@
 // pages/home/confirmation/confirmation.js
+var app = getApp();
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -12,7 +14,13 @@ Page({
     payType: 1,
     radio: '1',
     userPhone: '',
-    password: ''
+    password: '',
+    type: '',
+    otherDetails: '',
+    storeName: '',
+    leftIndex: 0,
+    clickFlag: true,
+    tipFlag: true
   },
   // 自己支付
   paySelf() {
@@ -70,16 +78,55 @@ Page({
    */
   onLoad: function(options) {
     let arr = wx.getStorageSync('shopList')
+    let userObj = wx.getStorageSync('userDetails')
+    let type = wx.getStorageSync('type')
     let shopcountPrice = 0;
     arr.map(item => {
-      shopcountPrice += parseInt(item.count * item.price)
+      shopcountPrice += parseFloat(parseFloat(item.count * item.price).toFixed(2))
     })
     this.setData({
       shopList: arr,
-      shopcountPrice: shopcountPrice
+      shopcountPrice: shopcountPrice,
+      type: wx.getStorageSync('type'),
+      storeName: wx.getStorageSync('storeName')
+    })
+    // { "uid": 5, "head_img_url": "http://nsgf.yanyongwang.cn/uploads/admin/app_thumb/c19343a5d41a972ba9c0a0d4158234d3.jpg", "nickname": "明天", "mobile": "15575182556", "member_type": 0, "money": "0.00", "points": 0 }
+    if (type == 1) {
+      // 鲜花模式
+      if (userObj.member_type === 0 && shopcountPrice < 50) {
+        this.setData({
+          clickFlag: false,
+          leftIndex: 2
+        })
+      }
+    } else {
+      if (userObj.member_type != 0 && juli <= 3) {
+        this.setData({
+          leftIndex: 1,
+          tipFlag: false
+        })
+      } else {
+        this.setData({
+          clickFlag: false,
+          leftIndex: 2
+        })
+      }
+    }
+    this.init()
+  },
+  init() {
+    let params = {
+      id: this.data.type
+    }
+    app.ajax(app.globalData.config.getOther, params).then(res => {
+      console.log(res)
+      let article = res.Data
+      WxParse.wxParse('article', 'html', article, this, 5);
+      this.setData({
+        otherDetails: res.Data
+      })
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
