@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/init/init",
+    "pages/login/login",
     "pages/home/receiptAddress/receiptAddress",
     "pages/home/details/details",
     "pages/home/confirmation/confirmation",
@@ -14,15 +16,40 @@
     "pages/members/myFans/myFans",
     "pages/members/orderDetails/orderDetails",
     "pages/members/consumptionHistory/consumptionHistory",
-    "pages/index/index",
-    "pages/init/init",
-    "pages/logs/logs"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1E6031",
     "navigationBarTitleText": "奶叔工坊",
     "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/index/index",
+        "text": "首页",
+        "iconPath": "assets/image/index.png",
+        "selectedIconPath": "assets/image/index-on.png"
+      },
+      {
+        "pagePath": "pages/members/member/member",
+        "text": "会员",
+        "iconPath": "assets/image/vip.png",
+        "selectedIconPath": "assets/image/vip-on.png"
+      },
+      {
+        "pagePath": "pages/members/member/member",
+        "text": "我的",
+        "iconPath": "assets/image/self.png",
+        "selectedIconPath": "assets/image/self-on.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -9,25 +9,19 @@
 
     <view class='tab-box' style=''>
       <image src='/assets/image/tag.png' class='tag-img'></image>
-      <text bindtap='goShopList'>奶叔工坊嘉铭桐城店</text>
+      <text bindtap='goShopList'>{{storeName}}</text>
       <image src='/assets/image/white-right.png' class='tag-img1'></image>
     </view>
 
     <swiper class='swiper' indicator-dots circular autoplay indicator-color="rgba(30, 96, 49, .3)" indicator-active-color="green">
       <block>
-        <swiper-item class='swiper-item'>
-          <view style="background-image: url(/assets/image/test.png)" class="slide-image slide-image1" mode="aspectFit"></view>
-        </swiper-item>
-        <swiper-item class='swiper-item'>
-          <view style="background-image: url(/assets/image/test.png)" class="slide-image slide-image1" mode="aspectFit"></view>
-        </swiper-item>
-        <swiper-item class='swiper-item'>
-          <view style="background-image: url(/assets/image/test.png)" class="slide-image slide-image1" mode="aspectFit"></view>
+        <swiper-item class='swiper-item' wx:for="{{photoList}}">
+          <view style="background-image: url('{{item.picture_path}}')" data-item="{{item}}" bindtap="goDetails" class="slide-image slide-image1" mode="aspectFit"></view>
         </swiper-item>
       </block>
     </swiper>
     <view class='naishu-box'>
-      <view class='enter-img-box'>
+      <view class='enter-img-box' bindtap="goodsList" id='1' >
         <view class='imagesss' style="background-image: url(/assets/image/hua.png)">进入</view>
         <view>
           <view>
@@ -38,7 +32,7 @@
           </view>
         </view>
       </view>
-      <view class='enter-img-box'>
+      <view class='enter-img-box' bindtap="goodsList" id='2' >
         <view class='imagesss' style="background-image: url(/assets/image/milk.png)">进入</view>
         <view>鲜奶主题美食</view>
       </view>

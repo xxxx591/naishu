@@ -1,4 +1,6 @@
 // pages/home/details/details.js
+var app = getApp();
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -8,15 +10,15 @@ Page({
     shopList: [],
     showShopBox: false,
     shopcountIndex: 0,
-    shopcountPrice: 0
+    shopcountPrice: 0,
+    shopDetails:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let arr = wx.getStorageSync('shopList')
-    let obj = wx.getStorageSync('shopDetails')
+    let arr = wx.getStorageSync('shopList') 
     let shopcountIndex = 0;
     let shopcountPrice = 0;
     arr.map(item => {
@@ -28,6 +30,22 @@ Page({
       shopList: arr,
       shopcountIndex: shopcountIndex,
       shopcountPrice: shopcountPrice
+    })
+    console.log(options.gid)
+    this.getDetails(options.gid)
+  },
+  // 商品详情
+  getDetails(id){
+    let params = {
+      id:id
+    }
+    app.ajax(app.globalData.config.getShopDetails, params).then(res=>{
+      console.log(res)
+      let article = res.Data.detail
+      WxParse.wxParse('article', 'html', article, this, 5);
+      this.setData({
+        shopDetails:res.Data
+      })
     })
   },
   // 打开购物车

@@ -1,17 +1,26 @@
+<import src="../../wxParse/wxParse.wxml"/>
 <movable-area class='boxxxxx'>
   <view class='content-box'>
     <!-- 详情部分 -->
     <view>
-      <view class='banner-box' style="background-image: url(/assets/image/test.png)">
-      </view>
+    <swiper class='swiper' indicator-dots circular autoplay indicator-color="rgba(30, 96, 49, .3)" indicator-active-color="green">
+      <block>
+        <swiper-item class='swiper-item' wx:for="{{shopDetails.banner}}">
+          <view style="background-image: url('{{item.banner_path}}')" data-item="{{item}}"   class="slide-image slide-image1" mode="aspectFit"></view>
+
+        </swiper-item>
+      </block>
+    </swiper>
+      <!-- <view class='banner-box' style="background-image: url(/assets/image/test.png)">
+      </view> -->
       <view class='shop-box  details-box'>
         <view class='shop-title'>
-          <text>送给爱长辈的你</text>
+          <text>{{shopDetails.goods_name}}</text>
         </view>
         <view class='price-ou-box'>
           <view class='price'>
             <text class='price-1'>￥</text>
-            <text class='price-2' style='line-height:64rpx;'>123</text>
+            <text class='price-2' style='line-height:64rpx;'>{{shopDetails.price}}</text>
           </view>
           <view class='num-box'>
             <view class='num-box2' bindtap='addDetails'>加入购物车</view>
@@ -26,7 +35,9 @@
       <!-- 图文详情 -->
       <view class='suggest'>
         <view class='suggest-title'>图文详情</view>
-
+        <view style="padding:0 30rpx;background: #fff;padding-bottom:150rpx;">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+        </view>
       </view>
     </view>
     <!-- 温馨提示 -->

@@ -5,7 +5,7 @@
   <!-- right -->
   <view class='right-box'>
     <view class='bidu-box'>
-      <view class='bidu-boxx1' style="background-image: url(/assets/image/huabeijing.png)">
+      <view class='bidu-boxx1' wx:if="{{isShow}}" style="background-image: url(/assets/image/huabeijing.png)">
         <image class='bidu-img-1' src='/assets/image/bidu.png'></image>
         <text>订花必读</text>
         <image class='bidu-img-2' src='/assets/image/biduright.png'></image>

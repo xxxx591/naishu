@@ -11,6 +11,7 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        // console.log('初始化获取用户信息',res)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -41,20 +42,8 @@ App({
       data: data,
       header: _this.globalData.header, // 设置请求的 header
       success(e) {
-        resolve(e);
         wx.hideLoading();
-        try {
-          if (res.data.code == 200) {
-
-          } else {
-            wx.showToast({
-              title: e.data.msg,
-              icon: 'none'
-            })
-          }
-        } catch (e) {
-          console.log(e)
-        }
+        resolve(e.data)
       },
       fail(e) {
         wx.showLoading({
@@ -77,11 +66,11 @@ App({
     Object.defineProperty(obj, key, {
       configurable: true,
       enumerable: true,
-      set: function (value) {
+      set: function(value) {
         val = value;
         watchFun(value, val); // 赋值(set)时，调用对应函数
       },
-      get: function () {
+      get: function() {
         return val;
       }
     })
@@ -97,5 +86,7 @@ App({
     config: config,
     token: '',
     serveUrl: "http://nsgf.yanyongwang.cn",
+    lat:'',
+    lng:''
   }
 })

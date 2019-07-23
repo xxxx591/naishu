@@ -28,11 +28,31 @@
   /* background-color: #c0c0c0;   */
   border-radius: 40%;
 }
-.showFlag{
+
+.showFlag {
   width: 100%;
   text-align: center;
 }
-.showg{
+
+.showg {
   padding: 10px;
   font-size: 14px;
+}
+
+.logo-box {
+  text-align: center;
+  padding-bottom: 200rpx;
+  padding-top: 180rpx;
+}
+
+.logo-box image {
+  width: 335rpx;
+  height: 124rpx;
+}
+.login-btn{
+  margin: 0 55rpx;
+  background: #1E6031;
+  color: #fff;
+  height: 88rpx;
+  line-height: 88rpx;
 }
