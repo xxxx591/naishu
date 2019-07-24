@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/home/address/address",
+    "pages/home/receiptAddress/receiptAddress",
     "pages/home/index/index",
     "pages/init/init",
     "pages/login/login",
-    "pages/home/receiptAddress/receiptAddress",
     "pages/home/details/details",
     "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",

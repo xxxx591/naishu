@@ -1,0 +1,24 @@
+<view class='wrapper'>
+  <view class='list-container'>
+   <radio-group bindchange="radiochange">
+     <view class='list-item' wx:for="{{4}}">
+      <view class='item-top'>
+        <view class='item-top-left'>
+          <text>何莎乐</text>
+          <text class='phone'>15580954645</text>
+           <view class='item-bottom-address'>
+            北京市丰台区宋家庄苇子坑149号麒麟金阁商务楼一层
+           </view>
+        </view>
+        <view class='item-top-right'>
+          <view class='item-edit'>
+            编辑
+          </view>
+        </view>
+      </view>
+      <radio>设置为默认</radio>
+    </view>
+   </radio-group>
+  </view>
+  <view class='add-btn'>添加收货地址</view>
+</view>

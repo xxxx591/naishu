@@ -1,0 +1,74 @@
+.wrapper{
+  width: 100%;
+  position: relative;
+}
+.list-container{
+  width: 690rpx;
+  margin-left: 30rpx;
+}
+.list-item{
+  width: 100%;
+  height: 197rpx;
+  border-bottom: 1px solid #E6E6E6;
+}
+.item-top{
+  width: 100%;
+  height: 130rpx;
+  /* background: yellow; */
+  display: flex;
+  justify-content: space-between;
+}
+.item-top-left{
+  font-size:32rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  padding-top: 20rpx;
+}
+.phone{
+  margin-left: 20rpx;
+}
+.item-top-right{
+  width: 115rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-edit{
+   width: 115rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-left: 1px solid #E6E6E6;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1)
+}
+.item-bottom-address{
+  width: 100%;
+  height: 30rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  margin-top: 20rpx;
+}
+radio{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.add-btn{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size:36rpx;
+  position: fixed;bottom: 0;
+  background: #1E6031;
+}
