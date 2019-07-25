@@ -65,7 +65,7 @@
     </view>
   </view>
   <van-cell title="代金券" is-link value="{{daijinquan}}" bind:click="goYouhuiquan" />
-  <van-cell title="会员抵扣" is-link value="优惠￥10：会员9折优惠" />
+  <van-cell title="会员抵扣" is-link value="{{vipContent}}" />
 </view>
 
 <view class='foot-box'>

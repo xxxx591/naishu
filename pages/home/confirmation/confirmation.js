@@ -28,7 +28,9 @@ Page({
     userAddress: '  ',
     // 优惠券内容
     daijinquan:'请选择',
-    quanobj:{}
+    quanobj:{},
+    // 会员抵扣
+    vipContent:'无'
   },
   // 跳优惠券
   goYouhuiquan(){
@@ -125,6 +127,12 @@ Page({
     };
     app.ajax(app.globalData.config.getDiscountPrice,params).then(res=>{
       console.log(res)
+      let price = this.data.shopcountPrice - parseInt(res.Data.discount_price)
+      this.setData({
+        shopcountPrice: parseFloat(price).toFixed(2),
+        daijinquan:this.data.quanobj.title,
+        vipContent:'无'
+      })
     })
   },
   // 获取默认地址
@@ -208,10 +216,12 @@ Page({
     let type = wx.getStorageSync('type')
     let quanobj = wx.getStorageSync('youhuiquan')
     let shopcountPrice = 0;
+    let contnet = ''
+    
     arr.map(item => {
       shopcountPrice += parseFloat(parseFloat(item.count * item.price).toFixed(2))
     })
-
+    
     if (type == 1) {
       arr = wx.getStorageSync('shopList')
       // 鲜花模式
@@ -233,7 +243,21 @@ Page({
     this.getAddressDefault()
     if (typeof (this.data.quanobj) == 'object') {
       this.getPrice()
+    }else{
+      if (userObj.member_type == 0) {
+        contnet = "无"
+      } else if (userObj.member_type == 1) {
+        contnet = `优惠￥${parseFloat(shopcountPrice * 0.9).toFixed(2)}：牛客会员享受9折`
+        shopcountPrice = parseFloat(shopcountPrice * 0.9).toFixed(2)
+      } else {
+        contnet = `优惠￥${parseFloat(shopcountPrice * 0.8).toFixed(2)}：牛友会员享受8折`
+        shopcountPrice = parseFloat(shopcountPrice * 0.8).toFixed(2)
+      }
     }
+    this.setData({
+      shopcountPrice: shopcountPrice,
+      vipContent: contnet
+    })
   },
 
   /**

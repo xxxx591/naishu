@@ -122,7 +122,8 @@ Page({
       buyCarList: arr,
       shopcountIndex: shopcountIndex,
       shopcountPrice: parseFloat(shopcountPrice).toFixed(2),
-      type: type
+      type: type,
+      id:options.id
     })
     console.log(options.gid)
     this.getDetails(options.gid)
@@ -136,6 +137,11 @@ Page({
       console.log(res)
       let article = res.Data.detail
       WxParse.wxParse('article', 'html', article, this, 5);
+      let shopDetails = {}
+      shopDetails.title = res.Data.goods_name;
+      shopDetails.id = this.data.id
+      shopDetails.count = 0;
+      wx.setStorageSync('shopDetails', shopDetails)
       this.setData({
         shopDetails: res.Data
       })
