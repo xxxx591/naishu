@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #E6E6E6;
+  position: relative;
 }
 .item-name > input{
   padding-left: 40rpx;

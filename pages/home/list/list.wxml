@@ -57,7 +57,7 @@
       </view>
       <!-- 第二部分 -->
       <view class='shpo-details' wx:for="{{buyCarList}}" wx:key="index">
-        <view class='shop-box' >
+        <view class='shop-box' wx:if="{{item.count>0}}">
           <view class='shop-title'>
             <text>{{item.title}}</text>
           </view>

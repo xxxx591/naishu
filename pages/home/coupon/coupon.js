@@ -1,4 +1,5 @@
 // pages/home/coupon/coupon.js
+var app = getApp();
 Page({
 
   /**
@@ -6,31 +7,48 @@ Page({
    */
   data: {
     couponList:[
-      {
-        title:'奶昔五折券',
-        id:'0',
-        endTime:'2022-09-08'
-      },
-      {
-        title:'奶昔六折券',
-        id:'1',
-        endTime:'2022-08-08'
-      },
-      {
-        title:'奶昔七折券',
-        id:'2',
-        endTime:'2022-07-08'
-      },
-    ]
+       
+    ],
+    userObjs:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      userObjs: wx.getStorageSync('userDetails')
+    })
+    this.init()
   },
-
+  // 获取券
+  init(){
+    let params = {
+      uid:this.data.userObjs.uid
+    };
+    app.ajax(app.globalData.config.getUserCoupon,params).then(res=>{
+      let arr = []
+      let arrList = res.Data;
+      arrList.map(item=>{
+        let obj = {};
+        obj.title = item.coupon_name;
+        obj.id = item.id;
+        obj.type = item.coupon_type;
+        obj.endTime = item.expire_time
+        arr.push(obj)
+      })
+      this.setData({
+        couponList:arr
+      })
+    })
+  },
+  // 选择优惠券
+  selectQuan(e){
+    wx.setStorageSync('youhuiquan', e.currentTarget.dataset.objs)
+    wx.navigateBack({
+      delta:1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

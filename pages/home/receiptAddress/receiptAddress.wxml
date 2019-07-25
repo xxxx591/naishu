@@ -3,28 +3,37 @@
     <!-- 收件人 -->
     <view class='item item-name'>
       <text class='item-title'>收件人：</text>
-      <input class='item-ipt' placeholder='请输入' type='text'></input>
+      <input class='item-ipt' placeholder='请输入' bindblur="getUser" type='text' value="{{userName}}"></input>
     </view>
     <!-- 联系方式 -->
     <view class='item item-contact'>
       <text class='item-title'>联系方式：</text>
-      <input class='item-ipt ipt' placeholder='请输入' type='text'></input>
+      <input class='item-ipt ipt' placeholder='请输入' bindblur="getPhone" type='number' value="{{userPhone}}"></input>
     </view>
     <!-- 收件地址： -->
-    <view class='item item-address'>
-      <text class='item-title'>收件地址：</text>
-      <input class='item-ipt ipt' placeholder='请输入' type='text'></input>
-      <image class='right-icon' src='../../../assets/image/biduright.png'></image>
+    <view class="item item-address">
+      <view class="item-title" >收件地址：</view>
+      <picker style="flex: 1;" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="item-ipt ipt" wx:if="{{addressList=='请输入'}}" style="color: #777;">
+          {{addressList}}
+        </view>
+        <view class="item-ipt ipt" wx:else>
+          {{addressList}}
+        </view>
+
+      <van-icon name="arrow" size="28rpx" custom-style="  position:absolute;top:50%;right:0;margin-top:-14rpx;" />
+
+      </picker>
     </view>
     <!-- 详细地址： -->
     <view class='item item-address'>
-      <text class='item-title'>收件地址：</text>
-      <input class='item-ipt ipt' placeholder='请输入' type='text'></input>
+      <text class='item-title'>详细地址：</text>
+      <input class='item-ipt ipt' placeholder='请输入' bindblur="getAddress" type='text' value="{{userAddress}}"></input>
     </view>
     <!-- 底部按钮 -->
     <view class='btn-container'>
-      <view class='btn-delete btn'>删除</view>
-      <view class='btn-save btn'>保存</view>
+      <view class='btn-delete btn' bindtap="delAddress">删除</view>
+      <view class='btn-save btn' bindtap="addAddress">保存</view>
     </view>
   </view>
 </view>

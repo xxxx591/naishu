@@ -3,6 +3,8 @@
     "pages/home/address/address",
     "pages/home/receiptAddress/receiptAddress",
     "pages/home/index/index",
+    "pages/home/receiptAddress/receiptAddress",
+    "pages/home/userAddressList/userAddressList",
     "pages/init/init",
     "pages/login/login",
     "pages/home/details/details",

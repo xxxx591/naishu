@@ -39,7 +39,7 @@ App({
     return new Promise((resolve, reject) => wx.request({
       url: _this.globalData.serveUrl + api,
       method: method || 'POST',
-      data: data,
+      data,
       header: _this.globalData.header, // 设置请求的 header
       success(e) {
         wx.hideLoading();

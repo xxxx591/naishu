@@ -4,30 +4,30 @@
 <view class='peisong'>
 
   <view class='top-button'>
-    <button class='white {{leftIndex==1?"green":""}}' bindtap='checkPayType'>外卖配送</button>
-    <button class='white {{leftIndex==2?"green":""}}' bindtap='checkPayType'>到店自取</button>
+    <button class='white {{leftIndex==1?"green":""}}' id="1" bindtap='checkPayType'>外卖配送</button>
+    <button class='white {{leftIndex==2?"green":""}}' id="2" bindtap='checkPayType'>到店自取</button>
   </view>
-  <view class='tips' wx:if="{{tipFlag}}">注：当前配送地址超出本店配送范围，请到店自取</view>
+  <view class='tips' wx:if="{{leftIndex==2}}">注：当前配送地址超出本店配送范围，请到店自取</view>
   <!-- 地址，有两种情况 -->
   <view class='address-box' wx:if="{{leftIndex==2}}">
     <view class='address-box1'>
       <view class='address-box2-title1'>联系电话：</view>
-      <view class='address-box2-title2'>15578978978</view>
+      <view class='address-box2-title2'>{{shopPhone}}</view>
     </view>
     <view class='address-box2'>
       <view class='address-box2-title1'>商家地址：</view>
-      <view class='address-box2-title2'>北京市丰台区宋家庄苇子坑149号庄子工厂店北楼</view>
+      <view class='address-box2-title2'>{{shopAddress}}</view>
     </view>
   </view>
   <!-- 地址的第二种情况 -->
-  <view class='address-box' wx:if="{{leftIndex==1}}">
+  <view class='address-box' wx:if="{{leftIndex==1}}" bindtap="selectAddress">
     <view class='address-box1'>
       <view class='address-box2-title1'>收货信息：</view>
-      <view class='address-box2-title2'>谢沅航 15578978978</view>
+      <view class='address-box2-title2'>{{userPhone}}</view>
     </view>
     <view class='address-box2'>
       <view class='address-box2-title1'></view>
-      <view class='address-box2-title2'>北京市丰台区宋家庄苇子坑149号庄子工厂店北楼</view>
+      <view class='address-box2-title2'>{{userAddress}}</view>
     </view>
     <van-icon name="arrow" size="28rpx" custom-style="  position:absolute;top:50%;right:0;margin-top:-14rpx;" />
   </view>
@@ -64,7 +64,7 @@
       </view>
     </view>
   </view>
-  <van-cell title="代金券" is-link value="-￥30" />
+  <van-cell title="代金券" is-link value="{{daijinquan}}" bind:click="goYouhuiquan" />
   <van-cell title="会员抵扣" is-link value="优惠￥10：会员9折优惠" />
 </view>
 
@@ -73,8 +73,8 @@
     <text>￥{{shopcountPrice}}</text>
   </view>
   <view class='foot-2'>
-    <button class='button-w' bindtap='payOther'>找人付</button>
-    <button class='button-g' bindtap='paySelf'>自己付</button>
+    <button class='button-w' bindtap='payOther' >找人付</button>
+    <button class='button-g' bindtap='paySelf' >自己付</button>
   </view>
 </view>
 

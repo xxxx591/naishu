@@ -18,9 +18,39 @@ Page({
     type: '',
     otherDetails: '',
     storeName: '',
-    leftIndex: 0,
+    leftIndex: 1,
     clickFlag: true,
-    tipFlag: true
+    tipFlag: true,
+    userObj: {},
+    shopPhone: '15575182556',
+    shopAddress: '北京市丰台区宋家庄苇子坑149号庄子工厂店北楼',
+    userPhone: '请添加...',
+    userAddress: '  ',
+    // 优惠券内容
+    daijinquan:'请选择',
+    quanobj:{}
+  },
+  // 跳优惠券
+  goYouhuiquan(){
+    wx.navigateTo({
+      url: '/pages/home/coupon/coupon',
+    })
+  },
+  // 跳转至收货地址管理
+  selectAddress() {
+    wx.navigateTo({
+      url: '/pages/home/userAddressList/userAddressList',
+    })
+  },
+  // 切换配送模式
+  checkPayType(e) {
+    if (this.data.clickFlag) {
+      this.setData({
+        leftIndex: e.currentTarget.id,
+      })
+    } else {
+      return
+    }
   },
   // 自己支付
   paySelf() {
@@ -77,42 +107,76 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let arr = wx.getStorageSync('shopList')
-    let userObj = wx.getStorageSync('userDetails')
-    let type = wx.getStorageSync('type')
-    let shopcountPrice = 0;
-    arr.map(item => {
-      shopcountPrice += parseFloat(parseFloat(item.count * item.price).toFixed(2))
+
+  },
+  getPrice(){
+    let arr = [];
+    this.data.shopList.map(item=>{
+      let obj = {};
+      obj.id = item.id;
+      obj.num = item.count;
+      arr.push(obj)
     })
-    this.setData({
-      shopList: arr,
-      shopcountPrice: shopcountPrice,
-      type: wx.getStorageSync('type'),
-      storeName: wx.getStorageSync('storeName')
+    let params={
+      uid:this.data.userObj.uid,
+      goods_json:arr,
+      goods_type:this.data.type,
+      user_coupon_ids:this.data.quanobj.id
+    };
+    app.ajax(app.globalData.config.getDiscountPrice,params).then(res=>{
+      console.log(res)
     })
-    // { "uid": 5, "head_img_url": "http://nsgf.yanyongwang.cn/uploads/admin/app_thumb/c19343a5d41a972ba9c0a0d4158234d3.jpg", "nickname": "明天", "mobile": "15575182556", "member_type": 0, "money": "0.00", "points": 0 }
-    if (type == 1) {
-      // 鲜花模式
-      if (userObj.member_type === 0 && shopcountPrice < 50) {
-        this.setData({
-          clickFlag: false,
-          leftIndex: 2
-        })
-      }
-    } else {
-      if (userObj.member_type != 0 && juli <= 3) {
-        this.setData({
-          leftIndex: 1,
-          tipFlag: false
-        })
+  },
+  // 获取默认地址
+  getAddressDefault() {
+    let params = {
+      uid: this.data.userObj.uid
+    };
+    app.ajax(app.globalData.config.getAddressDefault, params).then(res => {
+      console.log(res)
+      if (res.Data == '') {
+
       } else {
         this.setData({
-          clickFlag: false,
-          leftIndex: 2
+          userPhone: res.Data.consignee + ' ' + res.Data.mobile,
+          userAddress: res.Data.detail + ' ' + res.Data.address
         })
       }
-    }
-    this.init()
+    })
+  },
+  confimOrder() {
+    let params = {
+      uid: this.data.userObj.uid,
+      store_id: wx.getStorageSync('storeId'),
+      goods_json: [],
+      goods_type: this.data.type,
+      lng: app.globalData.lng,
+      lat: app.globalData.lat
+    };
+    let shoplistArr = this.data.shopList
+    shoplistArr.map((i, o) => {
+      let obj = {}
+      obj.id = i.id
+      obj.num = i.count
+      params.goods_json.push(obj)
+    })
+    params = JSON.stringify(params)
+    console.log(params)
+
+    app.ajax(app.globalData.config.getConfimOrder, params).then(res => {
+      console.log('确认订单详情', res.Data)
+      // leftIndex: 1,
+      //   clickFlag: true,
+      if (res.Data.is_waimai == 1) {
+        this.setData({
+          shopPhone: res.Data.store_mobile,
+          shopAddress: res.Data.store_address,
+          clickFlag: true,
+          leftIndex: res.Data.mo_select
+
+        })
+      }
+    })
   },
   init() {
     let params = {
@@ -139,6 +203,37 @@ Page({
    */
   onShow: function() {
 
+    let arr = wx.getStorageSync('shopList')
+    let userObj = wx.getStorageSync('userDetails')
+    let type = wx.getStorageSync('type')
+    let quanobj = wx.getStorageSync('youhuiquan')
+    let shopcountPrice = 0;
+    arr.map(item => {
+      shopcountPrice += parseFloat(parseFloat(item.count * item.price).toFixed(2))
+    })
+
+    if (type == 1) {
+      arr = wx.getStorageSync('shopList')
+      // 鲜花模式
+
+    } else {
+      arr = wx.getStorageSync('shopList2')
+
+    }
+    this.setData({
+      shopList: arr,
+      shopcountPrice: shopcountPrice,
+      type: wx.getStorageSync('type'),
+      storeName: wx.getStorageSync('storeName'),
+      userObj: userObj,
+      quanobj: quanobj
+    })
+    this.init();
+    this.confimOrder();
+    this.getAddressDefault()
+    if (typeof (this.data.quanobj) == 'object') {
+      this.getPrice()
+    }
   },
 
   /**
