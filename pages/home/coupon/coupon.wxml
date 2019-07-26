@@ -8,3 +8,4 @@
     </view>
   </view>
 </view>
+<view class='un-select' bindtap="removequan">不选择优惠券</view>

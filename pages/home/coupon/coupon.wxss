@@ -2,6 +2,7 @@
 
 .coupon-list {
   padding: 40rpx;
+  padding-bottom: 120rpx;
 }
 
 .coupon-item {
@@ -23,4 +24,15 @@ font-family:PingFangSC-Regular;
 font-weight:400;
 color:rgba(153,153,153,1);
 line-height:44rpx;
+}
+.un-select{
+  height: 100rpx;
+  width: 100%;
+  background: #1E6031;
+  color: #fff;
+  line-height: 100rpx;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }

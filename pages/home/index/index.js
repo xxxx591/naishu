@@ -18,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.removeStorageSync('youhuiquan')
     let params = {
       lng: app.globalData.lng,
       lat: app.globalData.lat
@@ -39,6 +40,13 @@ Page({
   // 跳转详情
   goDetails(e){
     console.log(e)
+    let goodsType = e.currentTarget.dataset.item.goods_type
+    wx.setStorageSync('type', goodsType)
+    if (goodsType == 1) {
+      wx.setStorageSync('shopList', [])
+    } else {
+      wx.setStorageSync('shopList2', [])
+    }
     if (e.currentTarget.dataset.item.type==2){
       wx.navigateTo({
         url: '/pages/home/details/details?gid=' + e.currentTarget.dataset.item.goods_id,

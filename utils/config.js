@@ -12,8 +12,10 @@ module.exports = {
   setUserAddressDefault: '/api/user/userAddressDefault', // 设置用户地址默认
   getAddressDteails: '/api/user/userAddressDetail', // 获取用户地址详情
   getAddressDefault: '/api/user/getAddressDefault', // 获取用户默认地址
-  getUserCoupon: '/api/user/userCoupon', // 获取优惠券
+  getUserCoupon: '/api/user/userCoupon', // 获取全部优惠券
+  getOrderCoupon: '/api/order/userCoupon', // 获取对应优惠券
   getDiscountPrice: '/api/order/getDiscountPrice', // 获取优惠后价格
+  createOrder: '/api/order/createOrder', // 确认订单支付
   // getUserAddressList: '/api/user/userAddressList', // 确认用户地址列表
   getOther: '/api/config/editor', // 富文本杂项
   wxLogin: '/user/wxLogin', //微信登录

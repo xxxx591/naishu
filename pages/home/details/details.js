@@ -13,7 +13,8 @@ Page({
     shopcountIndex: 0,
     shopcountPrice: 0,
     shopDetails: {},
-    type: ''
+    type: '',
+    id:0
   },
   goBuy() {
     // 查看是否授权
@@ -141,6 +142,7 @@ Page({
       shopDetails.title = res.Data.goods_name;
       shopDetails.id = this.data.id
       shopDetails.count = 0;
+      shopDetails.price = res.Data.price
       wx.setStorageSync('shopDetails', shopDetails)
       this.setData({
         shopDetails: res.Data

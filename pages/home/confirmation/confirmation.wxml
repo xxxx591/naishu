@@ -95,13 +95,13 @@
         </van-cell>
         <van-cell title="余额支付" value-class="value-class" clickable data-name="2" bind:click="onClick">
           <van-radio name="2" checked-color="#1E6031" />
-          <view class='yue-box'>asdasd</view>
+          <view class='yue-box'>余额剩余￥{{balance}}</view>
         </van-cell>
       </van-cell-group>
     </van-radio-group>
   </view>
   <view class='pay-btn'>
-    <button>确认支付</button>
+    <button bindtap="payNow">确认支付</button>
   </view>
 </van-popup>
 
@@ -114,8 +114,8 @@
     </view>
     <view>
       <van-cell-group>
-        <van-field value="{{ userPhone }}" clearable label="代付人手机号：" type="number" maxlength="11" placeholder="请输入" bind:change="changeUserPhone" />
-        <van-field value="{{ password }}" type="password" label="支付密码：" placeholder="请输入" border="{{ false }}" bind:change="changeUserPSW" />
+        <van-field value="{{ userPhone001 }}" clearable label="代付人手机号：" type="number" maxlength="11" placeholder="请输入" bind:change="changeUserPhone" />
+        <van-field value="{{ password001 }}" type="password" label="支付密码：" placeholder="请输入" border="{{ false }}" bind:change="changeUserPSW" />
       </van-cell-group>
     </view>
     <view>

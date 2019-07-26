@@ -85,7 +85,7 @@ App({
     },
     config: config,
     token: '',
-    serveUrl: "http://nsgf.yanyongwang.cn",
+    serveUrl: "https://naishuapi.sinmore.vip",
     lat:'',
     lng:''
   }
