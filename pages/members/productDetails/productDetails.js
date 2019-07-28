@@ -11,7 +11,8 @@ Page({
   data: {
     number:1,
     dataList:'',
-    id:''
+    id:'',
+    userPrice:''
   },
   handleClickMinus(){
     if(this.data.number <= 0){
@@ -42,7 +43,8 @@ Page({
     }
     app.ajax(app.globalData.config.goodsDetail, query, 'POST', '数据加载中...')
     .then((res) => {
-      console.log('会员商品详情', res.Data.detail)
+      console.log('会员商品详情', res.Data)
+      
       let article = res.Data.detail
       WxParse.wxParse('article', 'html', article, this, 5);
       this.setData({
@@ -56,15 +58,14 @@ Page({
     const query = {
       uid: uid,
       id: this.data.id,
-      pay_type: 4,
-      store_id: store_id
+      pay_type: 4
     }
-    app.ajax(app.globalData.config.memberIndex, query, 'POST', '订单提交中...')
+    app.ajax(app.globalData.config.orderPay, query, 'POST', '订单提交中...')
     .then((res) => {
       console.log('会员商品详情兑换', res)
       if (res.Code === '000000'){
         wx.navigateTo({
-          url: '../orderDetails/orderDetails?id=' + this.data.id
+          url: '../consumptionHistory/consumptionHistory'
         })
       }else{
         wx.showModal({

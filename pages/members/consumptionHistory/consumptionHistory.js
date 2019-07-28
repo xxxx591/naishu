@@ -17,7 +17,7 @@ Page({
     const query ={
       uid:uid
     }
-    app.ajax(app.globalData.config.payDetails, query, 'POST', '数据加载中...')
+    app.ajax(app.globalData.config.pointsLog, query, 'POST', '数据加载中...')
       .then((res) => {
         console.log('res', res)
         this.setData({

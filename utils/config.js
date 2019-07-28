@@ -21,7 +21,7 @@ module.exports = {
   getOther: '/api/config/editor', // 富文本杂项
   wxLogin: '/user/wxLogin', //微信登录
   memberIndex: '/api/member/index', // 会员主页,
-  payDetails:'/api/member/pointsLog', // 消费历史
+  pointsLog:'/api/member/pointsLog', // 消费历史
   invite:'/api/member/inviteFriend',//邀请好友
   myFans:'/api//member/myFans',//排行版
   fansRanking:'/api/member/fansRanking', //排行版
