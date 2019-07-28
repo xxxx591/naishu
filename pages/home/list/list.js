@@ -23,7 +23,7 @@ Page({
       showShopBox: true
     })
   },
-  goBuy(){
+  goBuy() {
     // 查看是否授权
     let _this = this
     wx.login({
@@ -105,7 +105,7 @@ Page({
         }
       }
     })
-    
+
   },
   // 点击空白关闭购物车
   onClose() {
@@ -115,9 +115,20 @@ Page({
   },
   // 物品减少
   subtracttap(item) {
-    console.log(buyCarList)
     // console.log(item.currentTarget.dataset.count)
-    let index = item.currentTarget.id
+    let goodsDetails = item.currentTarget.dataset.objs
+    let buyCarList = this.data.buyCarList; 
+
+    // 不同部位修改参数
+    let shopList = this.data.shopList
+    let index = '';
+    // i为对象，o为下标
+    shopList.map((i,o)=>{
+      if(i.id == goodsDetails.id){
+        index = o
+      }
+    })
+
     let count = item.currentTarget.dataset.count;
     // count == 0 ? 0 : count--;
     if (count == 0) {
@@ -128,22 +139,27 @@ Page({
       let allCount = this.data.shopcountIndex;
       allCount == 0 ? 0 : allCount--;
       let allPrice = parseFloat(this.data.shopcountPrice);
-      let price = parseFloat(item.currentTarget.dataset.objs.price);
+      let price = parseFloat(parseFloat(item.currentTarget.dataset.objs.price).toFixed(2));
       allPrice = allPrice - price;
+      
+
+      buyCarList.map((val, index) => {
+        if (goodsDetails.id == val.id) {
+          val.count = count
+        }
+      })
       this.setData({
+        buyCarList: buyCarList,
         [deletedtodo]: count,
         shopcountIndex: allCount,
         shopcountPrice: parseFloat(allPrice).toFixed(2)
       })
-      if (buyCarList.length == 0) {
-        buyCarList.push(item)
+      if (this.data.type == 1) {
+        wx.setStorageSync('shopList', this.data.buyCarList)
       } else {
-        buyCarList.forEach(list => {
-          console.log(list)
-        })
+        wx.setStorageSync('shopList2', this.data.buyCarList)
       }
     }
-    // wx.setStorageSync('shopList', this.data.buyCarList)
   },
   // 物品增加
   addtap(item) {
@@ -178,7 +194,7 @@ Page({
       if (arr.indexOf(goodsDetails.id) == -1) {
         goodsDetails.count = count
         buyCarList.push(goodsDetails)
-      } 
+      }
     }
     this.setData({
       [deletedtodo]: count,
@@ -186,7 +202,11 @@ Page({
       shopcountPrice: parseFloat(allPrice).toFixed(2),
       buyCarList: buyCarList
     })
-    wx.setStorageSync('shopList', buyCarList)
+    if (this.data.type == 1) {
+      wx.setStorageSync('shopList', this.data.buyCarList)
+    } else {
+      wx.setStorageSync('shopList2', this.data.buyCarList)
+    }
   },
   // 清空购物车
   clearShopList() {
@@ -196,11 +216,16 @@ Page({
     })
     this.setData({
       shopList: arr,
+      buyCarList:[],
       showShopBox: false,
       shopcountIndex: 0,
       shopcountPrice: 0
     })
-    wx.removeStorageSync('shopList')
+    if (this.data.type == 1) {
+      wx.setStorageSync('shopList', [])
+    } else {
+      wx.setStorageSync('shopList2', [])
+    }
   },
   changeIndex(e) {
     // console.log(e.currentTarget.id)
@@ -212,8 +237,12 @@ Page({
   },
   goDetails(e) {
     console.log(e.currentTarget.dataset.objs)
-    // wx.setStorageSync('shopDetails', e.currentTarget.dataset.objs)
-    wx.setStorageSync('shopList', this.data.buyCarList)
+    wx.setStorageSync('shopDetails', e.currentTarget.dataset.objs)
+    if (this.data.type == 1) {
+      wx.setStorageSync('shopList', this.data.buyCarList)
+    } else {
+      wx.setStorageSync('shopList2', this.data.buyCarList)
+    }
     wx.navigateTo({
       url: '/pages/home/details/details?gid=' + e.currentTarget.dataset.objs.id,
     })
@@ -222,13 +251,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-     
+
     wx.setStorageSync('type', options.type)
     this.setData({
       type: options.type
     })
     console.log(options.type)
-    if (options.type == 1) {
+    if (this.data.type == 1) {
       this.getList(1);
     } else {
       this.getList(2)
@@ -236,7 +265,7 @@ Page({
         isShow: false
       })
     }
-    
+
   },
   //  商品列表
   getList(type, leftType = '') {
@@ -269,27 +298,51 @@ Page({
           obj.id = item.id
           leftList.push(obj)
         })
-        
-        if (result.keys.indexOf('shopList') == -1) {
-          wx.setStorageSync('shopList', this.data.buyCarList)
-        } else {
-          let arr = wx.getStorageSync('shopList')
-          let allCount = 0;
-          let allPrice = 0;
-          arr.map(item => {
-            allCount += parseFloat(item.count)
-            allPrice = allPrice + parseFloat(parseFloat(item.price * item.count).toFixed(2))
-            shopList.map(jtem=>{
-              if(jtem.id == item.id){
-                jtem.count = item.count
-              }
+        // 根据商品类型来判断加载哪个数组
+        if (id == 1) {
+          if (result.keys.indexOf('shopList') == -1) {
+            wx.setStorageSync('shopList', this.data.buyCarList)
+          } else {
+            let arr = wx.getStorageSync('shopList')
+            let allCount = 0;
+            let allPrice = 0;
+            arr.map(item => {
+              allCount += parseFloat(item.count)
+              allPrice = allPrice + parseFloat(parseFloat(item.price * item.count).toFixed(2))
+              shopList.map(jtem => {
+                if (jtem.id == item.id) {
+                  jtem.count = item.count
+                }
+              })
             })
-          })
-          this.setData({
-            buyCarList: arr,
-            shopcountIndex: allCount,
-            shopcountPrice: parseFloat(allPrice).toFixed(2),
-          })
+            this.setData({
+              buyCarList: arr,
+              shopcountIndex: allCount,
+              shopcountPrice: parseFloat(allPrice).toFixed(2),
+            })
+          }
+        } else {
+          if (result.keys.indexOf('shopList2') == -1) {
+            wx.setStorageSync('shopList2', this.data.buyCarList)
+          } else {
+            let arr = wx.getStorageSync('shopList2')
+            let allCount = 0;
+            let allPrice = 0;
+            arr.map(item => {
+              allCount += parseFloat(item.count)
+              allPrice = allPrice + parseFloat(parseFloat(item.price * item.count).toFixed(2))
+              shopList.map(jtem => {
+                if (jtem.id == item.id) {
+                  jtem.count = item.count
+                }
+              })
+            })
+            this.setData({
+              buyCarList: arr,
+              shopcountIndex: allCount,
+              shopcountPrice: parseFloat(allPrice).toFixed(2),
+            })
+          }
         }
         this.setData({
           leftList: leftList,
@@ -315,7 +368,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (this.data.type == 1) {
+      this.getList(1);
+    } else {
+      this.getList(2)
+      this.setData({
+        isShow: false
+      })
+    }
   },
 
   /**

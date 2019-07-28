@@ -1,5 +1,13 @@
 {
   "pages": [
+    "pages/members/member/member",
+    "pages/members/privilege/privilege",
+    "pages/members/productDetails/productDetails",
+    "pages/members/leaderBoard/leaderBoard",
+    "pages/members/invite/invite",
+    "pages/members/myFans/myFans",
+    "pages/members/orderDetails/orderDetails",
+    "pages/members/consumptionHistory/consumptionHistory",
     "pages/index/index",
     "pages/login/login",
     "pages/init/init",
@@ -9,15 +17,7 @@
     "pages/home/details/details",
     "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",
-    "pages/home/list/list",
-    "pages/members/member/member",
-    "pages/members/privilege/privilege",
-    "pages/members/productDetails/productDetails",
-    "pages/members/leaderBoard/leaderBoard",
-    "pages/members/invite/invite",
-    "pages/members/myFans/myFans",
-    "pages/members/orderDetails/orderDetails",
-    "pages/members/consumptionHistory/consumptionHistory"
+    "pages/home/list/list"
   ],
   "window": {
     "backgroundTextStyle": "light",

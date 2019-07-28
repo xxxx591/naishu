@@ -1,0 +1,19 @@
+<view class="address-box">
+  <van-radio-group value="{{ radio }}"  >
+    <view class="list-box" wx:for="{{addressList}}">
+      <view class="top-box">
+        <view class="left">
+          <view class="left-title1">{{item.consignee + ' ' +item.mobile}}</view>
+          <view class="left-title2">{{item.detail+item.address}}</view>
+        </view>
+        <view class="right" id="{{item.id}}" bindtap="updateAddress">
+          <view>编辑</view>
+        </view>
+      </view>
+      <view class="radios" bindtap="onChange" id="{{item.id}}">
+        <van-radio name="{{item.is_default}}" id="{{item.id}}" checked-color="#1E6031" icon-class="radios-cla">设为默认</van-radio>
+      </view>
+    </view>
+  </van-radio-group>
+</view>
+<view class="add-btn" bindtap="addAddress">添加收货地址</view>

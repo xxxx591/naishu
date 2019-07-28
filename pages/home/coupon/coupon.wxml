@@ -2,9 +2,10 @@
 <!-- 优惠券 -->
 <view class='coupon-list'>
   <view class='coupon-item' wx:for="{{couponList}}">
-    <view>
+    <view bindtap="selectQuan" data-objs="{{item}}">
       <view class='text-1'>{{item.title}}</view>
       <view class='text-2'>{{item.endTime}}</view>
     </view>
   </view>
 </view>
+<view class='un-select' bindtap="removequan">不选择优惠券</view>
