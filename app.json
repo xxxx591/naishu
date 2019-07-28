@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/init/init",
     "pages/home/address/address",
     "pages/home/receiptAddress/receiptAddress",
     "pages/home/index/index",
-    "pages/init/init",
-    "pages/login/login",
     "pages/home/details/details",
     "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",
@@ -16,8 +17,7 @@
     "pages/members/invite/invite",
     "pages/members/myFans/myFans",
     "pages/members/orderDetails/orderDetails",
-    "pages/members/consumptionHistory/consumptionHistory",
-    "pages/index/index"
+    "pages/members/consumptionHistory/consumptionHistory"
   ],
   "window": {
     "backgroundTextStyle": "light",
