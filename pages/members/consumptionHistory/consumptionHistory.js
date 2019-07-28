@@ -1,18 +1,35 @@
 // pages/consumptionHistory/consumptionHistory.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataList:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const uid = wx.getStorageSync('userDetails').uid
+    const query ={
+      uid:uid
+    }
+    app.ajax(app.globalData.config.payDetails, query, 'POST', '数据加载中...')
+      .then((res) => {
+        console.log('res', res)
+        this.setData({
+          dataList:res.Data
+        })
+      })
+  },
+  // 跳转页面
+  handleGoDetails(){
+    wx.navigateTo({
+      url: '../orderDetails/orderDetails'
+    })
   },
 
   /**

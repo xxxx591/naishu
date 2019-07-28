@@ -39,9 +39,15 @@ Page({
   },
   // 跳优惠券
   goYouhuiquan() {
-    wx.navigateTo({
-      url: '/pages/home/coupon/coupon?type=1',
-    })
+    if (this.data.type == 1) {
+      wx.navigateTo({
+        url: '/pages/home/coupon/coupon?type=1',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/home/coupon/coupon?type=2',
+      })
+    }
   },
   // 跳转至收货地址管理
   selectAddress() {

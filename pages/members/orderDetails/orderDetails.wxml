@@ -1,39 +1,41 @@
-<view class='wrapper'>
+<view wx:if="{{dataList.length < 1}}" style="padding:30rpx 30rpx;">暂无订单</view>
+<view wx:else class='wrapper'>
   <!-- 顶部 -->
   <view class='wrap-top'>
     <view class='phone'>
-      联系电话：15810473391
+      联系电话：{{dataList.store_address.mobile}}
     </view>
     <view class='address-container'>
       <view class='address'>
         <text>商家地址：</text>
       </view>
-      <view class='address-detail'>北京市丰台区宋家庄苇子坑149号庄子工厂店北楼</view>
+      <view class='address-detail'>{{dataList.store_address.address}}</view>
     </view>
   </view>
   <!-- 内容 -->
   <view class='wrap-content'>
     <view class='store-container'>
       <image class='icon' src='../../asset/img/store.png'></image>
-      <text class='store-name'>奶叔工坊立水桥店</text>
+      <text class='store-name'>{{dataList.store_name}}</text>
     </view>
-    <view class='item-container'>
+    <view class='item-container' wx:for="{{dataList.goods}}" wx:key='{{item.index}}'>
       <view class='item-pic'>
-        <image class='pic' src='../../asset/img/rongyu.png'></image>
-        
+        <image class='pic' src='{{item.picture_path}}'></image>
       </view>
       <view class='item-desc'>
-        <text class='right-top-desc'>送长辈·真的爱你</text>
-        <text class='right-bottom'>199积分</text>
-        <text class='num'>×19999</text>
-        <text class='oder-price'>订单总价：<text class='item-price'>199积分</text></text>
+        <text class='right-top-desc'>{{item.goods_name}}</text>
+        <text class='right-bottom'>{{item.price}}积分</text>
+        <text class='num'>×{{item.num}}</text>
       </view>
+    </view>
+     <view style="width:100%;height:60rpx;font-size:32rpx;display:flex;align-items: center;">
+      <text style='margin-left:440rpx'>订单总价：</text><text class='item-price'>{{dataList.order_price}}积分</text>
     </view>
   </view>
   <view class='order-box'>
     <view class='item-order-container'>
-      <view class='order-num'>订单编号：15810473391</view>
-      <view class='order-time'>兑换时间：2019-05-21 09:30</view>
+      <view class='order-num'>订单编号：{{dataList.create_time}}</view>
+      <view class='order-time'>兑换时间：{{dataList.pay_time}}</view>
     </view>
   </view>
 

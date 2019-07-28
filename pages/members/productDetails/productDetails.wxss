@@ -101,11 +101,8 @@ page{
 .pic-container{
   margin-top:30rpx; 
   width: 750rpx;
-  min-height: 100rpx;
+  min-height: 500rpx;
   background: white;
-  display: flex;
-  justify-content: center;
-  align-self: center;
 }
 .item-pic{
   width: 720prx;
@@ -123,4 +120,11 @@ page{
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.fuwenben {
+  background: rgba(255, 243, 241, 1);
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin-top: 30rpx;
 }

@@ -16,8 +16,16 @@ module.exports = {
   getOrderCoupon: '/api/order/userCoupon', // 获取对应优惠券
   getDiscountPrice: '/api/order/getDiscountPrice', // 获取优惠后价格
   createOrder: '/api/order/createOrder', // 确认订单支付
+  getShopStoreList: '/api/store/storeList', // 获取店铺列表
   // getUserAddressList: '/api/user/userAddressList', // 确认用户地址列表
   getOther: '/api/config/editor', // 富文本杂项
   wxLogin: '/user/wxLogin', //微信登录
-  memberIndex: '/api/member/index', // 会员主页
+  memberIndex: '/api/member/index', // 会员主页,
+  payDetails:'/api/member/pointsLog', // 消费历史
+  invite:'/api/member/inviteFriend',//邀请好友
+  myFans:'/api//member/myFans',//排行版
+  fansRanking:'/api/member/fansRanking', //排行版
+  goodsDetail:'/api/store/goodsDetail', //商品详情
+  orderPay:'/api/order/orderPay', // 会员兑换商品
+  orderDetail:'/api/order/orderDetail' // 会员兑换订单详情
 }

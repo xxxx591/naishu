@@ -11,20 +11,26 @@ Page({
     ],
     userObjs: {},
     type: 0,
-    quanList: []
+    quanList: [],
+    selectFlag: false,
+    meishiArr: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options.type)
     this.setData({
       userObjs: wx.getStorageSync('userDetails')
     })
     if (options.type == 1) {
       this.init()
     } else {
-
+      this.setData({
+        selectFlag: true
+      })
+      this.init()
     }
   },
   // 获取券
@@ -56,7 +62,8 @@ Page({
         obj.title = item.coupon_name;
         obj.id = item.id;
         obj.type = item.coupon_type;
-        obj.endTime = item.expire_time
+        obj.endTime = item.expire_time;
+        obj.falg = false;
         arr.push(obj)
       })
       this.setData({
@@ -67,16 +74,46 @@ Page({
   },
   // 选择优惠券
   selectQuan(e) {
-    let meishiArr = []
+    let meishiArr = this.data.quanList
+    let couponList = this.data.couponList
+    let obj = e.currentTarget.dataset.objs;
+    let num = '有了'
     if (this.data.type == 1) {
       let arr = []
-      arr.push(e.currentTarget.dataset.objs)
+      arr.push(obj)
       wx.setStorageSync('youhuiquan', arr)
       wx.navigateBack({
         delta: 1
       })
     } else {
-
+      if (this.data.selectFlag) {
+        if (meishiArr.length == 0) {
+          obj.falg = true;
+          meishiArr.push(obj)
+        } else {
+          meishiArr.map(item => {
+            if (item.id == obj.id) {
+              item.falg = !item.falg
+            } else {
+              num = '没有'
+            }
+          })
+          if (num == '没有') {
+            obj.falg = true
+            meishiArr.push(obj)
+          }
+        }
+        couponList.map(item=>{
+          if(item.id == obj.id){
+            item.falg = !item.falg
+          }
+        })
+      }
+      this.setData({
+        quanList:meishiArr,
+        couponList: couponList
+      })
+      wx.setStorageSync('youhuiquan', meishiArr)
     }
   },
   // 删除优惠券

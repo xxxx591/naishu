@@ -1,18 +1,45 @@
 // pages/members/orderDetails/orderDetails.js
+const app = getApp()
+const uid = wx.getStorageSync('userDetails').uid
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataList:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('会员详情options',options)
+    const query = {
+      id:options.id,
+      uid:uid
+    }
+    app.ajax(app.globalData.config.orderDetail, query, 'POST', '数据加载中...')
+    .then((res) => {
+      console.log('会员详情res', res)
+      if (res.Code === '000000'){
+        this.setData({
+          dataList: res.Data
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: res.Msg,
+          success(res) {
+            if (res.confirm) {
+              console.log('确定')
+            } else if(res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
+    })
   },
 
   /**

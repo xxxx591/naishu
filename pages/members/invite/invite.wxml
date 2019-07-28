@@ -2,16 +2,17 @@
   <view class='item-container'>
     <image class='item-pic' src='../../asset/img/background.png'></image>
     <view class='qr-code-container'>
-      <image class='qr-code'></image>
+      <image class='qr-code' src="{{dataList.invitePic}}"></image>
     </view>
     <view class='item-bottom'>
       <text class='desc join'>扫一扫上方二维码，加入奶叔工坊</text>
-      <text class='desc code'>推荐码：<text class='code-num'>3608</text></text>
+      <text class='desc code'>推荐码： <text class='code-num'>{{dataList.invitation_code}}</text>
+      </text>
       <view class='bottom-desc'>
-        <image class='desc-pic'></image>
+        <image class='desc-pic' src='/assets/image/bidu.png'></image>
         <text>优惠说明</text>
       </view>
     </view>
   </view>
-  <view class='join-bottom'>立即分享</view>
+  <button class='join-bottom' open-type="share">立即分享</button>
 </view>

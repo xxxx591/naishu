@@ -1,16 +1,13 @@
 // pages/merber/merber.js
 const app = getApp();
-const api = app.globalData.config.memberIndex;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    queryData:{
-      uid:'',
-      store_id:''
-    }
+    userData:{},
+    goodList:''
   },
   handleGoPay(){
     wx.navigateTo({
@@ -37,28 +34,40 @@ Page({
       url: '../myFans/myFans'
     })
   },
-  handleGoProductDetails(){
+  handleGoProductDetails(e){
+    console.log(e)
+    const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../productDetails/productDetails'
+      url: '../productDetails/productDetails?id=' + id
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app)
+    const objData = wx.getStorageSync('userDetails')
+    const storeId = wx.getStorageSync('storeId')
+    const query = {
+      'uid':objData.uid,
+      'store_id': storeId
+    }
+    console.log(app.globalData.config.memberIndex)
     // 获取list列表数据
-    // app.ajax(api,{},'POST','数据加载中...')
-    // .then((res)=>{
-    //   console.log(res)
-    // })
+    app.ajax(app.globalData.config.memberIndex,query,'POST','数据加载中...')
+    .then((res)=>{
+      console.log('会员主页res',res)
+      this.setData({
+       userData: res.Data.user_info,
+       goodList:res.Data.goods
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

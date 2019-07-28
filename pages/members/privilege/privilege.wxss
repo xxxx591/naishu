@@ -1,1 +1,7 @@
 /* pages/members/privilege/privilege.wxss */
+.fuwenben {
+  background: rgba(255, 243, 241, 1);
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin-top: 30rpx;
+}

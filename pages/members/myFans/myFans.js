@@ -1,18 +1,30 @@
 // pages/members/myFans/myFans.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataList:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const uid = wx.getStorageSync('userDetails').uid
+    const query = {
+      uid: uid
+    }
+    app.ajax(app.globalData.config.myFans, query, 'POST', '数据加载中...')
+      .then((res) => {
+        console.log('我的粉丝', res)
+        this.setData({
+          dataList: res.Data
+        })
+      })
   },
 
   /**

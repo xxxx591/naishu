@@ -1,11 +1,14 @@
 <view class="wrap">
   <view class='top-container'>
-    我的粉丝（22）
+    我的粉丝（{{dataList.length}}）
   </view>
-  <view class='item-container' wx:for="{{5}}" >
-    <view class='avater-container'>
-      <image class='avater' src='../../asset/img/rongyu.png'></image>
-      <text class='avater-name'>谢远航</text>
+  <view wx:if="{{dataList.length < 1}}" style='padding:30rpx 30rpx;'>暂无粉丝</view>
+  <view wx:else>
+    <view class='item-container' wx:for="{{dataList}}" wx:key='{{item.id}}'>
+      <view class='avater-container'>
+        <image class='avater' src='item.head_img_path'></image>
+        <text class='avater-name'>{{item.nickname}}</text>
+      </view>
     </view>
   </view>
 </view>

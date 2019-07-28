@@ -1,16 +1,18 @@
 <view class='wrapper'>
 <!-- banner -->
   <view class='banner'>
-    <image class='banner-pic'></image>
+    <text class='banner-title'>排行榜</text>
+    <text class='banner-time'>活动截止日期：{{dataList.date}}</text>
+    <image class='banner-pic' src='/assets/image/bordBanner.png'></image>
   </view>
 <!-- list -->
   <view class='list-container'>
     <view class='item-list'>
-      <view class='list' wx:for="{{6}}">
+      <view class='list' wx:for="{{dataList.fans_data}}" wx:key="{{item.index}}">
         <!-- <image></image> -->
-        <view class='item-img'></view>
-        <text class='item-name'>碗里没有水</text>
-        <text class='item-core'>2299</text>
+        <view class='item-img class{{index}}'>{{index + 1}}</view>
+        <text class='item-name'>{{item.nickname}}</text>
+        <text class='item-core'>{{item.fans_num}}</text>
       </view>
     </view>
   </view>

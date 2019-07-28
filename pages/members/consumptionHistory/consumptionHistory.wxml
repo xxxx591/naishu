@@ -1,7 +1,12 @@
 <view class='wrapper'>
-  <view class='item-container' wx:for="{{8}}">
-    <text class='first-text'>-160积分</text>
-    <text class='second-text'>订单编号：12345632136796777132</text>
-    <text class='third-text'>下单时间：2018-06-04 10:20</text>
+  <view wx:if="{{dataList.length < 1}}" style="padding:30rpx 30rpx;">
+    暂无消费历史
+  </view>
+  <view wx:else>
+    <view class='item-container' wx:for="{{dataList}}" :key='{{item.index}}' bindtap="handleGoDetails">
+      <text class='first-text'>{{item.price}}积分</text>
+      <text class='second-text'>订单编号：{{item.order_sn}}</text>
+      <text class='third-text'>下单时间：{{item.create_time}}</text>
+    </view>
   </view>
 </view>
