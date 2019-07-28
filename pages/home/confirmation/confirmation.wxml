@@ -119,7 +119,7 @@
       </van-cell-group>
     </view>
     <view>
-      <button class='button-g-02'>确认支付</button>
+      <button class='button-g-02' bindtap='payNowOther'>确认支付</button>
     </view>
   </view>
 </van-popup>

@@ -149,7 +149,6 @@ Page({
     let arr = [];
     let price = 0;
     let quanarr = [];
-
     const resule = wx.getStorageInfoSync()
     console.log(resule.youhuiquan)
     if (resule.youhuiquan == undefined) {
@@ -181,7 +180,6 @@ Page({
     params.replace_pay_password = this.data.password001 //代付密码
     if (flag) {
       flag = false
-
       app.ajax(app.globalData.config.createOrder, params).then(res => {
         console.log(res)
         let data = res.Data
@@ -240,6 +238,55 @@ Page({
               flag = true
             }, 500)
           }
+        }
+      })
+    }
+  },
+  payNowOther() {
+    let flag = true;
+    let params = {};
+    let arr = [];
+    let price = 0;
+    let quanarr = [];
+    const resule = wx.getStorageInfoSync()
+    console.log(resule.youhuiquan)
+    if (resule.youhuiquan == undefined) {
+
+    } else {
+
+      this.data.quanobj.map(item => {
+        quanarr.push(item.id)
+      })
+    }
+    this.data.shopList.map(item => {
+      let obj = {};
+      obj.id = item.id;
+      obj.num = item.count;
+      price += parseFloat(parseFloat(item.count * item.price).toFixed(2))
+      arr.push(obj)
+    })
+    params.uid = this.data.userObj.uid; //用户ID
+    params.store_id = wx.getStorageSync('storeId') //店铺id
+    params.goods_json = arr //商品id和数量
+    params.goods_type = this.data.type //商品类型
+    params.delivery_type = this.data.leftIndex //配送方式
+    params.pay_type = "3" //支付方式
+    params.order_price = parseFloat(price).toFixed(2) //原始金额
+    params.pay_price = this.data.shopcountPrice //支付金额
+    params.coupon_price = parseFloat(price - this.data.shopcountPrice).toFixed(2) // 优惠金额
+    params.user_coupon_ids = quanarr.join(',') //优惠券合集
+    params.replace_user_mobile = this.data.userPhone001 //代付人手机号码
+    params.replace_pay_password = this.data.password001 //代付密码
+    if (flag) {
+      flag = false
+      app.ajax(app.globalData.config.createOrder, params).then(res => {
+        console.log(res)
+        if (res.Code != '000000') {
+          wx.showToast({
+            title: res.Msg,
+            duration: 2000,
+            icon: 'none'
+          })
         }
       })
     }
