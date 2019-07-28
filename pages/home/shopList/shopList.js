@@ -36,6 +36,7 @@ Page({
   goIndex(e) {
     console.log(e)
     wx.setStorageSync('storeId', e.currentTarget.dataset.obj.id)
+    wx.setStorageSync('storeName', e.currentTarget.dataset.obj.store_name)
     wx.removeStorageSync('type')
     wx.removeStorageSync('shopList')
     wx.removeStorageSync('shopList2')
