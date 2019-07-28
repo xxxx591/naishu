@@ -1,0 +1,55 @@
+/* pages/home/shopList/shopList.wxss */
+
+.list {
+  padding: 0 30rpx 30rpx;
+}
+
+.list-item {
+  display: flex;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.left-item {
+  width: 160rpx;
+  height: 160rpx;
+  padding-right: 20rpx;
+  border-radius: 10px;
+}
+
+.img-box {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.title1 {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 46rpx;
+  margin-bottom: 20rpx;
+}
+
+.title2 {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(30, 96, 49, 1);
+  margin-bottom: 40rpx;
+  border: 1px solid rgba(30, 96, 49, 1);
+  border-radius: 6px;
+  padding: 6rpx 9rpx;
+  text-align: center;
+}
+
+.title3 {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 46rpx;
+}

@@ -1,0 +1,34 @@
+<van-tabs active="{{ active }}" bind:change="onChange" sticky color="#1E6031">
+  <van-tab title="实体店铺">
+    <view class='list'>
+      <view wx:for="{{shopList}}">
+        <view class='list-item' bindtap='goIndex' data-obj='{{item}}'>
+          <view class='left-item'>
+            <view class='img-box' style="background-image: url('{{item.picture_path}}')"></view>
+          </view>
+          <view class='right-item'>
+            <view class='title1'>{{item.store_name}}</view>
+            <view class='title2'>{{item.open_time}}</view>
+            <view class='title3'>{{item.address}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="虚拟店铺">
+    <view class='list'>
+      <view wx:for="{{shopList}}">
+        <view class='list-item' bindtap='goIndex' data-obj='{{item}}'>
+          <view class='left-item'>
+            <view class='img-box' style="background-image: url('{{item.picture_path}}')"></view>
+          </view>
+          <view class='right-item'>
+            <view class='title1'>{{item.store_name}}</view>
+            <view class='title2'>{{item.open_time}}</view>
+            <view class='title3'>{{item.address}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>

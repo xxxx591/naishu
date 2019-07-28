@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index/index",
+    "pages/home/shopList/shopList",
     "pages/home/address/address",
     "pages/home/receiptAddress/receiptAddress",
     "pages/home/userAddressList/userAddressList",

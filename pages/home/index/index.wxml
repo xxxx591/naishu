@@ -7,7 +7,7 @@
 
     </view>
 
-    <view class='tab-box' style=''>
+    <view class='tab-box' style='' bindtap='selectShop'>
       <image src='/assets/image/tag.png' class='tag-img'></image>
       <text bindtap='goShopList'>{{storeName}}</text>
       <image src='/assets/image/white-right.png' class='tag-img1'></image>

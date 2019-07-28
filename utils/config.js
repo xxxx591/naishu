@@ -16,6 +16,7 @@ module.exports = {
   getOrderCoupon: '/api/order/userCoupon', // 获取对应优惠券
   getDiscountPrice: '/api/order/getDiscountPrice', // 获取优惠后价格
   createOrder: '/api/order/createOrder', // 确认订单支付
+  getShopStoreList: '/api/store/storeList', // 获取店铺列表
   // getUserAddressList: '/api/user/userAddressList', // 确认用户地址列表
   getOther: '/api/config/editor', // 富文本杂项
   wxLogin: '/user/wxLogin', //微信登录

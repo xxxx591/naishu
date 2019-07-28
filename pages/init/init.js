@@ -67,10 +67,12 @@ Page({
                       wx.getLocation({
                         type: 'wgs84',
                         success(data) {
-                          console.log('地理位置', data)
-                          app.globalData.lat = data.latitude;
-                          app.globalData.lng = data.longitude;
+                          console.log('地理位置', data) 
+                          wx.setStorageSync('lat', data.latitude)
+                          wx.setStorageSync('lng', data.longitude)
                           wx.setStorageSync('userDetails', userInfores.Data.user)
+                          wx.removeStorageSync('storeName')
+                          wx.removeStorageSync('storeId')
                           wx.switchTab({
                             url: '/pages/home/index/index',
                           })
@@ -154,6 +156,8 @@ Page({
                         console.log('地理位置', res)
                         app.globalData.lat = res.latitude;
                         app.globalData.lng = res.longitude;
+                        wx.setStorageSync('lat', res.latitude)
+                        wx.setStorageSync('lng', res.longitude)
                         wx.setStorageSync('userDetails', userInfores.Data.user)
                         wx.switchTab({
                           url: '/pages/home/index/index',
