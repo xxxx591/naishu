@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/init/init",
+    "pages/user/user/user",
     "pages/members/productDetails/productDetails",
     "pages/members/orderDetails/orderDetails",
     "pages/members/member/member",
