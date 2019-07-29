@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/init/init",
+    "pages/user/balance/balance",
+    "pages/user/consumptionHistory/consumptionHistory",
     "pages/user/user/user",
+    "pages/init/init",
     "pages/members/productDetails/productDetails",
     "pages/members/orderDetails/orderDetails",
     "pages/members/member/member",

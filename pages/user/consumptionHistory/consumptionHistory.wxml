@@ -1,0 +1,18 @@
+<view class='wrapper'>
+  <view class='picker-container'>
+    <view class='picker'>
+      <text>本月</text>
+      <image class='down-icon' src='/assets/image/picker.png'></image>
+    </view>
+  </view>
+  <!-- <view wx:if="{{dataList.length < 1}}" style="padding:30rpx 30rpx;">
+    暂无消费历史
+  </view>
+  <view wx:else> -->
+    <view class='item-container' wx:for="{{3}}" :key='{{item.index}}'>
+      <text class='first-text'>-￥160</text>
+      <text class='second-text'>订单编号:9527</text>
+      <text class='third-text'>下单时间：2019-7-29</text>
+    </view>
+  <!-- </view> -->
+</view>

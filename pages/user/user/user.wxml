@@ -1,2 +1,49 @@
-<!--pages/user/user/user.wxml-->
-<text>pages/user/user/user.wxml1</text>
+<view class='wrapper'>
+  <view class='top-container'>
+    <view class='avater-container'>
+      <view class='avater'>
+        <image></image>
+      </view>
+      <view class='avater-name'>谢远航</view>
+    </view>
+    <!-- 成为会员 -->
+    <view wx-if="false" class='member-container'>
+      <text>成为会员</text>
+      <image src='/assets/image/c10.png'></image>
+    </view>
+    <!-- 余额 -->
+    <view class='member-container'>
+      <text>余额：￥200</text>
+    </view>
+
+   <!-- 分割线 -->
+
+  </view>
+  <!-- list -->
+  <view class='list-container'>
+    <view class='item-container'>
+      <view class='item-list-container'>
+        <view class='item item-border'>
+          <image class='icon' src='/assets/image/order-icon.png'></image>
+          <text>订单管理</text>
+          <image class='right-icon' src='/assets/image/biduright.png'></image>
+        </view>
+        <view class='item item-border'>
+          <image class='icon' src='/assets/image/item2.png'></image>
+          <text>我的优惠券</text>
+          <image class='right-icon' src='/assets/image/biduright.png'></image>
+        </view>
+        <view class='item item-border'>
+          <image class='icon' src='/assets/image/item3.png'></image>
+          <text>收货地址管理</text>
+          <image class='right-icon' src='/assets/image/biduright.png'></image>
+        </view>
+        <view class='item'>
+          <image class='icon' src='/assets/image/item4.png'></image>
+          <text>支付密码</text>
+          <image class='right-icon' src='/assets/image/biduright.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
