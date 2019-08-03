@@ -70,9 +70,7 @@ Page({
                           console.log('地理位置', data) 
                           wx.setStorageSync('lat', data.latitude)
                           wx.setStorageSync('lng', data.longitude)
-                          wx.setStorageSync('userDetails', userInfores.Data.user)
-                          wx.removeStorageSync('storeName')
-                          wx.removeStorageSync('storeId')
+                          wx.setStorageSync('userDetails', userInfores.Data.user) 
                           wx.switchTab({
                             url: '/pages/home/index/index',
                           })

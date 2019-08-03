@@ -1,0 +1,4 @@
+/* pages/siglepage/siglepage.wxss */
+.container{
+  padding: 30rpx;
+}

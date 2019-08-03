@@ -62,6 +62,11 @@ Page({
         }
         app.ajax(app.globalData.config.bindPhone, params).then(res => {
           console.log(res)
+          if(res.Code=='000000'){
+            wx.switchTab({
+              url: '/pages/init/init',
+            })
+          }
         })
       } else {
         setTimeout(_ => {

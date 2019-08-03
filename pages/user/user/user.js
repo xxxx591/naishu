@@ -17,19 +17,39 @@ Page({
     
   },
   goCoupon(){
-    wx.navigateTo({
-      url: '/pages/user/coupon/coupon',
-    })
+    
+    if (this.data.flag) {
+      wx.navigateTo({
+        url: '/pages/user/coupon/coupon',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/init/init',
+      })
+    }
   },
   goAddressList(){
-    wx.navigateTo({
-      url: '/pages/home/userAddressList/userAddressList',
-    })
+    if (this.data.flag) {
+      wx.navigateTo({
+        url: '/pages/home/userAddressList/userAddressList',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/init/init',
+      })
+    }
+    
   },
-  goPayPassword(){
-    wx.navigateTo({
-      url: '/pages/user/login/login',
-    })
+  goPayPassword(){ 
+    if (this.data.flag) {
+      wx.navigateTo({
+        url: '/pages/user/login/login',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/init/init',
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

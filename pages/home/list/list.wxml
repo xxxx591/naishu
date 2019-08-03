@@ -1,3 +1,6 @@
+<view class="banne-img">
+<image src="{{bannerPicture}}"></image>
+</view>
 <view class='content-box'>
   <scroll-view scroll-y class='left-box'>
     <view class='left-box-title {{index==leftIndex?"active":""}}' wx:for="{{leftList}}" wx:key="index" id="{{index}}" bindtap="changeIndex">{{item.name}}</view>
@@ -5,7 +8,8 @@
   <!-- right -->
   <view class='right-box'>
     <view class='bidu-box'>
-      <view class='bidu-boxx1' wx:if="{{isShow}}" style="background-image: url(/assets/image/huabeijing.png)">
+      <view class='bidu-boxx1' wx:if="{{isShow}}" bindtap="goOther">
+      <image class="banner-bg" src="/assets/image/huabeijing.png"></image>
         <image class='bidu-img-1' src='/assets/image/bidu.png'></image>
         <text>订花必读</text>
         <image class='bidu-img-2' src='/assets/image/biduright.png'></image>
@@ -24,9 +28,9 @@
             <text class='price-2'>{{item.price}}</text>
           </view>
           <view class='num-box'>
-            <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+            <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num1-icon"></view></view>
             <view class='num-box2'>{{item.count}}</view>
-            <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+            <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num2-icon"></view><view class="num2-icon-2"></view></view>
           </view>
         </view>
       </view>
@@ -67,9 +71,9 @@
               <text class='price-2'>{{item.price}}</text>
             </view>
             <view class='num-box'>
-              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num1-icon"></view></view>
               <view class='num-box2'>{{item.count}}</view>
-              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num2-icon"></view><view class="num2-icon-2"></view></view>
             </view>
           </view>
         </view>

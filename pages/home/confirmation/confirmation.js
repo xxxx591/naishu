@@ -312,7 +312,7 @@ Page({
     params.user_coupon_ids = quanarr.join(',')
     app.ajax(app.globalData.config.getDiscountPrice, params).then(res => {
       console.log(res)
-      let price = this.data.shopcountPrice - parseInt(res.Data.discount_price)
+      let price = this.data.shopcountPrice - parseFloat(res.Data.discount_price)
       this.setData({
         shopcountPrice: parseFloat(price).toFixed(2),
         daijinquan: this.data.quanobj[0].title,

@@ -15,7 +15,14 @@ Page({
     shopcountPrice: 0,
     page: 1,
     pageSize: 8,
-    isShow: true
+    isShow: true,
+    bannerPicture:''
+  },
+  // 跳转说明
+  goOther(){
+    wx.navigateTo({
+      url: '/pages/siglepage/siglepage?id=8',
+    })
   },
   // 打开购物车
   showBox() {
@@ -117,14 +124,14 @@ Page({
   subtracttap(item) {
     // console.log(item.currentTarget.dataset.count)
     let goodsDetails = item.currentTarget.dataset.objs
-    let buyCarList = this.data.buyCarList; 
+    let buyCarList = this.data.buyCarList;
 
     // 不同部位修改参数
     let shopList = this.data.shopList
     let index = '';
     // i为对象，o为下标
-    shopList.map((i,o)=>{
-      if(i.id == goodsDetails.id){
+    shopList.map((i, o) => {
+      if (i.id == goodsDetails.id) {
         index = o
       }
     })
@@ -141,7 +148,7 @@ Page({
       let allPrice = parseFloat(this.data.shopcountPrice);
       let price = parseFloat(parseFloat(item.currentTarget.dataset.objs.price).toFixed(2));
       allPrice = allPrice - price;
-      
+
 
       buyCarList.map((val, index) => {
         if (goodsDetails.id == val.id) {
@@ -216,7 +223,7 @@ Page({
     })
     this.setData({
       shopList: arr,
-      buyCarList:[],
+      buyCarList: [],
       showShopBox: false,
       shopcountIndex: 0,
       shopcountPrice: 0
@@ -278,6 +285,13 @@ Page({
     }
     app.ajax(app.globalData.config.getShopList, params).then(res => {
       console.log('商品列表', res.Data)
+      if (res.Data.length == 0) {
+        wx.showToast({
+          title: '无商品',
+          duration: 3000,
+          icon: 'none'
+        })
+      }
       let result = wx.getStorageInfoSync()
       if (res.Code == "000000") {
         let data = res.Data;
@@ -346,7 +360,8 @@ Page({
         }
         this.setData({
           leftList: leftList,
-          shopList: shopList
+          shopList: shopList,
+          bannerPicture: data.ad_picture_path
         })
       } else {
         wx.showToast({
@@ -370,8 +385,14 @@ Page({
   onShow: function() {
     if (this.data.type == 1) {
       this.getList(1);
+      wx.setNavigationBarTitle({
+        title: '鲜花',
+      })
     } else {
       this.getList(2)
+      wx.setNavigationBarTitle({
+        title: '美食',
+      })
       this.setData({
         isShow: false
       })

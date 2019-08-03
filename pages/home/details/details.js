@@ -14,7 +14,10 @@ Page({
     shopcountPrice: 0,
     shopDetails: {},
     type: '',
-    id:0
+    id:0,
+    shopNum:0,
+    shopNumFlag:true,
+    fuwenben:''
   },
   goBuy() {
     // 查看是否授权
@@ -103,9 +106,29 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  init(){
+    let id = '';
+    if(wx.getStorageSync('type')==1){
+      id=1
+    }else{
+      id=2
+    }
+    let params={
+      id:id
+    }
+    app.ajax(app.globalData.config.getOther,params).then(res=>{
+      console.log(res.Data)
+      let article1 = res.Data
+      WxParse.wxParse('article1', 'html', article1, this, 5);
+       
+    })
+  },
   onLoad: function(options) {
+    this.init()
+    console.log(options)
     let type = wx.getStorageSync('type')
     let arr = []
+    let shopDetail = wx.getStorageSync('shopDetails')
     if (type == 1) {
       arr = wx.getStorageSync('shopList')
     } else {
@@ -113,7 +136,16 @@ Page({
     }
     let shopcountIndex = 0;
     let shopcountPrice = 0;
+    let shopNum = 0;
+    let shopNumFlag = true;
     arr.map(item => {
+      console.log(item)
+      if (shopDetail.id == item.id){
+        shopNum = item.count
+        if(item.count != 0){
+        shopNumFlag = false
+        }
+      }
       shopcountIndex += parseInt(item.count);
       shopcountPrice = parseFloat(shopcountPrice).toFixed(2) * 1 + parseFloat(item.count * item.price).toFixed(2) * 1
     })
@@ -124,7 +156,9 @@ Page({
       shopcountIndex: shopcountIndex,
       shopcountPrice: parseFloat(shopcountPrice).toFixed(2),
       type: type,
-      id:options.id
+      id: options.gid,
+      shopNum:shopNum,
+      shopNumFlag: shopNumFlag
     })
     console.log(options.gid)
     this.getDetails(options.gid)
@@ -141,7 +175,7 @@ Page({
       let shopDetails = {}
       shopDetails.title = res.Data.goods_name;
       shopDetails.id = this.data.id
-      shopDetails.count = 0;
+      shopDetails.count = this.data.shopNum;
       shopDetails.price = res.Data.price
       wx.setStorageSync('shopDetails', shopDetails)
       this.setData({
@@ -261,6 +295,11 @@ Page({
     let buyCarList = this.data.buyCarList;
     console.log(buyCarList)
     let count = items.count
+    if(count == 0){
+      this.setData({
+        shopNumFlag:false
+      })
+    }
     let index = ''
     if (buyCarList.length == 0) {
       index = 0
@@ -304,7 +343,70 @@ Page({
       [deletedtodo]: count,
       shopcountIndex: allCount,
       shopcountPrice: parseFloat(allPrice).toFixed(2),
-      buyCarList: buyCarList
+      buyCarList: buyCarList,
+      shopNum: allCount
+    })
+    if (this.data.type == 1) {
+      wx.setStorageSync('shopList', this.data.buyCarList)
+      wx.setStorageSync('shopDetails', items)
+    } else {
+      wx.setStorageSync('shopList2', this.data.buyCarList)
+      wx.setStorageSync('shopDetails', items)
+    }
+  },
+  subtractDetails(){
+    let items = wx.getStorageSync('shopDetails')
+    let buyCarList = this.data.buyCarList;
+    console.log(buyCarList)
+    let count = items.count
+    let index = ''
+    if (buyCarList.length == 0) {
+      index = 0
+    } else {
+      buyCarList.map((i, o) => {
+        if (i.id == items.id) {
+          index = o
+        }
+      })
+    }
+    let goodsDetails = items
+    count==0?'':count--;
+    items.count = count;
+    if (count == 0) {
+      this.setData({
+        shopNumFlag: true
+      })
+    }
+    let deletedtodo = `shopList[${index}].count`;
+    let allCount = this.data.shopcountIndex;
+    allCount--
+    let allPrice = parseFloat(this.data.shopcountPrice);
+    let price = parseFloat(goodsDetails.price);
+    allPrice = allPrice - price;
+    if (buyCarList.length == 0) {
+      goodsDetails.count = count
+      buyCarList.push(goodsDetails)
+
+    } else {
+      let flag = 0;
+      let arr = []
+      buyCarList.map((val, index) => {
+        arr.push(val.id)
+        if (goodsDetails.id == val.id) {
+          val.count = count
+        }
+      })
+      if (arr.indexOf(goodsDetails.id) == -1) {
+        goodsDetails.count = count
+        buyCarList.push(goodsDetails)
+      }
+    }
+    this.setData({
+      [deletedtodo]: count,
+      shopcountIndex: allCount,
+      shopcountPrice: parseFloat(allPrice).toFixed(2),
+      buyCarList: buyCarList,
+      shopNum: count
     })
     if (this.data.type == 1) {
       wx.setStorageSync('shopList', this.data.buyCarList)

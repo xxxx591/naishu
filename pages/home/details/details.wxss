@@ -21,6 +21,15 @@
   border-radius: 32rpx;
   font-size: 28rpx;
 }
+.num-box2-other{
+  position: relative;
+width: 48rpx;
+height: 48rpx;
+text-align: center;
+line-height: 48rpx;
+color: #1e6031;
+
+}
 
 .suggest {
   padding: 20rpx 0rpx;
@@ -166,6 +175,7 @@ line-height:44rpx;
 }
 
 .num-box1 {
+  position: relative;
   width: 48rpx;
   height: 48rpx;
   text-align: center;
@@ -176,8 +186,18 @@ line-height:44rpx;
   font-weight: bold;
   font-size: 26px;
 }
-
+.num-box1 .num1-icon{
+  position: absolute;
+  width: 20rpx;
+  height: 4rpx;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  margin-top: -2rpx;
+  margin-left: -10rpx; 
+}
 .num-box2 {
+  position: relative;
   width: 48rpx;
   height: 48rpx;
   text-align: center;
@@ -185,7 +205,9 @@ line-height:44rpx;
   color: #1e6031;
 }
 
+
 .num-box3 {
+  position: relative;
   width: 48rpx;
   height: 48rpx;
   text-align: center;
@@ -196,7 +218,26 @@ line-height:44rpx;
   font-weight: bold;
   font-size: 20px;
 }
-
+.num-box3 .num2-icon{
+  position: absolute;
+  width: 20rpx;
+  height: 4rpx;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  margin-top: -2rpx;
+  margin-left: -10rpx; 
+}
+.num-box3 .num2-icon-2{
+  position: absolute;
+  height: 20rpx;
+  width: 4rpx;
+    left: 50%;
+  top: 50%;
+  margin-top: -10rpx;
+  margin-left: -2rpx; 
+  background: #fff;
+}
 .shop-car {
   display: flex;
   align-items: center;

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/index/index",
+    "pages/home/details/details",
+    "pages/siglepage/siglepage",
     "pages/user/user/user",
     "pages/user/consumptionHistory/consumptionHistory",
     "pages/user/balance/balance",
@@ -13,7 +15,6 @@
     "pages/home/receiptAddress/receiptAddress",
     "pages/home/userAddressList/userAddressList",
     "pages/login/login",
-    "pages/home/details/details",
     "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",
     "pages/home/list/list",
@@ -46,13 +47,13 @@
         "selectedIconPath": "assets/image/index-on.png"
       },
       {
-        "pagePath": "pages/user/user/user",
+        "pagePath": "pages/members/member/member",
         "text": "会员",
         "iconPath": "assets/image/vip.png",
         "selectedIconPath": "assets/image/vip-on.png"
       },
       {
-        "pagePath": "pages/members/member/member",
+        "pagePath": "pages/user/user/user",
         "text": "我的",
         "iconPath": "assets/image/self.png",
         "selectedIconPath": "assets/image/self-on.png"

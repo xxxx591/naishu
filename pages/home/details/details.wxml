@@ -1,16 +1,16 @@
-<import src="../../wxParse/wxParse.wxml"/>
+<import src="../../wxParse/wxParse.wxml" />
 <movable-area class='boxxxxx'>
   <view class='content-box'>
     <!-- 详情部分 -->
-    <view>
-    <swiper class='swiper' indicator-dots circular autoplay indicator-color="rgba(30, 96, 49, .3)" indicator-active-color="green">
-      <block>
-        <swiper-item class='swiper-item' wx:for="{{shopDetails.banner}}">
-          <view style="background-image: url('{{item.banner_path}}')" data-item="{{item}}"   class="slide-image slide-image1" mode="aspectFit"></view>
+    <view style="width:100%;">
+      <swiper class='swiper' indicator-dots circular autoplay indicator-color="rgba(30, 96, 49, .3)" indicator-active-color="green">
+        <block>
+          <swiper-item class='swiper-item' wx:for="{{shopDetails.banner}}">
+            <view style="background-image: url('{{item.banner_path}}')" data-item="{{item}}" class="slide-image slide-image1" mode="aspectFit"></view>
 
-        </swiper-item>
-      </block>
-    </swiper>
+          </swiper-item>
+        </block>
+      </swiper>
       <!-- <view class='banner-box' style="background-image: url(/assets/image/test.png)">
       </view> -->
       <view class='shop-box  details-box'>
@@ -22,21 +22,33 @@
             <text class='price-1'>￥</text>
             <text class='price-2' style='line-height:64rpx;'>{{shopDetails.price}}</text>
           </view>
-          <view class='num-box'>
+          <view class='num-box' wx:if="{{shopNumFlag}}">
             <view class='num-box2' bindtap='addDetails'>加入购物车</view>
+          </view>
+          <view class='num-box' wx:else>
+            <view class='num-box1' catchtap='subtractDetails' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">
+              <view class="num1-icon"></view>
+            </view>
+            <view class='num-box2-other'>{{shopNum}}</view>
+            <view class='num-box3' catchtap='addDetails' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">
+              <view class="num2-icon"></view>
+              <view class="num2-icon-2"></view>
+            </view>
           </view>
         </view>
       </view>
       <!-- 提示 -->
       <view class='suggest'>
         <view class='suggest-title'>温馨提示</view>
-        <view class='suggest-content'>请您注意我们的鲜花订购安排，每周一、周二、周三、周四订购的鲜花我们会在周六和周日安排配送，每周五、周六、周日订购的鲜花我们会在周二和周三安排配送，我们的配送范围仅限于北京市市区范围内，如超出范围请您咨询客服后再下单！</view>
+        <view class='suggest-content'>
+        <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+        </view>
       </view>
       <!-- 图文详情 -->
       <view class='suggest'>
         <view class='suggest-title'>图文详情</view>
         <view style="padding:0 30rpx;background: #fff;padding-bottom:150rpx;">
-          <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
         </view>
       </view>
     </view>
@@ -49,7 +61,7 @@
         <text class='price-1'>￥</text>
         <text class='price-2'>{{shopcountPrice}}</text>
       </view>
-      <view class='shop-right' bindtap="goBuy"> 
+      <view class='shop-right' bindtap="goBuy">
         去结算
       </view>
     </view>
@@ -77,9 +89,14 @@
                 <text class='price-2'>{{item.price}}</text>
               </view>
               <view class='num-box'>
-                <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">-</view>
+                <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">
+                  <view class="num1-icon"></view>
+                </view>
                 <view class='num-box2'>{{item.count}}</view>
-                <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">+</view>
+                <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}">
+                  <view class="num2-icon"></view>
+                  <view class="num2-icon-2"></view>
+                </view>
               </view>
             </view>
           </view>

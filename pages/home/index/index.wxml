@@ -22,7 +22,7 @@
     </swiper>
     <view class='naishu-box'>
       <view class='enter-img-box' bindtap="goodsList" id='1' >
-        <view class='imagesss' style="background-image: url(/assets/image/hua.png)">进入</view>
+        <view class='imagesss'><image src="/assets/image/hua.png" class="hua-img"></image> <text>进入</text></view>
         <view>
           <view>
             昆明基地鲜花
@@ -33,7 +33,7 @@
         </view>
       </view>
       <view class='enter-img-box' bindtap="goodsList" id='2' >
-        <view class='imagesss' style="background-image: url(/assets/image/milk.png)">进入</view>
+        <view class='imagesss'><image src="/assets/image/milk.png" class="hua-img"></image> <text>进入</text></view>
         <view>鲜奶主题美食</view>
       </view>
     </view>
