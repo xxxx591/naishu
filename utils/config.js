@@ -27,5 +27,10 @@ module.exports = {
   fansRanking:'/api/member/fansRanking', //排行版
   goodsDetail:'/api/store/goodsDetail', //商品详情
   orderPay:'/api/order/orderPay', // 会员兑换商品
-  orderDetail:'/api/order/orderDetail' // 会员兑换订单详情
+  orderDetail:'/api/order/orderDetail', // 会员兑换订单详情
+  userCenter:'/api/member/index', // 会员中心
+  consumptionLog:'/api/user/consumptionLog', // 消费记录
+  recharge:'/api/user/recharge', // 充值列表
+  payRecharge:'/api/member/recharge', // 充值
+  payPassword:'/api/user/payPassword', // 充值
 }

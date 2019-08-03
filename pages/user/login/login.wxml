@@ -1,0 +1,29 @@
+<form bindsubmit="formSubmit">
+  <view class='appointment'>
+
+    <view class='input-box'>
+      <text style='flex:1.7'>原密码：</text>
+      <input style='flex:3.9' placeholder='请输入' type='text' name="mobile"  maxlength='11' bindinput="getMobile"> </input>
+    </view>
+     
+     <view class='input-box'>
+      <text style='flex:1.7'>新密码：</text>
+      <input style='flex:3.9' placeholder='请输入'   bindinput="getPayPsw"> </input>
+    </view>
+    <view class='input-box'>
+      <text style='flex:1.7'>确认新密码：</text>
+      <input style='flex:3.9' placeholder='请输入'  bindinput="getYaoqing"> </input>
+    </view>
+    <view>
+    <button form-type="submit">
+      <view class='submit' >
+        <text>确认修改</text>
+        <!-- <image src='/assets/image/submit-btn.png'></image> -->
+      </view>
+    </button>
+    </view>
+  </view>
+</form>
+
+
+

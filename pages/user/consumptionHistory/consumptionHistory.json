@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-datetime-picker": "/components/dist/datetime-picker/index",
+    "van-popup": "/components/dist/popup/index"
+  },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#1E6031",
   "navigationBarTitleText": "消费历史",

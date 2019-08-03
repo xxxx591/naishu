@@ -1,93 +1,113 @@
-.wrapper{
+.wrapper {
   width: 100%;
 }
-.top-container{
+
+.top-container {
   width: 100%;
   height: 220rpx;
-  background: #1E6031;
+  background: #1e6031;
   position: relative;
 }
-.avater-container{
+
+.avater-container {
   width: 260rpx;
   height: 120rpx;
-  position: absolute;top:40rpx;left: 30rpx;
+  position: absolute;
+  top: 40rpx;
+  left: 30rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.avater{
+
+.avater {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
-  background: yellow;
+  /* background: yellow; */
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.avater > image{
+
+.avater > .img {
   width: 100%;
   height: 100%;
-}
-.avater-name{
-  font-size:40rpx;
-  font-family:PingFangSC-Medium;
-  font-weight:500;
-  color:rgba(255,255,255,1);
+  border-radius: 50%;
 }
 
-.member-container{
-  width:200rpx;
-  height:64rpx;
-  background:rgba(255,255,255,1);
-  border-radius:32px 0px 0px 32px;
-  position: absolute;top: 68rpx;right: 0;
+.avater-name {
+  font-size: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.member-container {
+  padding: 0 20rpx;
+  height: 64rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 32px 0px 0px 32px;
+  position: absolute;
+  top: 68rpx;
+  right: 0;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
-  color: #C8A015;
+  color: #c8a015;
   font-size: 28rpx;
 }
-.member-container image{
+
+.member-container image {
   width: 14rpx;
   height: 24rpx;
 }
-.list-container{
+
+.list-container {
   width: 100%;
-  height: 985rpx;
-  background: #F7F8FA;
+  /* height: 985rpx; *//* background: #F7F8FA; */
 }
-.item-container{
+
+.item-container {
   width: 100%;
   background: white;
 }
-.item-list-container{
+
+.item-list-container {
   width: 690rpx;
   min-height: 200rpx;
   margin: 0 auto;
 }
-.item{
+
+.item {
   width: 100%;
   height: 110rpx;
   display: flex;
   align-items: center;
   position: relative;
 }
-.icon{
+
+.icon {
   width: 32rpx;
   height: 35rpx;
 }
-.item text{
-  color: #333333;
-  font-size:32rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  margin:  0 0 0 29rpx;
+
+.item text {
+  color: #333;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  margin: 0 0 0 29rpx;
 }
-.right-icon{
+
+.right-icon {
   width: 14rpx;
   height: 25rpx;
-  position: absolute;right: 0;
+  position: absolute;
+  right: 0;
 }
-.item-border{
-  border-bottom: 1rpx solid #E6E6E6; 
+
+.item-border {
+  border-bottom: 1rpx solid #e6e6e6;
 }

@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/user/balance/balance",
-    "pages/user/consumptionHistory/consumptionHistory",
+    "pages/home/index/index",
     "pages/user/user/user",
+    "pages/user/consumptionHistory/consumptionHistory",
+    "pages/user/balance/balance",
     "pages/init/init",
     "pages/members/productDetails/productDetails",
     "pages/members/orderDetails/orderDetails",
     "pages/members/member/member",
-    "pages/home/index/index",
     "pages/home/shopList/shopList",
     "pages/home/address/address",
     "pages/home/receiptAddress/receiptAddress",
@@ -22,7 +22,9 @@
     "pages/members/invite/invite",
     "pages/members/myFans/myFans",
     "pages/members/consumptionHistory/consumptionHistory",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/user/coupon/coupon",
+    "pages/user/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -44,7 +46,7 @@
         "selectedIconPath": "assets/image/index-on.png"
       },
       {
-        "pagePath": "pages/members/member/member",
+        "pagePath": "pages/user/user/user",
         "text": "会员",
         "iconPath": "assets/image/vip.png",
         "selectedIconPath": "assets/image/vip-on.png"

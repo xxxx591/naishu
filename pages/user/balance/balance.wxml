@@ -2,19 +2,22 @@
   <view class='list-container'>
     <view class='top-container'>
       <text class='balance'>当前余额(元)</text>
-      <text class='number'>619.50</text>
-      <view class='top-right'>消费记录</view>
+      <text class='number'>{{balance}}</text>
+      <view class='top-right' bindtap='payList'>消费记录</view>
     </view>
     <text class='txt-chongzhi'>充值</text>
     <view class='item-container'>
-      <view class='item' wx:for="{{4}}" wx:key="{{index}}">
-        <view class='item-jifen'>
-          赠送500积分
+      <view class='item {{index==selectIndex?"active":""}}' wx:for="{{list}}" wx:key="{{index}}" >
+        <view bindtap='select' id="{{index}}" data-money="{{item.money}}" class='list-box' data-id="{{item.id}}">
+          <view class='item-jifen' wx:if="{{item.jifen!=0}}">
+            赠送{{item.jifen}}积分
+          </view>
+          <text>￥</text>
+          <text>{{item.money}}</text>
+          <image src='/assets/image/green-select.png' class='select' wx:if="{{index == selectIndex}}"></image>
         </view>
-        <text>￥</text>
-        <text>100</text>
       </view>
     </view>
   </view>
-  <view class='btn'>立即充值</view>
+  <view class='btn' bindtap='pay'>立即充值</view>
 </view>

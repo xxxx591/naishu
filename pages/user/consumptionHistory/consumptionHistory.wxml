@@ -1,6 +1,6 @@
 <view class='wrapper'>
   <view class='picker-container'>
-    <view class='picker'>
+    <view class='picker' bindtap='selectTime'>
       <text>本月</text>
       <image class='down-icon' src='/assets/image/picker.png'></image>
     </view>
@@ -9,10 +9,19 @@
     暂无消费历史
   </view>
   <view wx:else> -->
-    <view class='item-container' wx:for="{{3}}" :key='{{item.index}}'>
-      <text class='first-text'>-￥160</text>
-      <text class='second-text'>订单编号:9527</text>
-      <text class='third-text'>下单时间：2019-7-29</text>
+  <scroll-view scroll-y bindscrolltolower="lower" class='list-boxxx'>
+    <view class='item-container' wx:for="{{list}}" :key='{{item.index}}'>
+      <text class='first-text'>{{item.money}}</text>
+      <text class='second-text'>订单编号:{{item.orderId}}</text>
+      <text class='third-text'>下单时间：{{item.time}}</text>
     </view>
+
+  </scroll-view>
   <!-- </view> -->
+
+
 </view>
+
+<van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose">
+  <van-datetime-picker type="year-month" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput" bind:confirm="confirm" />
+</van-popup>

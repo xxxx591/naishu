@@ -1,0 +1,80 @@
+/* pages/appointment/appointment.wxss */
+
+.appointment {
+  padding: 31rpx;
+  position: relative;
+}
+
+.input-box {
+  display: flex;
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.input-box text {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-right: 30rpx;
+}
+
+.input-box input {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #333;
+}
+
+.submit {
+  position: fixed;
+  left: 0;
+  margin-bottom: 31rpx;
+  width: 100%;
+  height: 94rpx;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+  margin-top: 50rpx;
+  background: #1e6031;
+  bottom: 0;
+}
+
+.submit text {
+  z-index: 999;
+  width: 100%;
+  line-height: 94rpx;
+}
+
+.submit image {
+  position: absolute;
+  left: 30rpx;
+  top: 0;
+  width: 690rpx;
+  height: 94rpx;
+}
+
+.kefu-log {
+  position: fixed;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  right: 30rpx;
+  width: 180rpx;
+  height: 190rpx;
+  bottom: 187rpx;
+  border-radius: 0;
+}
+
+.kefu-log::after {
+  border-radius: 0;
+  border: none;
+}
+
+.kefu-log image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

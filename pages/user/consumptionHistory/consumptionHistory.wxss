@@ -48,8 +48,13 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding:0 0rpx 0 10rpx;
+
 }
 .down-icon{
   width: 22rpx;
   height: 12rpx;
+}
+.list-boxxx{
+  height: 100vh;
 }

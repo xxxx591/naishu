@@ -2,18 +2,16 @@
   <view class='top-container'>
     <view class='avater-container'>
       <view class='avater'>
-        <image></image>
+      <open-data type="userAvatarUrl" class="img"></open-data>
       </view>
-      <view class='avater-name'>谢远航</view>
+      <open-data type="userNickName" lang="zh_CN" class='avater-name'></open-data>
+      <!-- <view class='avater-name'>谢远航</view> -->
     </view>
     <!-- 成为会员 -->
-    <view wx-if="false" class='member-container'>
-      <text>成为会员</text>
-      <image src='/assets/image/c10.png'></image>
-    </view>
+    
     <!-- 余额 -->
-    <view class='member-container'>
-      <text>余额：￥200</text>
+    <view class='member-container' bindtap='goVip'>
+      <text>{{balance}}</text>
     </view>
 
    <!-- 分割线 -->
@@ -26,22 +24,22 @@
         <view class='item item-border'>
           <image class='icon' src='/assets/image/order-icon.png'></image>
           <text>订单管理</text>
-          <image class='right-icon' src='/assets/image/biduright.png'></image>
+          <image class='right-icon' src='/assets/image/right-icon.png'></image>
         </view>
-        <view class='item item-border'>
+        <view class='item item-border' bindtap='goCoupon'>
           <image class='icon' src='/assets/image/item2.png'></image>
           <text>我的优惠券</text>
-          <image class='right-icon' src='/assets/image/biduright.png'></image>
+          <image class='right-icon' src='/assets/image/right-icon.png'></image>
         </view>
-        <view class='item item-border'>
+        <view class='item item-border' bindtap='goAddressList'>
           <image class='icon' src='/assets/image/item3.png'></image>
           <text>收货地址管理</text>
-          <image class='right-icon' src='/assets/image/biduright.png'></image>
+          <image class='right-icon' src='/assets/image/right-icon.png'></image>
         </view>
-        <view class='item'>
+        <view class='item' bindtap='goPayPassword'>
           <image class='icon' src='/assets/image/item4.png'></image>
           <text>支付密码</text>
-          <image class='right-icon' src='/assets/image/biduright.png'></image>
+          <image class='right-icon' src='/assets/image/right-icon.png'></image>
         </view>
       </view>
     </view>
