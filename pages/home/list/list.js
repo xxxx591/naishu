@@ -235,8 +235,8 @@ Page({
     }
   },
   changeIndex(e) {
-    // console.log(e.currentTarget.id)
-    this.getList(this.data.type, e.currentTarget.id)
+    console.log(e.currentTarget.dataset.id)
+    this.getList(this.data.type, e.currentTarget.dataset.id)
     this.setData({
       leftIndex: e.currentTarget.id,
       shopList: []

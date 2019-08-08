@@ -3,7 +3,7 @@
 </view>
 <view class='content-box'>
   <scroll-view scroll-y class='left-box'>
-    <view class='left-box-title {{index==leftIndex?"active":""}}' wx:for="{{leftList}}" wx:key="index" id="{{index}}" bindtap="changeIndex">{{item.name}}</view>
+    <view class='left-box-title {{index==leftIndex?"active":""}}' wx:for="{{leftList}}" wx:key="index" id="{{index}}" data-id="{{item.id}}" bindtap="changeIndex">{{item.name}}</view>
   </scroll-view>
   <!-- right -->
   <view class='right-box'>
