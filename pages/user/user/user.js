@@ -76,6 +76,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    let _this = this
     wx.login({
       success: res => {
         console.log('到后台换取 openId, sessionKey, unionId', res)
@@ -125,7 +126,11 @@ Page({
                           wx.setStorageSync('userDetails', userInfores.Data.user)
                           wx.removeStorageSync('storeName')
                           wx.removeStorageSync('storeId')
-
+                          _this.setData({
+                            flag: true,
+                            balance: '余额：￥' + wx.getStorageSync('userDetails').money
+                          })
+                          console.log(_this.data.balance)
                         }
                       })
                     }
@@ -140,10 +145,8 @@ Page({
               }
             }
           })
-          this.setData({
-            flag: true,
-            balance: '余额：￥' + wx.getStorageSync('userDetails').money
-          })
+          
+          console.log(this.data.balance)
         } else {
           this.setData({
             flag: false

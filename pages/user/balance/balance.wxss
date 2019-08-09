@@ -83,6 +83,8 @@
   margin-left: 15rpx;
   border: 1px solid transparent;
   box-sizing: border-box;
+  margin-bottom: 30rpx;
+
 }
 
 .item.active {
@@ -97,7 +99,7 @@
   height: 64rpx;
 }
 
-.item text:nth-child(2) {
+.item text {
   font-size: 48rpx;
 }
 

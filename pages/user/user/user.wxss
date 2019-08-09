@@ -10,13 +10,13 @@
 }
 
 .avater-container {
-  width: 260rpx;
+  width: 350rpx;
   height: 120rpx;
   position: absolute;
   top: 40rpx;
   left: 30rpx;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -42,6 +42,8 @@
   font-family: PingFangSC-Medium;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
+  padding-left: 10px;
+
 }
 
 .member-container {

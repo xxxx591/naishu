@@ -25,7 +25,8 @@ Page({
     ],
     selectIndex: 0,
     money: '',
-    orderId: ''
+    orderId: '',
+    balance:""
   },
 
   /**
@@ -53,63 +54,14 @@ Page({
         paySign: data.paySign,
         success(res) {
           console.log('支付成功的回调', res)
+        
           wx.showToast({
             title: '支付成功',
             duration: 2000,
             success: res => {
               setTimeout(_ => {
-                wx.login({
-                  success: res => {
-                    console.log(res.code);
-                    wx.getUserInfo({
-                      success: function(data) {
-                        let params = {
-                          'encryptedData': data.encryptedData,
-                          'iv': data.iv,
-                          'code': res.code
-                        };
-                        console.log('点击登陆获取的数据', res)
-                        app.ajax(app.globalData.config.getOpenid, params).then(result => {
-                          console.log(result)
-                          let params = {
-                            openid: result.Data.openid
-                          }
-                          app.globalData.openid = result.Data.openid
-                          app.ajax(app.globalData.config.getUserInfo, params).then(userInfores => {
-                            console.log(userInfores)
-                            if (userInfores.Data.user.mobile == '') {
-                              wx.getUserInfo({
-                                success: res => {
-                                  console.log(res)
-                                  wx.setStorageSync('userinfo', res.userInfo)
-                                  
-                                }
-                              })
-                            } else {
-                              wx.getLocation({
-                                type: 'wgs84',
-                                success(res) {
-                                  console.log('地理位置', res)
-                                  app.globalData.lat = res.latitude;
-                                  app.globalData.lng = res.longitude;
-                                  wx.setStorageSync('lat', res.latitude)
-                                  wx.setStorageSync('lng', res.longitude)
-                                  wx.setStorageSync('userDetails', userInfores.Data.user)
-
-                                },
-                                fail(res) {
-
-                                }
-                              })
-
-                            }
-
-                          })
-                        })
-
-                      }
-                    })
-                  }
+                wx.navigateBack({
+                  delta: 1
                 })
               }, 2000)
             }

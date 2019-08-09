@@ -62,9 +62,20 @@ Page({
         }
         app.ajax(app.globalData.config.bindPhone, params).then(res => {
           console.log(res)
-          if(res.Code=='000000'){
-            wx.switchTab({
+          if (res.Code == '000000') {
+            wx.reLaunch({
               url: '/pages/init/init',
+            })
+          } else {
+            wx.showToast({
+              title: res.Msg,
+              icon: 'none',
+              duration: 2000,
+              success: res => {
+                _this.setData({
+                  flag: true
+                })
+              }
             })
           }
         })
@@ -101,7 +112,7 @@ Page({
     var num = 61;
     let _this = this;
     var myreg = /^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$$/;
-    if (this.data.phone == "") {
+    if (this.data.mobile == "") {
       wx.showToast({
         title: '手机号不能为空',
         icon: 'none',
@@ -116,16 +127,11 @@ Page({
       })
       return false;
     } else {
-      wx.request({
-        url: app.globalData.url + 'common/code',
-        data: {
-          mobile: this.data.mobile,
-          type: 1
-        },
-        method: 'post',
-        success(res) {
-          console.log('获取验证码', res.data.data)
-        }
+      let params = {
+        mobile: this.data.mobile
+      }
+      app.ajax(app.globalData.config.getSendSms, params).then(res => {
+        console.log(res)
       })
       var timer = setInterval(function() {
         num--;

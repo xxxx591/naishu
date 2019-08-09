@@ -80,6 +80,7 @@
   border-radius: 10rpx;
   padding: 30rpx;
   margin-top: 30rpx;
+  color: #FF6D40;
 }
 
 .list-title {

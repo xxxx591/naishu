@@ -22,16 +22,10 @@ Page({
   onLoad: function(options) {
     console.log(options.type)
     this.setData({
-      userObjs: wx.getStorageSync('userDetails')
+      userObjs: wx.getStorageSync('userDetails'),
+      type: options.type
     })
-    if (options.type == 1) {
-      this.init()
-    } else {
-      this.setData({
-        selectFlag: true
-      })
-      this.init()
-    }
+
   },
   // 获取券
   init() {
@@ -103,14 +97,14 @@ Page({
             meishiArr.push(obj)
           }
         }
-        couponList.map(item=>{
-          if(item.id == obj.id){
+        couponList.map(item => {
+          if (item.id == obj.id) {
             item.falg = !item.falg
           }
         })
       }
       this.setData({
-        quanList:meishiArr,
+        quanList: meishiArr,
         couponList: couponList
       })
       wx.setStorageSync('youhuiquan', meishiArr)
@@ -134,7 +128,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (this.data.type == 1) {
+      this.init()
+    } else {
+      this.setData({
+        selectFlag: true
+      })
+      this.init()
+    }
   },
 
   /**

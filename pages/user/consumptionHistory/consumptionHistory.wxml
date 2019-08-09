@@ -23,5 +23,5 @@
 </view>
 
 <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose">
-  <van-datetime-picker type="year-month" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput" bind:confirm="confirm" />
+  <van-datetime-picker type="year-month" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput" bind:confirm="confirm"  bind:cancel="onClose" />
 </van-popup>

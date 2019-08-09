@@ -35,7 +35,9 @@ Page({
     vipContent: '无',
     // 余额
     balance: 0,
-    yuEBalanceFlag: true
+    yuEBalanceFlag: true,
+    // 是否是会员
+    notVIp:true
   },
   // 跳优惠券
   goYouhuiquan() {
@@ -199,7 +201,8 @@ Page({
                   wx.switchTab({
                     url: '/pages/home/index/index',
                   })
-
+                  wx.removeStorageSync('shopList')
+                  wx.removeStorageSync('shopList2')
                 }, 2000)
               }
             })
@@ -407,7 +410,11 @@ Page({
     let quanobj = wx.getStorageSync('youhuiquan')
     let shopcountPrice = 0;
     let contnet = ''
-
+    if(userObj.member_type ==0){
+      this.setData({
+        notVIp:false
+      })
+    }
     if (type == 1) {
       arr = wx.getStorageSync('shopList')
       // 鲜花模式

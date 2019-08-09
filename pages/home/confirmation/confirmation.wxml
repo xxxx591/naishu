@@ -7,7 +7,7 @@
     <button class='white {{leftIndex==1?"green":""}}' id="1" bindtap='checkPayType'>外卖配送</button>
     <button class='white {{leftIndex==2?"green":""}}' id="2" bindtap='checkPayType'>到店自取</button>
   </view>
-  <view class='tips' wx:if="{{leftIndex==2}}">注：当前配送地址超出本店配送范围，请到店自取</view>
+  <view class='tips' wx:if="{{leftIndex==2 && notVIp}}">注：当前配送地址超出本店配送范围，请到店自取</view>
   <!-- 地址，有两种情况 -->
   <view class='address-box' wx:if="{{leftIndex==2}}">
     <view class='address-box1'>

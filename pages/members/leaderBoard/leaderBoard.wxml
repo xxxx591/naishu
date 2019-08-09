@@ -10,7 +10,7 @@
     <view class='item-list'>
       <view class='list' wx:for="{{dataList.fans_data}}" wx:key="{{item.index}}">
         <!-- <image></image> -->
-        <view class='item-img class{{index}}'>{{index + 1}}</view>
+        <view class='item-img class{{index}}'>{{index<=2?'':index + 1}}</view>
         <text class='item-name'>{{item.nickname}}</text>
         <text class='item-core'>{{item.fans_num}}</text>
       </view>
