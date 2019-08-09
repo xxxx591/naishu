@@ -1,6 +1,7 @@
 // pages/home/details/details.js
 var app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
+
 Page({
 
   /**

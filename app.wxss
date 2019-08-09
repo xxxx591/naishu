@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "/pages/wxParse/wxParse.wxss";
 .boxxxxx{
   overflow: hidden;
 }
