@@ -5,11 +5,16 @@
       <text class='item-title'>收件人：</text>
       <input class='item-ipt' placeholder='请输入' bindblur="getUser" type='text' value="{{userName}}"></input>
     </view>
+    <!-- 收件人 -->
+    <view class='item item-name'>
+      <text class='item-title'>联系方式：</text>
+      <input class='item-ipt' placeholder='请输入' bindblur="getPhone" type='text' value="{{userPhone}}"></input>
+    </view>
     <!-- 联系方式 -->
-    <view class='item item-contact'>
+    <!-- <view class='item item-contact'>
       <text class='item-title'>联系方式：</text> 
       <input class='item-ipt ipt' placeholder='请输入' bindblur="getPhone" type='text' value="{{userPhone}}"></input>
-    </view>
+    </view> -->
     <!-- 收件地址： -->
     <view class="item item-address">
       <view class="item-title" >收件地址：</view>

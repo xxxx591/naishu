@@ -16,10 +16,10 @@ Page({
     page: 1,
     pageSize: 8,
     isShow: true,
-    bannerPicture:''
+    bannerPicture: ''
   },
   // 跳转说明
-  goOther(){
+  goOther() {
     wx.navigateTo({
       url: '/pages/siglepage/siglepage?id=8',
     })
@@ -261,7 +261,8 @@ Page({
 
     wx.setStorageSync('type', options.type)
     this.setData({
-      type: options.type
+      type: options.type,
+      leftIndex: 0
     })
     console.log(options.type)
     if (this.data.type == 1) {
@@ -383,6 +384,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.setData({
+      leftIndex: 0
+    })
     if (this.data.type == 1) {
       this.getList(1);
       wx.setNavigationBarTitle({

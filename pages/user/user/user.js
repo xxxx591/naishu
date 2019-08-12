@@ -121,11 +121,7 @@ Page({
                         type: 'wgs84',
                         success(data) {
                           console.log('地理位置', data)
-                          wx.setStorageSync('lat', data.latitude)
-                          wx.setStorageSync('lng', data.longitude)
-                          wx.setStorageSync('userDetails', userInfores.Data.user)
-                          wx.removeStorageSync('storeName')
-                          wx.removeStorageSync('storeId')
+                         
                           _this.setData({
                             flag: true,
                             balance: '余额：￥' + wx.getStorageSync('userDetails').money

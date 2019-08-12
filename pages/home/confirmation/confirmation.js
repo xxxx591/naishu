@@ -153,10 +153,9 @@ Page({
     let quanarr = [];
     const resule = wx.getStorageInfoSync()
     console.log(resule.youhuiquan)
-    if (resule.youhuiquan == undefined) {
-
-    } else {
-
+    if (resule.keys.indexOf('youhuiquan') == -1){
+      
+    }else{
       this.data.quanobj.map(item => {
         quanarr.push(item.id)
       })
@@ -197,12 +196,12 @@ Page({
               title: '支付成功',
               duration: 2000,
               success: res => {
+               
                 setTimeout(_ => {
                   wx.switchTab({
                     url: '/pages/home/index/index',
                   })
-                  wx.removeStorageSync('shopList')
-                  wx.removeStorageSync('shopList2')
+                
                 }, 2000)
               }
             })
@@ -222,6 +221,8 @@ Page({
               paySign: data.paySign,
               success(res) {
                 console.log('支付成功的回调', res)
+                wx.removeStorageSync('shopList')
+                wx.removeStorageSync('shopList2')
                 wx.showToast({
                   title: '支付成功',
                   duration: 2000,

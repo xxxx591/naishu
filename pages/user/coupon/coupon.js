@@ -21,10 +21,7 @@ Page({
    */
   onLoad: function(options) {
     console.log(options.type)
-    this.setData({
-      userObjs: wx.getStorageSync('userDetails')
-    }) 
-    this.init()
+   
   },
   // 获取券
   init() {
@@ -111,7 +108,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.setData({
+      userObjs: wx.getStorageSync('userDetails')
+    })
+    this.init()
   },
 
   /**

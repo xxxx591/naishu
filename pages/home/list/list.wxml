@@ -28,9 +28,9 @@
             <text class='price-2'>{{item.price}}</text>
           </view>
           <view class='num-box'>
-            <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num1-icon"></view></view>
+            <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><image src='/assets/image/jianshao.png'></image></view>
             <view class='num-box2'>{{item.count}}</view>
-            <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num2-icon"></view><view class="num2-icon-2"></view></view>
+            <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><image src='/assets/image/add.png'></image></view>
           </view>
         </view>
       </view>
@@ -71,9 +71,9 @@
               <text class='price-2'>{{item.price}}</text>
             </view>
             <view class='num-box'>
-              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num1-icon"></view></view>
+              <view class='num-box1' catchtap='subtracttap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><image src='/assets/image/jianshao.png'></image></view>
               <view class='num-box2'>{{item.count}}</view>
-              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><view class="num2-icon"></view><view class="num2-icon-2"></view></view>
+              <view class='num-box3' catchtap='addtap' data-count="{{item.count}}" data-objs="{{item}}" id="{{index}}"><image src='/assets/image/add.png'></image></view>
             </view>
           </view>
         </view>
