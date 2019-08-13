@@ -1,0 +1,6 @@
+<van-tabs active="{{ active }}" bind:change="onChange" color="#1E6031">
+  <van-tab title="全部">内容 1</van-tab>
+  <van-tab title="代付款">内容 2</van-tab>
+  <van-tab title="已完成">内容 3</van-tab>
+  <van-tab title="已退款">内容 4</van-tab>
+</van-tabs>
