@@ -1,5 +1,32 @@
 <van-tabs active="{{ active }}" bind:change="onChange" color="#1E6031">
-  <van-tab title="全部">内容 1</van-tab>
+  <van-tab title="全部" icon="friends-o" info="5">
+    <view class='shop-list'>
+      <view class="list-title">
+        <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
+        <view>{{storeName}}</view>
+      </view>
+      <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+        <view class='shop-box' wx:if="{{item.count>0}}">
+          <image src='{{item.imgUrl}}' data-objs="{{item}}" bindtap='goDetails'></image>
+          <view class='shop-box shop-box1' data-objs="{{item}}" bindtap='goDetails'>
+            <view class='shop-title'>
+              <text>{{item.title}}</text>
+            </view>
+            <view class='price-ou-box'>
+              <view class='price'>
+                <text class='price-1'>￥</text>
+                <text class='price-2'>{{item.price}}</text>
+              </view>
+              <view class='num-box'>
+
+                <view class='num-box2'>×{{item.count}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
   <van-tab title="代付款">内容 2</van-tab>
   <van-tab title="已完成">内容 3</van-tab>
   <van-tab title="已退款">内容 4</van-tab>

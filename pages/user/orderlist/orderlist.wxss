@@ -1,1 +1,332 @@
-/* pages/user/orderlist/orderlist.wxss */
+/* pages/home/confirmation/confirmation.wxss */
+
+.peisong {
+  padding: 30rpx;
+}
+
+.top-button {
+  display: flex;
+  padding-bottom: 20rpx;
+}
+
+.top-button button {
+  flex: 1;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  background: rgba(247, 248, 250, 1);
+  border-radius: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.top-button button:first-of-type {
+  margin-right: 30rpx;
+}
+
+.top-button .green {
+  background: #fbfffc;
+  border: 1px solid rgba(30, 96, 49, 1);
+  color: rgba(30, 96, 49, 1);
+}
+
+.tips {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 109, 64, 1);
+}
+
+.address-box {
+  position: relative;
+  padding-top: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  line-height: 44rpx;
+  padding-right: 100rpx;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -14rpx;
+}
+
+.address-box1 {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 23rpx;
+}
+
+.address-box2 {
+  display: flex;
+  align-items: flex-start;
+}
+
+.address-box2-title1 {
+  flex: 1;
+}
+
+.address-box2-title2 {
+  flex: 3;
+}
+
+.fuwenben {
+  background: rgba(255, 243, 241, 1);
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin-top: 30rpx;
+  color: #FF6D40;
+}
+
+.list-title {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border: 1px solid #efefef;
+}
+
+.van-cell__value {
+  color: #c8a015 !important;
+}
+
+.foot-box {
+  height: 120rpx;
+  line-height: 120rpx;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.foot-1 {
+  color: #333;
+  font-size: 24rpx;
+}
+
+.foot-1 text {
+  color: #c8a015;
+  font-size: 40rpx;
+}
+
+.foot-2 {
+  display: flex;
+}
+
+.foot-2 button {
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #1e6031;
+  background: #fff;
+  border: 2rpx solid rgba(30, 96, 49, 1);
+  border-radius: 40rpx;
+  font-size: 32rpx;
+}
+
+.foot-2 .button-g {
+  background: rgba(30, 96, 49, 1);
+  color: #fff;
+  margin-left: 20rpx;
+  justify-content: space-between;
+}
+
+.button-g-02 {
+  background: rgba(30, 96, 49, 1);
+  color: #fff;
+  margin-left: 20rpx;
+  border-radius: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 50rpx 40rpx;
+}
+
+.pay-title {
+  text-align: right;
+  padding: 30rpx 30rpx 0;
+}
+
+.pay-content {
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+.pay-content .text-002 {
+  padding-top: 30rpx;
+  padding-bottom: 60rpx;
+  font-size: 64rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.Other-box {
+  width: 560rpx;
+  padding: 30rpx;
+  border-radius: 14rpx;
+}
+
+.pay-title1 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 80rpx;
+  position: relative;
+}
+
+.van-cell__title {
+  max-width: 120px !important;
+  min-width: 120px !important;
+}
+
+.yue-box {
+  position: absolute;
+  top: 20%;
+  right: 100rpx;
+}
+
+.pay-btn {
+  padding: 30rpx 0;
+  text-align: center;
+}
+
+.pay-btn button {
+  width: 400rpx;
+  background: rgba(30, 96, 49, 1);
+  color: #fff;
+  margin-left: 20rpx;
+  border-radius: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+}
+
+/* 商品列表 */
+
+.value-class {
+  flex: none !important;
+  justify-content: space-between;
+}
+
+.shop-list {
+  background: #efefef;
+  padding: 30rpx 0;
+  padding-bottom: 150rpx;
+}
+
+.van-cell {
+  justify-content: space-between !important;
+}
+
+.shpo-details {
+  display: flex;
+  background: #fff;
+}
+
+.shpo-details:last-of-type {
+  border-bottom: 1px solid #efefef;
+}
+
+.shpo-details image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  margin-right: 26rpx;
+  margin-left: 30rpx;
+  flex: 1;
+}
+
+.shop-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  flex: 3.15;
+  padding-bottom: 30rpx;
+  padding-right: 30rpx;
+}
+
+.shop-box:first-of-type {
+  padding-top: 30rpx;
+}
+
+.shop-box1 {
+  padding: 0 !important;
+}
+
+.shop-title {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  width: 100%;
+  height: 24px;
+}
+
+.price-ou-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.price {
+  flex: 1;
+}
+
+.price-1 {
+  font-size: 28rpx;
+  color: rgba(200, 160, 21, 1);
+}
+
+.price-2 {
+  font-size: 40rpx;
+  color: rgba(200, 160, 21, 1);
+}
+
+.num-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.num-box1 {
+  width: 48rpx;
+  height: 48rpx;
+  text-align: center;
+  line-height: 40rpx;
+  background: #cdcdcd;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.num-box2 {
+  width: 48rpx;
+  height: 48rpx;
+  text-align: center;
+  line-height: 48rpx;
+  color: #333;
+}
+
+.num-box3 {
+  width: 48rpx;
+  height: 48rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 50%;
+  background: #1e6031;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
