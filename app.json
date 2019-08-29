@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/user/orderlist/orderlist",
     "pages/home/index/index",
+    "pages/user/orderlist/orderlist",
     "pages/login/login",
     "pages/home/details/details",
     "pages/siglepage/siglepage",
@@ -26,7 +26,8 @@
     "pages/members/consumptionHistory/consumptionHistory",
     "pages/index/index",
     "pages/user/coupon/coupon",
-    "pages/user/login/login"
+    "pages/user/login/login",
+    "pages/user/orderDetails/orderDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,133 @@
+<!--pages/home/confirmation/confirmation.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<!-- 第一部分 -->
+<view class="top-green">
+  <view>
+    <image src="/assets/image/order_status.png"></image>
+    <text>{{status}}</text>
+  </view>
+</view>
+
+<view class='peisong'>
+
+  <view class='top-button'>
+    <text class='white' id="2" wx:if="{{leftIndex==1}}">外卖配送</text>
+    <text class='white' id="2" wx:if="{{leftIndex==2}}">到店自取</text>
+  </view>
+
+  <!-- 地址，有两种情况 -->
+  <view class='address-box' wx:if="{{leftIndex==2}}">
+    <view class='address-box1'>
+      <view class='address-box2-title1'>联系电话：</view>
+      <view class='address-box2-title2'>{{shopPhone}}</view>
+    </view>
+    <view class='address-box2'>
+      <view class='address-box2-title1'>商家地址：</view>
+      <view class='address-box2-title2'>{{shopAddress}}</view>
+    </view>
+  </view>
+  <!-- 地址的第二种情况 -->
+  <view class='address-box' wx:if="{{leftIndex==1}}" bindtap="selectAddress">
+    <view class='address-box1'>
+      <view class='address-box2-title1'>收货信息：</view>
+      <view class='address-box2-title2'>{{userName + userPhone}}</view>
+    </view>
+    <view class='address-box2'>
+      <view class='address-box2-title1'></view>
+      <view class='address-box2-title2'>{{userAddress}}</view>
+    </view>
+
+  </view>
+
+</view>
+
+<!-- 商品列表，第二部分 -->
+
+<view class='shop-list'>
+  <view class="list-title">
+    <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
+    <view>{{storeName}}</view>
+  </view>
+  <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
+    <view class='shop-box'>
+      <image src='{{item.picture_path}}' data-objs="{{item}}" bindtap='goDetails'></image>
+      <view class='shop-box shop-box1' data-objs="{{item}}" bindtap='goDetails'>
+        <view class='shop-title'>
+          <text>{{item.goods_name}}</text>
+        </view>
+        <view class='price-ou-box'>
+          <view class='price'>
+            <text class='price-1'>￥</text>
+            <text class='price-2'>{{item.price}}</text>
+          </view>
+          <view class='num-box'>
+
+            <view class='num-box2'>×{{item.num}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-cell title="商品总价" value="{{order_price}}" />
+  <van-cell title="优惠券" value="{{coupon_price}}" />
+  <van-cell title="会员折扣" value="{{member_price}}" />
+<view class="order-list">
+  <text>订单编号：{{sn}}</text>
+  <text>创建时间：{{create_time}}</text>
+  <text wx:if="{{status=='已付款'}}">支付时间：{{pay_time}}</text>
+</view>
+</view>
+<view class='foot-box' wx:if="{{status!='已付款'}}">
+  <view class='foot-1'>合计：
+    <text>￥{{order_price}}</text>
+  </view>
+  <view class='foot-2'>
+    <button class='button-g' bindtap='payNow'>立即支付</button>
+  </view>
+</view>
+
+<!-- 弹出 -->
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+  <view class='pay-title'>
+    <van-icon name="cross" size="48rpx" color="#333" custom-style="margin-right:10rpx;" bind:click='cancelPaySelf' />
+  </view>
+  <view class='pay-content'>
+    <view>共需支付</view>
+    <view class='text-002'>￥{{shopcountPrice}}</view>
+  </view>
+  <view>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-cell-group>
+        <van-cell title="微信支付" value-class="value-class" clickable data-name="1" bind:click="onClick">
+          <van-radio name="1" checked-color="#1E6031" />
+        </van-cell>
+        <van-cell title="余额支付" value-class="value-class" clickable data-name="2" bind:click="onClick">
+          <van-radio name="2" checked-color="#1E6031" />
+          <view class='yue-box'>余额剩余￥{{balance}}</view>
+        </van-cell>
+      </van-cell-group>
+    </van-radio-group>
+  </view>
+  <view class='pay-btn'>
+    <button bindtap="payNow">确认支付</button>
+  </view>
+</van-popup>
+
+<!-- 找人付款弹出 -->
+<van-popup show="{{ showOther }}" bind:close="onCloseOther" custom-class="Other-box">
+  <view>
+    <view class='pay-title1'>
+      <text style='flex:1;text-align:center;'>找人代付</text>
+      <van-icon name="cross" size="48rpx" color="#333" custom-style="position:absolute;right:0;" bind:click="cancelPayOther" />
+    </view>
+    <view>
+      <van-cell-group>
+        <van-field value="{{ userPhone001 }}" clearable label="代付人手机号：" type="number" maxlength="11" placeholder="请输入" bind:change="changeUserPhone" />
+        <van-field value="{{ password001 }}" type="password" label="支付密码：" placeholder="请输入" border="{{ false }}" bind:change="changeUserPSW" />
+      </van-cell-group>
+    </view>
+    <view>
+      <button class='button-g-02' bindtap='payNowOther'>确认支付</button>
+    </view>
+  </view>
+</van-popup>

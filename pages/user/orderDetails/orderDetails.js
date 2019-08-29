@@ -18,7 +18,7 @@ Page({
     type: '',
     otherDetails: '',
     storeName: '',
-    leftIndex: 1,
+    leftIndex: 2,
     clickFlag: true,
     tipFlag: true,
     userObj: {},
@@ -37,36 +37,9 @@ Page({
     balance: 0,
     yuEBalanceFlag: true,
     // 是否是会员
-    notVIp:true
+    notVIp: true
   },
-  // 跳优惠券
-  goYouhuiquan() {
-    if (this.data.type == 1) {
-      wx.navigateTo({
-        url: '/pages/home/coupon/coupon?type=1',
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/home/coupon/coupon?type=2',
-      })
-    }
-  },
-  // 跳转至收货地址管理
-  selectAddress() {
-    wx.navigateTo({
-      url: '/pages/home/userAddressList/userAddressList',
-    })
-  },
-  // 切换配送模式
-  checkPayType(e) {
-    if (this.data.clickFlag) {
-      this.setData({
-        leftIndex: e.currentTarget.id,
-      })
-    } else {
-      return
-    }
-  },
+ 
   // 自己支付
   paySelf() {
     this.setData({
@@ -113,8 +86,7 @@ Page({
   },
   onChange(event) {
     console.log(event)
-    // debugger
-    if (parseFloat(this.data.balance) < parseFloat(this.data.shopcountPrice)) {
+    if (this.data.balance < this.data.shopcountPrice) {
       wx.showToast({
         title: '余额不足',
         icon: 'none',
@@ -142,47 +114,28 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
+    console.log(options) 
+    let userObj = wx.getStorageSync('userDetails')
+    let gid = options.gid
+    this.setData({
+      userObj:userObj,
+      gid:gid
+    })
     this.init()
   },
   // 立即支付
   payNow() {
     let flag = true;
-    let params = {};
-    let arr = [];
-    let price = 0;
-    let quanarr = [];
-    const resule = wx.getStorageInfoSync()
-    console.log(resule.youhuiquan)
-    if (resule.keys.indexOf('youhuiquan') == -1){
-      
-    }else{
-      this.data.quanobj.map(item => {
-        quanarr.push(item.id)
-      })
-    }
-    this.data.shopList.map(item => {
-      let obj = {};
-      obj.id = item.id;
-      obj.num = item.count;
-      price += parseFloat(parseFloat(item.count * item.price).toFixed(2))
-      arr.push(obj)
-    })
+    let params = {};  
     params.uid = this.data.userObj.uid; //用户ID
-    params.store_id = wx.getStorageSync('storeId') //店铺id
-    params.goods_json = arr //商品id和数量
-    params.goods_type = this.data.type //商品类型
-    params.delivery_type = this.data.leftIndex //配送方式
-    params.pay_type = this.data.radio //支付方式
-    params.order_price = parseFloat(price).toFixed(2) //原始金额
-    params.pay_price = this.data.shopcountPrice //支付金额
-    params.coupon_price = parseFloat(price - this.data.shopcountPrice).toFixed(2) // 优惠金额
-    params.user_coupon_ids = quanarr.join(',') //优惠券合集
+    params.id = this.data.gid //订单id 
+    params.pay_type = this.data.radio //支付方式 
     params.replace_user_mobile = this.data.userPhone001 //代付人手机号码
     params.replace_pay_password = this.data.password001 //代付密码
     if (flag) {
       flag = false
-      app.ajax(app.globalData.config.createOrder, params).then(res => {
+      app.ajax(app.globalData.config.orderPay, params).then(res => {
         console.log(res)
         let data = res.Data
         if (this.data.radio == 2) {
@@ -197,12 +150,12 @@ Page({
               title: '支付成功',
               duration: 2000,
               success: res => {
-               
+
                 setTimeout(_ => {
                   wx.switchTab({
                     url: '/pages/home/index/index',
                   })
-                
+
                 }, 2000)
               }
             })
@@ -236,7 +189,7 @@ Page({
                   }
                 })
               },
-              fail(res) {}
+              fail(res) { }
             })
           } else {
             setTimeout(_ => {
@@ -383,124 +336,77 @@ Page({
     })
   },
   init() {
-    let that = this
-    let type = wx.getStorageSync('type')
     let params = {
-      id: type
+      id: this.data.gid,
+      uid:this.data.userObj.uid
     }
-    app.ajax(app.globalData.config.getOther, params).then(res => {
+    app.ajax(app.globalData.config.goodsDetails, params).then(res => {
       console.log(res)
-      let article = res.Data
-      WxParse.wxParse('article', 'html', article, that, 5);
-      // that.setData({
-      //   otherDetails: res.Data
-      // })
+      this.setData({
+        shopList:res.Data.goods,   //商品列表
+        leftIndex: res.Data.delivery_type,  //支付状态
+        storeName: res.Data.store_name, //店铺名称
+        member_price: res.Data.member_price, //总金额
+        coupon_price: res.Data.coupon_price, //优惠金额
+        order_price: res.Data.order_price, //会员优惠金额
+        sn: res.Data.order_sn,  //订单号
+        create_time: res.Data.create_time,   //创建订单时间
+        status: res.Data.status,  //订单状态
+        shopPhone: res.Data.store_address.mobile,  // 
+        shopAddress: res.Data.store_address.address,
+        userName: res.Data.user_address.consignee,
+        userPhone: res.Data.user_address.mobile,
+        userAddress: res.Data.user_address.address,
+        pay_time: res.Data.pay_time  //支付时间
+      })
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    let arr = wx.getStorageSync('shopList')
-    let userObj = wx.getStorageSync('userDetails')
-    let type = wx.getStorageSync('type')
-    let quanobj = wx.getStorageSync('youhuiquan')
-    let shopcountPrice = 0;
-    let contnet = ''
-    if(userObj.member_type ==0){
-      this.setData({
-        notVIp:false
-      })
-    }
-    if (type == 1) {
-      arr = wx.getStorageSync('shopList')
-      // 鲜花模式
+  onShow: function () {
 
-    } else {
-      arr = wx.getStorageSync('shopList2')
-
-    }
-    arr.map(item => {
-      shopcountPrice += parseFloat(parseFloat(item.count * item.price).toFixed(2))
-    })
-    this.setData({
-      shopList: arr,
-      shopcountPrice: parseFloat(shopcountPrice).toFixed(2),
-      type: wx.getStorageSync('type'),
-      storeName: wx.getStorageSync('storeName'),
-      userObj: userObj,
-      quanobj: quanobj,
-      balance: this.data.userObj.money
-    })
-    // this.init();
-    this.confimOrder();
-    this.getAddressDefault()
-    if (typeof(this.data.quanobj) == 'object') {
-      this.getPrice()
-    } else {
-      this.setData({
-        daijinquan: '请选择'
-      })
-      if (this.data.type == 1) {
-        contnet = "无"
-      } else {
-        if (userObj.member_type == 0 || userObj.member_type == 1) {
-          contnet = "无"
-        } else if (userObj.member_type == 2) {
-          contnet = `优惠￥${parseFloat(shopcountPrice * 0.1).toFixed(2)}：牛客会员享受9折`
-          shopcountPrice = parseFloat(shopcountPrice * 0.9).toFixed(2)
-        } else if (userObj.member_type == 3){
-          contnet = `优惠￥${parseFloat(shopcountPrice * 0.2).toFixed(2)}：牛友会员享受8折`
-          shopcountPrice = parseFloat(shopcountPrice * 0.8).toFixed(2)
-        }
-      }
-    }
-    this.setData({
-      shopcountPrice: parseFloat(shopcountPrice).toFixed(2),
-      vipContent: contnet,
-      balance: this.data.userObj.money
-    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

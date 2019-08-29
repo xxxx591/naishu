@@ -21,7 +21,7 @@
   <view class='list-container'>
     <view class='item-container'>
       <view class='item-list-container'>
-        <view class='item item-border'>
+        <view class='item item-border' bindtap='goOrderList'>
           <image class='icon' src='/assets/image/order-icon.png'></image>
           <text>订单管理</text>
           <image class='right-icon' src='/assets/image/right-icon.png'></image>

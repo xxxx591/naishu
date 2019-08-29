@@ -31,6 +31,9 @@ Page({
     })
   },
   goBuy() {
+    if (this.data.shopcountIndex==0){
+      return
+    }
     // 查看是否授权
     let _this = this
     wx.login({
@@ -170,7 +173,7 @@ Page({
   },
   // 物品增加
   addtap(item) {
-    // console.log(item.currentTarget.dataset.objs) 
+    console.log(item.currentTarget.dataset.objs) 
     let buyCarList = this.data.buyCarList;
     console.log(buyCarList)
     let count = item.currentTarget.dataset.count

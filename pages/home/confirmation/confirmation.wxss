@@ -312,7 +312,7 @@
 }
 
 .num-box2 {
-  width: 48rpx;
+  width: 60rpx;
   height: 48rpx;
   text-align: center;
   line-height: 48rpx;

@@ -1,33 +1,158 @@
 <van-tabs active="{{ active }}" bind:change="onChange" color="#1E6031">
-  <van-tab title="全部" icon="friends-o" info="5">
-    <view class='shop-list'>
-      <view class="list-title">
-        <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
-        <view>{{storeName}}</view>
-      </view>
-      <view class='shpo-details' wx:for="{{shopList}}" wx:key="index">
-        <view class='shop-box' wx:if="{{item.count>0}}">
-          <image src='{{item.imgUrl}}' data-objs="{{item}}" bindtap='goDetails'></image>
-          <view class='shop-box shop-box1' data-objs="{{item}}" bindtap='goDetails'>
-            <view class='shop-title'>
-              <text>{{item.title}}</text>
-            </view>
-            <view class='price-ou-box'>
-              <view class='price'>
-                <text class='price-1'>￥</text>
-                <text class='price-2'>{{item.price}}</text>
+  <van-tab title="全部" icon="friends-o">
+    <scroll-view class="scroll-box" scroll-y lower-threshold='100' bindscrolltolower="update" style="height: {{scroll_height?scroll_height+'px':'auto'}}">
+      <view class='shop-list' wx:for="{{orderlist}}">
+        <view class="list-title">
+          <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
+          <view class="new-title-head">
+            <text>{{item.store_name}}</text>
+            <text>{{item.order_status==1?'待付款':item.order_status==2?'已付款':'已退款'}}</text>
+          </view>
+        </view>
+        <view class='shpo-details' bindtap="orderDetails" id="{{item.id}}" wx:key="index">
+          <view class='shop-box' wx:for="{{item.goods}}" wx:for-item="goodsItem">
+            <image src='{{goodsItem.picture_path}}' bindtap='goDetails'></image>
+            <view class='shop-box shop-box1' bindtap='goDetails'>
+              <view class='shop-title'>
+                <text>{{goodsItem.goods_name}}</text>
               </view>
-              <view class='num-box'>
-
-                <view class='num-box2'>×{{item.count}}</view>
+              <view class='price-ou-box'>
+                <view class='price'>
+                  <text class='price-1'>￥</text>
+                  <text class='price-2'>{{goodsItem.price}}</text>
+                </view>
+                <view class='num-box'>
+                  <view class='num-box2'>×{{goodsItem.num}}</view>
+                </view>
               </view>
             </view>
           </view>
         </view>
+        <view class="all-price">
+          <view class="pay-button-1">
+            <text>合计：</text>
+            <text>￥{{item.pay_price}}</text>
+          </view>
+          <view wx:if="{{item.order_status==1}}" id="{{item.order_status}}" class="pay-button-2"> 立即支付 </view>
+        </view>
       </view>
-    </view>
+    </scroll-view>
   </van-tab>
-  <van-tab title="代付款">内容 2</van-tab>
-  <van-tab title="已完成">内容 3</van-tab>
-  <van-tab title="已退款">内容 4</van-tab>
+  <van-tab title="代付款" icon="friends-o" info="{{nopaynum}}">
+    <scroll-view class="scroll-box" scroll-y lower-threshold='100' bindscrolltolower="update" style="height: {{scroll_height?scroll_height+'px':'auto'}}">
+      <view class='shop-list' wx:for="{{orderlist}}">
+        <view class="list-title">
+          <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
+          <view class="new-title-head">
+            <text>{{item.store_name}}</text>
+            <text>{{item.order_status==1?'待付款':item.order_status==2?'已付款':'已退款'}}</text>
+          </view>
+        </view>
+        <view class='shpo-details' bindtap="orderDetails" id="{{item.id}}" wx:key="index">
+          <view class='shop-box' wx:for="{{item.goods}}" wx:for-item="goodsItem">
+            <image src='{{goodsItem.picture_path}}' bindtap='goDetails'></image>
+            <view class='shop-box shop-box1' bindtap='goDetails'>
+              <view class='shop-title'>
+                <text>{{goodsItem.goods_name}}</text>
+              </view>
+              <view class='price-ou-box'>
+                <view class='price'>
+                  <text class='price-1'>￥</text>
+                  <text class='price-2'>{{goodsItem.price}}</text>
+                </view>
+                <view class='num-box'>
+                  <view class='num-box2'>×{{goodsItem.num}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="all-price">
+          <view class="pay-button-1">
+            <text>合计：</text>
+            <text>￥{{item.pay_price}}</text>
+          </view>
+          <view wx:if="{{item.order_status==1}}" id="{{item.order_status}}" class="pay-button-2"> 立即支付 </view>
+        </view>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="已完成"  >
+    <scroll-view class="scroll-box" scroll-y lower-threshold='100' bindscrolltolower="update" style="height: {{scroll_height?scroll_height+'px':'auto'}}">
+      <view class='shop-list' wx:for="{{orderlist}}">
+        <view class="list-title">
+          <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
+          <view class="new-title-head">
+            <text>{{item.store_name}}</text>
+            <text>{{item.order_status==1?'待付款':item.order_status==2?'已付款':'已退款'}}</text>
+          </view>
+        </view>
+        <view class='shpo-details' bindtap="orderDetails" id="{{item.id}}" wx:key="index">
+          <view class='shop-box' wx:for="{{item.goods}}" wx:for-item="goodsItem">
+            <image src='{{goodsItem.picture_path}}' bindtap='goDetails'></image>
+            <view class='shop-box shop-box1' bindtap='goDetails'>
+              <view class='shop-title'>
+                <text>{{goodsItem.goods_name}}</text>
+              </view>
+              <view class='price-ou-box'>
+                <view class='price'>
+                  <text class='price-1'>￥</text>
+                  <text class='price-2'>{{goodsItem.price}}</text>
+                </view>
+                <view class='num-box'>
+                  <view class='num-box2'>×{{goodsItem.num}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="all-price">
+          <view class="pay-button-1">
+            <text>合计：</text>
+            <text>￥{{item.pay_price}}</text>
+          </view>
+          <view wx:if="{{item.order_status==1}}" id="{{item.order_status}}" class="pay-button-2"> 立即支付 </view>
+        </view>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="已退款">
+    <scroll-view class="scroll-box" scroll-y lower-threshold='100' bindscrolltolower="update" style="height: {{scroll_height?scroll_height+'px':'auto'}}">
+      <view class='shop-list' wx:for="{{orderlist}}">
+        <view class="list-title">
+          <van-icon name="shop-o" size="48rpx" color="#1E6031" custom-style="margin-right:10rpx;" />
+          <view class="new-title-head">
+            <text>{{item.store_name}}</text>
+            <text>{{item.order_status==1?'待付款':item.order_status==2?'已付款':'已退款'}}</text>
+          </view>
+        </view>
+        <view class='shpo-details' bindtap="orderDetails" id="{{item.id}}" wx:key="index">
+          <view class='shop-box' wx:for="{{item.goods}}" wx:for-item="goodsItem">
+            <image src='{{goodsItem.picture_path}}' bindtap='goDetails'></image>
+            <view class='shop-box shop-box1' bindtap='goDetails'>
+              <view class='shop-title'>
+                <text>{{goodsItem.goods_name}}</text>
+              </view>
+              <view class='price-ou-box'>
+                <view class='price'>
+                  <text class='price-1'>￥</text>
+                  <text class='price-2'>{{goodsItem.price}}</text>
+                </view>
+                <view class='num-box'>
+                  <view class='num-box2'>×{{goodsItem.num}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="all-price">
+          <view class="pay-button-1">
+            <text>合计：</text>
+            <text>￥{{item.pay_price}}</text>
+          </view>
+          <view wx:if="{{item.order_status==1}}" id="{{item.order_status}}" class="pay-button-2"> 立即支付 </view>
+        </view>
+      </view>
+    </scroll-view>
+  </van-tab>
 </van-tabs>

@@ -9,7 +9,7 @@
           <view class='right-item'>
             <view class='title1'>{{item.store_name}}</view>
             <view class='title2'>{{item.open_time}}</view>
-            <view class='title3'>{{item.address}}</view>
+            <view class='title3'>地址：{{item.address}}</view>
           </view>
         </view>
       </view>

@@ -81,7 +81,7 @@ Page({
       this.init()
     } else {
       wx.switchTab({
-        url: '/pages/user/user/user',
+        url: '/pages/init/init',
       })
     }
   },

@@ -21,6 +21,9 @@ Page({
     fuwenben:''
   },
   goBuy() {
+    if (this.data.shopcountIndex == 0) {
+      return
+    }
     // 查看是否授权
     let _this = this
     wx.login({
@@ -177,8 +180,9 @@ Page({
       shopDetails.title = res.Data.goods_name;
       shopDetails.id = this.data.id
       shopDetails.count = this.data.shopNum;
-      shopDetails.price = res.Data.price
-      wx.setStorageSync('shopDetails', shopDetails)
+      shopDetails.price = res.Data.price;
+      // shopDetails.imgUrl = 
+      // wx.setStorageSync('shopDetails', shopDetails)
       this.setData({
         shopDetails: res.Data
       })

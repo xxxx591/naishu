@@ -1,5 +1,22 @@
 /* pages/home/confirmation/confirmation.wxss */
 
+.top-green {
+  display: flex;
+  align-items: center;
+  background: #1e6031;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 30rpx;
+  color: #fff;
+  font-size: 40rpx;
+}
+
+.top-green image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 30rpx;
+}
+
 .peisong {
   padding: 30rpx;
 }
@@ -7,10 +24,10 @@
 .top-button {
   display: flex;
   padding-bottom: 20rpx;
+  justify-content: flex-start;
 }
 
 .top-button button {
-  flex: 1;
   font-size: 28rpx;
   font-family: PingFangSC-Regular;
   font-weight: 400;
@@ -23,6 +40,19 @@
 
 .top-button button:first-of-type {
   margin-right: 30rpx;
+}
+
+.top-button .white {
+  height: 36rpx;
+  background: rgba(30, 96, 49, 1);
+  border: 2rpx solid rgba(30, 96, 49, 1);
+  border-radius: 18rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 36rpx;
+  text-align: center;
 }
 
 .top-button .green {
@@ -91,16 +121,6 @@
   border: 1px solid #efefef;
 }
 
-.new-title-head {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.van-cell__value {
-  color: #c8a015 !important;
-}
-
 .foot-box {
   height: 120rpx;
   line-height: 120rpx;
@@ -129,8 +149,18 @@
   display: flex;
 }
 
+.order-list {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 50rpx;
+}
+
 .foot-2 button {
-  width: 180rpx;
+  width: 200rpx;
   height: 80rpx;
   line-height: 80rpx;
   color: #1e6031;
@@ -138,32 +168,6 @@
   border: 2rpx solid rgba(30, 96, 49, 1);
   border-radius: 40rpx;
   font-size: 32rpx;
-}
-
-.all-price {
-  display: flex;
-  justify-content: flex-end;
-  height: 64rpx;
-  line-height: 64rpx;
-  background: #fff;
-  padding: 30rpx;
-    font-size: 28rpx;
-}
-.scroll-box{
- 
-}
-
-.all-price .pay-button-2 {
-  width: 160rpx;
-  height: 64rpx;
-  line-height: 64rpx;
-  background: rgba(255, 255, 255, 1);
-  border: 2rpx solid rgba(30, 96, 49, 1);
-  border-radius: 32rpx;
-  font-size: 28rpx;
-  color: rgba(30, 96, 49, 1);
-  text-align: center;
-  margin-left: 30rpx;
 }
 
 .foot-2 .button-g {
@@ -254,11 +258,8 @@
 
 .shop-list {
   background: #efefef;
-  padding: 15rpx 0;
-}
-
-.shop-list:first-of-type {
-  padding-top: 30rpx;
+  padding: 30rpx 0;
+  padding-bottom: 150rpx;
 }
 
 .van-cell {
@@ -268,8 +269,6 @@
 .shpo-details {
   display: flex;
   background: #fff;
-  flex-wrap: wrap;
-  border-bottom: 1px solid #efefef;
 }
 
 .shpo-details:last-of-type {
@@ -282,15 +281,16 @@
   border-radius: 20rpx;
   margin-right: 26rpx;
   margin-left: 30rpx;
+  flex: 1;
 }
 
 .shop-box {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+  flex: 3.15;
   padding-bottom: 30rpx;
   padding-right: 30rpx;
-  width: 100%;
 }
 
 .shop-box:first-of-type {
@@ -298,7 +298,6 @@
 }
 
 .shop-box1 {
-  width: 70%;
   padding: 0 !important;
 }
 
@@ -349,7 +348,7 @@
 }
 
 .num-box2 {
-  width: 60rpx;
+  width: 68rpx;
   height: 48rpx;
   text-align: center;
   line-height: 48rpx;

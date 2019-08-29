@@ -14,10 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
-  goCoupon(){
-    
+  goCoupon() {
+
     if (this.data.flag) {
       wx.navigateTo({
         url: '/pages/user/coupon/coupon',
@@ -28,7 +28,12 @@ Page({
       })
     }
   },
-  goAddressList(){
+  goOrderList() {
+    wx.navigateTo({
+      url: '/pages/user/orderlist/orderlist',
+    })
+  },
+  goAddressList() {
     if (this.data.flag) {
       wx.navigateTo({
         url: '/pages/home/userAddressList/userAddressList',
@@ -38,9 +43,9 @@ Page({
         url: '/pages/init/init',
       })
     }
-    
+
   },
-  goPayPassword(){ 
+  goPayPassword() {
     if (this.data.flag) {
       wx.navigateTo({
         url: '/pages/user/login/login',
@@ -121,7 +126,7 @@ Page({
                         type: 'wgs84',
                         success(data) {
                           console.log('地理位置', data)
-                         
+
                           _this.setData({
                             flag: true,
                             balance: '余额：￥' + wx.getStorageSync('userDetails').money
@@ -141,11 +146,15 @@ Page({
               }
             }
           })
-          
+
           console.log(this.data.balance)
         } else {
+
           this.setData({
             flag: false
+          })
+          wx.navigateTo({
+            url: '/pages/init/init',
           })
         }
       }

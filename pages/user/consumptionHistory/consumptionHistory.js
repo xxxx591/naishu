@@ -8,10 +8,11 @@ Page({
   data: {
     list: [],
     currentDate: new Date().getTime(),
-    minDate: new Date().getTime(),
+    minDate:'2017',
     show: false,
     date: new Date().getTime(),
-    page:1
+    page:1,
+    nowTime:'本月'
   },
   selectTime() {
     this.setData({
@@ -39,10 +40,11 @@ Page({
     console.log(e)
     let date = this.timestampToTime(e.detail)
     this.setData({
-      date: e.detail,
+      date: date,
       show: false,
       page:1,
-      list:[]
+      list:[],
+      nowTime:date
     });
     this.init()
   },

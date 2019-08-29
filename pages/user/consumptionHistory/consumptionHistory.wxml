@@ -1,7 +1,7 @@
 <view class='wrapper'>
   <view class='picker-container'>
     <view class='picker' bindtap='selectTime'>
-      <text>本月</text>
+      <text>{{nowTime}}</text>
       <image class='down-icon' src='/assets/image/picker.png'></image>
     </view>
   </view>
@@ -23,5 +23,5 @@
 </view>
 
 <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose">
-  <van-datetime-picker type="year-month" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput" bind:confirm="confirm"  bind:cancel="onClose" />
+  <van-datetime-picker type="year-month" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirm"  bind:cancel="onClose"  />
 </van-popup>

@@ -34,4 +34,7 @@ module.exports = {
   payRecharge:'/api/member/recharge', // 充值
   payPassword:'/api/user/payPassword', // 充值
   getSendSms:'/api/config/sendsms', // 短信验证
+  orderList:'/api/order/orderList', // 订单列表
+  goodsDetails:'/api/order/orderDetail', // 订单详情
+  orderPay:'/api/order/orderPay', // 订单支付
 }
