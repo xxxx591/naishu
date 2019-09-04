@@ -5,7 +5,7 @@
     <view class='desc-center'>
       <text class='desc-num'>{{userData.points}}</text>
       <text class='desc-pay' bindtap='handleGoPay'>消费明细></text>
-      <view class='merber' bindtap='handleGoPrivilege'>会员权益</view>
+      <view class='merber' bindtap='handleGoPrivilege'>会员告知</view>
     </view>
     <view class='wrapper-bottom'>
       <view class='item-bottom' bindtap='handleGoLeaderBoard'>排行榜</view>

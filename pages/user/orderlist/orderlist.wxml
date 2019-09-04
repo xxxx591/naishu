@@ -72,7 +72,7 @@
             <text>合计：</text>
             <text>￥{{item.pay_price}}</text>
           </view>
-          <view wx:if="{{item.order_status==1}}" id="{{item.order_status}}" class="pay-button-2"> 立即支付 </view>
+          <view wx:if="{{item.order_status==1}}" bindtap="orderDetails" id="{{item.id}}" class="pay-button-2"> 立即支付 </view>
         </view>
       </view>
     </scroll-view>

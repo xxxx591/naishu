@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/index/index",
+    "pages/home/confirmation/confirmation",
+    "pages/user/login/login",
     "pages/user/orderlist/orderlist",
     "pages/login/login",
     "pages/home/details/details",
@@ -16,7 +18,6 @@
     "pages/home/address/address",
     "pages/home/receiptAddress/receiptAddress",
     "pages/home/userAddressList/userAddressList",
-    "pages/home/confirmation/confirmation",
     "pages/home/coupon/coupon",
     "pages/home/list/list",
     "pages/members/privilege/privilege",
@@ -26,7 +27,6 @@
     "pages/members/consumptionHistory/consumptionHistory",
     "pages/index/index",
     "pages/user/coupon/coupon",
-    "pages/user/login/login",
     "pages/user/orderDetails/orderDetails"
   ],
   "window": {

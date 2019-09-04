@@ -92,7 +92,7 @@ align-items:center;
   position: relative;
   display: flex;
   width: 120rpx;
-  height: 100rpx;
+  height: 120rpx;
   border-radius: 20rpx;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -117,4 +117,9 @@ align-items:center;
   left: 0;
   top: 0;
   z-index: 1;
+}
+
+.gry-text{
+  font-size: 24rpx;
+  color: #666666;
 }

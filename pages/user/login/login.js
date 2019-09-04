@@ -32,32 +32,32 @@ Page({
         let userInfo = wx.getStorageSync('userDetails')
         let params = {
           uid: userInfo.uid,
-          old_password: this.data.mobile, 
-          password: this.data.password, 
-          repassword: this.data.yaoqingma, 
+          code: this.data.code,
+          password: this.data.password,
+          repassword: this.data.yaoqingma,
         }
         app.ajax(app.globalData.config.payPassword, params).then(res => {
           console.log(res)
-          if(res.Code=='000000'){
+          if (res.Code == '000000') {
             wx.showToast({
               title: '密码修改成功',
-              icon:'success',
-              duration:1000,
-              success:res=>{
-                setTimeout(_=>{
+              icon: 'success',
+              duration: 1000,
+              success: res => {
+                setTimeout(_ => {
                   wx.navigateBack({
                     delta: 1
                   })
-                },1000)
+                }, 1000)
               }
             })
-          }else{
+          } else {
             wx.showToast({
               title: res.Msg,
               icon: 'none',
               duration: 2000,
               success: res => {
-               
+
               }
             })
           }
@@ -102,7 +102,7 @@ Page({
         duration: 1000
       })
       return false;
-    } else if (!myreg.test(this.data.mobile)) {
+    } else if (!myreg.test(this.data.phone)) {
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
@@ -110,16 +110,11 @@ Page({
       })
       return false;
     } else {
-      wx.request({
-        url: app.globalData.url + 'common/code',
-        data: {
-          mobile: this.data.mobile,
-          type: 1
-        },
-        method: 'post',
-        success(res) {
-          console.log('获取验证码', res.data.data)
-        }
+      let params = {
+        mobile: this.data.phone
+      }
+      app.ajax(app.globalData.config.getSendSms, params).then(res => {
+        console.log(res)
       })
       var timer = setInterval(function() {
         num--;
@@ -140,8 +135,10 @@ Page({
 
   },
   onLoad: function(options) {
-
-
+    let details = wx.getStorageSync('userDetails')
+    this.setData({
+      phone: details.mobile
+    })
   },
 
   /**
