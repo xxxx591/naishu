@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index/index",
+    "pages/home/confirmation_select/confirmation_select",
     "pages/home/confirmation/confirmation",
     "pages/user/login/login",
     "pages/user/orderlist/orderlist",
@@ -27,7 +28,8 @@
     "pages/members/consumptionHistory/consumptionHistory",
     "pages/index/index",
     "pages/user/coupon/coupon",
-    "pages/user/orderDetails/orderDetails"
+    "pages/user/orderDetails/orderDetails",
+    "pages/home/danye/danye"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,7 +52,7 @@
       },
       {
         "pagePath": "pages/members/member/member",
-        "text": "会员",
+        "text": "会员社区",
         "iconPath": "assets/image/vip.png",
         "selectedIconPath": "assets/image/vip-on.png"
       },

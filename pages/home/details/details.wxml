@@ -40,7 +40,7 @@
       <view class='suggest'>
         <view class='suggest-title'>温馨提示</view>
         <view class='suggest-content'>
-        <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+          <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
         </view>
       </view>
       <!-- 图文详情 -->
@@ -102,10 +102,17 @@
         </view>
       </view>
     </van-popup>
+    <van-popup show="{{ showWeixinBox }}" bind:close="onClose">
+    <view class="content-weixin-box">
+      <view class="weixin-box">联系手机：18601123560</view>
+      <view class="weixin-box">微信账号：turbowu</view>
+    </view>
+    </van-popup>
   </view>
   <movable-view direction="all" inertia="true">
-    <button open-type='contact' class='kefu-log'>
+    <button class='kefu-log' bindtap="showweixin">
       <image src='/assets/image/kefu.png'></image>
     </button>
   </movable-view>
+  <van-dialog id="van-dialog" />
 </movable-area>

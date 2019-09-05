@@ -37,7 +37,11 @@ Page({
     balance: 0,
     yuEBalanceFlag: true,
     // 是否是会员
-    notVIp:true
+    notVIp: true,
+    // 留言
+    beizhutxt: '',
+    // 配送时间
+    selectTime: '请选择配送时间'
   },
   // 跳优惠券
   goYouhuiquan() {
@@ -48,6 +52,17 @@ Page({
     } else {
       wx.navigateTo({
         url: '/pages/home/coupon/coupon?type=2',
+      })
+    }
+  },
+  selectTime() {
+    if (this.data.leftIndex == 1) {
+      wx.navigateTo({
+        url: '/pages/home/confirmation_select/confirmation_select?type=1',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/home/confirmation_select/confirmation_select?type=2',
       })
     }
   },
@@ -90,7 +105,11 @@ Page({
       password001: value.detail
     })
   },
-
+  getbeizhu(value) {
+    this.setData({
+      beizhutxt: value.detail
+    })
+  },
   cancelPayOther() {
     this.setData({
       showOther: false
@@ -154,9 +173,9 @@ Page({
     let quanarr = [];
     const resule = wx.getStorageInfoSync()
     console.log(resule.youhuiquan)
-    if (resule.keys.indexOf('youhuiquan') == -1){
-      
-    }else{
+    if (resule.keys.indexOf('youhuiquan') == -1) {
+
+    } else {
       this.data.quanobj.map(item => {
         quanarr.push(item.id)
       })
@@ -180,8 +199,18 @@ Page({
     params.user_coupon_ids = quanarr.join(',') //优惠券合集
     params.replace_user_mobile = this.data.userPhone001 //代付人手机号码
     params.replace_pay_password = this.data.password001 //代付密码
+    params.remark = this.data.beizhutxt //留言
+    params.ship_time = this.data.selectTime //配送时间
     if (flag) {
       flag = false
+      if (params.ship_time == '') {
+        wx.showToast({
+          title: '配送时间不能为空',
+          icon: 'none',
+          duration: 2000
+        })
+        return
+      }
       app.ajax(app.globalData.config.createOrder, params).then(res => {
         console.log(res)
         let data = res.Data
@@ -197,12 +226,12 @@ Page({
               title: '支付成功',
               duration: 2000,
               success: res => {
-               
+
                 setTimeout(_ => {
                   wx.switchTab({
                     url: '/pages/home/index/index',
                   })
-                
+
                 }, 2000)
               }
             })
@@ -412,11 +441,12 @@ Page({
     let userObj = wx.getStorageSync('userDetails')
     let type = wx.getStorageSync('type')
     let quanobj = wx.getStorageSync('youhuiquan')
+    let selectTime = wx.getStorageSync('selectTime')
     let shopcountPrice = 0;
     let contnet = ''
-    if(userObj.member_type ==0){
+    if (userObj.member_type == 0) {
       this.setData({
-        notVIp:false
+        notVIp: false
       })
     }
     if (type == 1) {
@@ -437,7 +467,8 @@ Page({
       storeName: wx.getStorageSync('storeName'),
       userObj: userObj,
       quanobj: quanobj,
-      balance: this.data.userObj.money
+      balance: this.data.userObj.money,
+      selectTime: selectTime
     })
     // this.init();
     this.confimOrder();
@@ -456,7 +487,7 @@ Page({
         } else if (userObj.member_type == 2) {
           contnet = `优惠￥${parseFloat(shopcountPrice * 0.1).toFixed(2)}：牛客会员享受9折`
           shopcountPrice = parseFloat(shopcountPrice * 0.9).toFixed(2)
-        } else if (userObj.member_type == 3){
+        } else if (userObj.member_type == 3) {
           contnet = `优惠￥${parseFloat(shopcountPrice * 0.2).toFixed(2)}：牛友会员享受8折`
           shopcountPrice = parseFloat(shopcountPrice * 0.8).toFixed(2)
         }

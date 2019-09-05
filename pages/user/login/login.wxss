@@ -29,7 +29,6 @@
 .submit {
   position: fixed;
   left: 0;
-  margin-bottom: 31rpx;
   width: 100%;
   height: 94rpx;
   display: flex;

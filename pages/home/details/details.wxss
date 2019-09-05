@@ -337,3 +337,14 @@ line-height:44rpx;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.weixin-box{
+font-size: 28rpx;
+line-height: 46rpx;
+padding: 30rpx 0rpx;
+
+
+}
+.content-weixin-box{
+  border-radius: 6rpx;
+  padding: 10px;
+}

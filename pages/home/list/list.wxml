@@ -1,5 +1,5 @@
 <view class="banne-img">
-<image src="{{bannerPicture}}"></image>
+<image src="{{bannerPicture}}" bindtap="godanye"></image>
 </view>
 <view class='content-box'>
   <scroll-view scroll-y class='left-box'>

@@ -1,0 +1,17 @@
+/* pages/home/confirmation_select/confirmation_select.wxss */
+
+.van-tree-select {
+  height: 100vh !important;
+}
+
+.van-tree-select__content {
+  height: 100vh !important;
+}
+
+.van-tree-select__nitem--active:after {
+  background-color: #1e6031!important;
+}
+
+.van-tree-select__item--active {
+  color: #1e6031!important;
+}

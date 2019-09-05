@@ -30,6 +30,11 @@ Page({
       showShopBox: true
     })
   },
+  godanye(){
+    wx.navigateTo({
+      url: '/pages/home/danye/danye',
+    })
+  },
   goBuy() {
     if (this.data.shopcountIndex==0){
       return
@@ -299,6 +304,7 @@ Page({
       let result = wx.getStorageInfoSync()
       if (res.Code == "000000") {
         let data = res.Data;
+        wx.setStorageSync('bannerDetails', data.ad_editor)
         let leftList = []
         let shopList = []
         data.goods.map(item => {

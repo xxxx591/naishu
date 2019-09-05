@@ -1,7 +1,7 @@
 // pages/home/details/details.js
 var app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
-
+import Dialog from '../../../components/dist/dialog/dialog.js'
 Page({
 
   /**
@@ -11,6 +11,7 @@ Page({
     shopList: [],
     buyCarList: [],
     showShopBox: false,
+    showWeixinBox:false,
     shopcountIndex: 0,
     shopcountPrice: 0,
     shopDetails: {},
@@ -19,6 +20,15 @@ Page({
     shopNum:0,
     shopNumFlag:true,
     fuwenben:''
+  },
+  showweixin(){
+    Dialog.alert({
+      title: '联系方式',
+      message: `手机号码：18601123560\n微信账号：turbowu`,
+      messageAlign:'left'
+    }).then(() => {
+      // on close
+    }); 
   },
   goBuy() {
     if (this.data.shopcountIndex == 0) {

@@ -17,7 +17,7 @@
   </view>
   <!-- list列表 -->
   <view class='wrapper-list'>
-    <text class='integral'>积分兑换</text>
+    <text class='integral'>邻里召集令</text>
     <view class='list-container'>
         <view class='list' wx:for="{{goodList}}" wx:key='{{item.index}}'  bindtap='handleGoProductDetails' data-id="{{item.id}}">
         <image src='{{item.cover_path}}' class='list-pic'></image>

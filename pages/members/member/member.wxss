@@ -3,8 +3,9 @@ page{
   background:rgba(247,248,250,1)
 }
 .wrapper{
-  width: 750rpx;
+  width: 100vw;
   position: relative;
+  overflow: hidden;
 }
 .wrapper-top{
   width:100%;
