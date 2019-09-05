@@ -41,7 +41,8 @@ Page({
     // 留言
     beizhutxt: '',
     // 配送时间
-    selectTime: '请选择配送时间'
+    selectTime: '请选择配送时间',
+    textareaShow:true
   },
   // 跳优惠券
   goYouhuiquan() {
@@ -85,12 +86,14 @@ Page({
   // 自己支付
   paySelf() {
     this.setData({
-      show: true
+      show: true,
+      textareaShow:false
     })
   },
   payOther() {
     this.setData({
-      showOther: true
+      showOther: true,
+      textareaShow:false
     })
   },
   changeUserPhone(value) {
@@ -112,22 +115,26 @@ Page({
   },
   cancelPayOther() {
     this.setData({
-      showOther: false
+      showOther: false,
+      textareaShow:true
     })
   },
   onCloseOther() {
     this.setData({
-      showOther: false
+      showOther: false,
+      textareaShow:true
     })
   },
   onClose() {
     this.setData({
-      show: false
+      show: false,
+      textareaShow: true
     })
   },
   cancelPaySelf() {
     this.setData({
-      show: false
+      show: false,
+      textareaShow: true
     })
   },
   onChange(event) {
@@ -199,81 +206,82 @@ Page({
     params.user_coupon_ids = quanarr.join(',') //优惠券合集
     params.replace_user_mobile = this.data.userPhone001 //代付人手机号码
     params.replace_pay_password = this.data.password001 //代付密码
-    params.remark = this.data.beizhutxt //留言
+    params.remark = this.data.beizhutxt.value //留言
     params.ship_time = this.data.selectTime //配送时间
     if (flag) {
       flag = false
-      if (params.ship_time == '') {
+      if (params.ship_time == '' || params.ship_time == undefined) {
         wx.showToast({
           title: '配送时间不能为空',
           icon: 'none',
           duration: 2000
         })
         return
-      }
-      app.ajax(app.globalData.config.createOrder, params).then(res => {
-        console.log(res)
-        let data = res.Data
-        if (this.data.radio == 2) {
-          if (res.Code == '000000') {
-            flag = false
-            if (this.data.type == 1) {
-              wx.removeStorageSync('shopList')
-            } else {
-              wx.removeStorageSync('shopList2')
-            }
-            wx.showToast({
-              title: '支付成功',
-              duration: 2000,
-              success: res => {
-
-                setTimeout(_ => {
-                  wx.switchTab({
-                    url: '/pages/home/index/index',
-                  })
-
-                }, 2000)
-              }
-            })
-          } else {
-            setTimeout(_ => {
-              flag = true
-            }, 500)
-          }
-        } else {
-          if (res.Code == '000000') {
-            flag = true
-            wx.requestPayment({
-              timeStamp: data.timeStamp + '',
-              nonceStr: data.nonceStr,
-              package: data.package,
-              signType: 'MD5',
-              paySign: data.paySign,
-              success(res) {
-                console.log('支付成功的回调', res)
+      } else {
+        app.ajax(app.globalData.config.createOrder, params).then(res => {
+          console.log(res)
+          let data = res.Data
+          if (this.data.radio == 2) {
+            if (res.Code == '000000') {
+              flag = false
+              if (this.data.type == 1) {
                 wx.removeStorageSync('shopList')
+              } else {
                 wx.removeStorageSync('shopList2')
-                wx.showToast({
-                  title: '支付成功',
-                  duration: 2000,
-                  success: res => {
-                    setTimeout(_ => {
-                      wx.switchTab({
-                        url: '/pages/home/index/index',
-                      })
-                    }, 2000)
-                  }
-                })
-              },
-              fail(res) {}
-            })
+              }
+              wx.showToast({
+                title: '支付成功',
+                duration: 2000,
+                success: res => {
+
+                  setTimeout(_ => {
+                    wx.switchTab({
+                      url: '/pages/home/index/index',
+                    })
+
+                  }, 2000)
+                }
+              })
+            } else {
+              setTimeout(_ => {
+                flag = true
+              }, 500)
+            }
           } else {
-            setTimeout(_ => {
+            if (res.Code == '000000') {
               flag = true
-            }, 500)
+              wx.requestPayment({
+                timeStamp: data.timeStamp + '',
+                nonceStr: data.nonceStr,
+                package: data.package,
+                signType: 'MD5',
+                paySign: data.paySign,
+                success(res) {
+                  console.log('支付成功的回调', res)
+                  wx.removeStorageSync('shopList')
+                  wx.removeStorageSync('shopList2')
+                  wx.showToast({
+                    title: '支付成功',
+                    duration: 2000,
+                    success: res => {
+                      setTimeout(_ => {
+                        wx.switchTab({
+                          url: '/pages/home/index/index',
+                        })
+                      }, 2000)
+                    }
+                  })
+                },
+                fail(res) {}
+              })
+            } else {
+              setTimeout(_ => {
+                flag = true
+              }, 500)
+            }
           }
-        }
-      })
+        })
+      }
     }
   },
   payNowOther() {
@@ -311,6 +319,8 @@ Page({
     params.user_coupon_ids = quanarr.join(',') //优惠券合集
     params.replace_user_mobile = this.data.userPhone001 //代付人手机号码
     params.replace_pay_password = this.data.password001 //代付密码
+    params.remark = this.data.beizhutxt.value //留言
+    params.ship_time = this.data.selectTime //配送时间
     if (flag) {
       flag = false
       app.ajax(app.globalData.config.createOrder, params).then(res => {

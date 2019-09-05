@@ -67,7 +67,8 @@
   <van-cell title="代金券" is-link value="{{daijinquan}}" bind:click="goYouhuiquan" />
   <van-cell title="会员抵扣" is-link value="{{vipContent}}" />
   <van-cell title="选择配送时间" is-link bind:click="selectTime" value="{{selectTime}}"/>
-  <textarea class="textarea-box" placeholder="填写备注信息（选填）" bindinput="getbeizhu"></textarea>
+  <textarea class="textarea-box" value='{{beizhutxt.value}}' placeholder="填写备注信息（选填）" bindinput="getbeizhu" wx:if="{{textareaShow}}"></textarea>
+  <view style='height:150px;margin-top:10px;width:100%;display:block;' wx:else></view>
 </view>
 
 <view class='foot-box'>

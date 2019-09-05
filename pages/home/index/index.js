@@ -127,6 +127,8 @@ Page({
    */
   onShow: function() {
     wx.removeStorageSync('youhuiquan')
+    wx.removeStorageSync('selectTime')
+
     this.init()
   },
 
